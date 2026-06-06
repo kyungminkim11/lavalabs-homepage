@@ -1,0 +1,15 @@
+{
+  "name": "Lava Labs",
+  "short_name": "Lava Labs",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbfaf7",
+  "theme_color": "#f7f4ef",
+  "icons": [
+    {
+      "src": "/assets/images/lava-logo-transparent.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}

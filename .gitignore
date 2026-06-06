@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.vite/
+.codex-captures/
+NETLIFY_*/
+*.zip
+*.tsbuildinfo
+npm-debug.log*
+cloudflared-*.log
+preview-*.log
+safe-upload-server.log
+single-upload-server.log
+.DS_Store
