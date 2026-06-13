@@ -28,116 +28,116 @@ export const localePaths: Record<Locale, string> = {
 
 export const content = {
   ko: {
-    seoTitle: "Lava Labs | 감성 콘텐츠 & 브랜드 경험 설계",
+    seoTitle: "Lava Labs | 브랜드 웹·콘텐츠·사진을 연결하는 크리에이티브 스튜디오",
     seoDescription:
-      "Lava Labs는 감성 콘텐츠, 체험 프로그램, 굿즈, 브랜드 웹 구축을 통해 사람과 브랜드 사이의 깊은 연결을 설계하는 창의 기획 스튜디오입니다.",
+      "Lava Labs는 브랜드 랜딩페이지, 사진·영상 콘텐츠, 굿즈, 체험 프로그램을 하나의 흐름으로 설계해 작은 브랜드의 실행력을 높이는 크리에이티브 스튜디오입니다.",
     nav: [
-      ["#about", "회사 소개"],
+      ["#about", "소개"],
       ["#services", "서비스"],
-      ["#projects", "프로젝트"],
+      ["#projects", "진행 방식"],
       ["#softmoon", "SoftMoon"],
       ["#contact", "문의"]
     ],
     hero: {
-      eyebrow: "Emotional Brand Experience Studio",
+      eyebrow: "Creative Studio for Small Brands",
       title: "Lava Labs",
-      statement: "감정을 설계하고, 브랜드 경험으로 구현합니다.",
+      statement: "브랜드의 첫인상을 웹, 사진, 콘텐츠로 빠르게 만듭니다.",
       body:
-        "콘텐츠, 체험, 디자인, 디지털 기술을 연결해 브랜드가 사람의 마음에 오래 남는 순간을 만듭니다.",
-      primary: "협업 문의",
-      secondary: "서비스 보기",
+        "랜딩페이지 제작, 브랜드 소개서, 사진·영상, 굿즈와 체험 기획까지. 작은 브랜드가 바로 보여주고, 팔고, 공유할 수 있는 결과물을 설계합니다.",
+      primary: "프로젝트 문의하기",
+      secondary: "서비스 확인하기",
       proof: [
-        ["2022", "설립 이후 감성 콘텐츠 운영"],
-        ["4", "콘텐츠부터 웹 구축까지 핵심 영역"],
-        ["3", "한국어, 영어, 일본어 대응"]
+        ["1", "기획부터 제작까지 원스톱 진행"],
+        ["2주~", "작은 프로젝트도 빠르게 착수"],
+        ["KR·EN·JP", "한국어·영어·일본어 페이지 대응"]
       ]
     },
     about: {
       kicker: "About",
-      title: "작은 브랜드의 감정을 경험으로 바꾸는 창의 기획 스튜디오",
+      title: "아이디어를 ‘보이는 결과물’로 바꾸는 실행형 크리에이티브 스튜디오",
       body:
-        "Lava Labs는 감성과 실험정신을 기반으로 브랜드와 사람 사이의 정서적 연결을 설계합니다. 콘텐츠 기획, 체험 프로그램, 굿즈, 웹 구축을 하나의 흐름으로 묶어 브랜드의 서사와 철학이 살아 움직이는 경험을 만듭니다.",
+        "Lava Labs는 감성적인 콘셉트를 실제 고객 접점으로 구현합니다. 막연한 브랜드 방향을 정리하고, 웹사이트·콘텐츠·촬영·굿즈·체험 프로그램까지 하나의 흐름으로 묶어 바로 활용 가능한 결과물로 만듭니다.",
       highlights: [
-        "브랜드의 철학을 콘텐츠와 체험 언어로 번역",
-        "기획, 디자인, 개발, 운영까지 일관된 디렉션",
-        "프리랜서 및 외부 파트너와 유연한 협업 체계"
+        "브랜드 메시지, 고객 타깃, 판매 포인트를 먼저 정리",
+        "랜딩페이지, 소개서, SNS 콘텐츠, 촬영물을 한 방향으로 제작",
+        "한국 시장은 물론 일본 활동까지 고려한 다국어 구조 설계"
       ]
     },
-    servicesTitle: "핵심 서비스",
+    servicesTitle: "바로 의뢰 가능한 서비스",
     servicesIntro:
-      "필요한 업무만 따로 맡길 수도 있고, 기획부터 납품까지 하나의 프로젝트로 묶어 진행할 수도 있습니다.",
+      "처음부터 크게 만들 필요 없습니다. 지금 필요한 결과물부터 작게 만들고, 반응을 보면서 확장하는 방식으로 진행합니다.",
     services: [
       {
-        icon: "sparkles" as IconKey,
-        title: "감성 콘텐츠 기획",
-        body: "식물 MBTI, 감성 테스트, 운세형 콘텐츠처럼 사용자의 감정과 선택을 중심에 둔 인터랙티브 콘텐츠를 기획합니다.",
-        tags: ["콘셉트 설계", "UX 라이팅", "결과 알고리즘"]
+        icon: "screen" as IconKey,
+        title: "브랜드 랜딩페이지 제작",
+        body: "회사 소개, 포트폴리오, 예약·문의형 페이지, QR 연결 페이지처럼 고객이 바로 이해하고 행동할 수 있는 웹 접점을 만듭니다.",
+        tags: ["반응형 웹", "문의 전환", "다국어 페이지"]
       },
       {
-        icon: "map" as IconKey,
-        title: "오프라인 체험 프로그램",
-        body: "브랜드 콘셉트에 맞춘 소규모 클래스, 워크숍, 팝업 체험을 기획하고 현장 운영까지 설계합니다.",
-        tags: ["체험 클래스", "공간 동선", "운영 매뉴얼"]
+        icon: "camera" as IconKey,
+        title: "사진·영상 콘텐츠 패키지",
+        body: "브랜드와 제품의 분위기를 살리는 촬영 방향, 이미지 구성, SNS 업로드용 콘텐츠를 함께 설계합니다.",
+        tags: ["프로필·제품 촬영", "SNS 콘텐츠", "브랜드 무드"]
       },
       {
         icon: "package" as IconKey,
-        title: "SoftMoon 굿즈 제작",
-        body: "일러스트 기반 엽서, 스티커, 키트, 패키징 등 감성 굿즈를 브랜드 스토리와 함께 제작합니다.",
-        tags: ["일러스트", "패키징", "샘플 제작"]
+        title: "SoftMoon 굿즈·패키징",
+        body: "일러스트와 감성 스토리를 기반으로 엽서, 스티커, 키트, 패키징 등 작게 시작할 수 있는 굿즈를 제작합니다.",
+        tags: ["일러스트", "샘플 제작", "패키징"]
       },
       {
-        icon: "screen" as IconKey,
-        title: "브랜드 웹 구축",
-        body: "마이크로 페이지, 모바일 랜딩페이지, QR 기반 웹앱 등 브랜드 목적에 맞는 디지털 접점을 구축합니다.",
-        tags: ["반응형 웹", "랜딩페이지", "QR 웹앱"]
+        icon: "sparkles" as IconKey,
+        title: "인터랙티브 콘텐츠 기획",
+        body: "MBTI형 테스트, 취향 진단, 이벤트 페이지처럼 사용자가 참여하고 공유하기 쉬운 콘텐츠를 기획합니다.",
+        tags: ["콘셉트 설계", "UX 라이팅", "공유형 콘텐츠"]
       }
     ],
-    processTitle: "프로젝트 진행 방식",
+    processTitle: "작업 흐름",
     process: [
-      ["상담", "문의 내용을 바탕으로 목표, 일정, 예산 범위를 정리합니다."],
-      ["제안", "요구사항에 맞춘 기획 방향과 견적을 전달합니다."],
-      ["계약", "범위, 일정, 산출물을 확정하고 제작 자료를 정리합니다."],
-      ["제작", "기획, 디자인, 개발을 단계별로 진행하며 피드백을 반영합니다."],
-      ["납품", "최종 결과물과 운영 가이드를 전달하고 후속 운영을 논의합니다."]
+      ["진단", "현재 브랜드 상태, 목표 고객, 필요한 결과물을 빠르게 정리합니다."],
+      ["설계", "페이지 구조, 콘텐츠 방향, 촬영·디자인 톤을 하나의 기획안으로 묶습니다."],
+      ["제작", "디자인, 개발, 문구, 이미지 작업을 단계별로 진행합니다."],
+      ["검수", "모바일 화면, 문구, 문의 흐름, 다국어 노출을 확인합니다."],
+      ["오픈", "배포 후 운영 방법과 다음 개선 포인트를 함께 정리합니다."]
     ],
-    expertiseTitle: "전문 대응 영역",
+    expertiseTitle: "제작 가능 영역",
     expertise: [
-      ["handshake" as IconKey, "브랜드 & 콘텐츠 기획"],
-      ["leaf" as IconKey, "공간 연출 및 체험 운영"],
-      ["pen" as IconKey, "비주얼 디자인 및 스타일 가이드"],
-      ["screen" as IconKey, "프론트엔드 개발"],
-      ["store" as IconKey, "행사 운영 및 팝업 지원"],
-      ["camera" as IconKey, "촬영 및 미디어 제작"]
+      ["screen" as IconKey, "브랜드 웹사이트·랜딩페이지"],
+      ["camera" as IconKey, "사진·영상·SNS 이미지"],
+      ["pen" as IconKey, "브랜드 문구와 소개서 구성"],
+      ["package" as IconKey, "굿즈·패키징·키트 기획"],
+      ["map" as IconKey, "체험 프로그램·팝업 동선"],
+      ["handshake" as IconKey, "협업 프로젝트 운영"]
     ],
-    projectsTitle: "진행 중인 프로젝트",
+    projectsTitle: "현재 집중하고 있는 프로젝트",
     projects: [
-      "SoftMoon 오프라인 체험 키트와 굿즈 패키징 테스트",
-      "감성 기반 웹 테스트 시리즈 여름 시즌 론칭",
-      "식물 궁합 테스트 UX 고도화 및 결과 알고리즘 개선",
-      "브랜드 맞춤형 랜딩페이지와 QR 웹앱 템플릿 상용화",
-      "Lava Labs 자체 폰트 제작",
-      "야구 감성 테스트 및 갤럭시 워치 테마 개발"
+      "개인 브랜드와 소규모 매장을 위한 빠른 랜딩페이지 템플릿",
+      "일본 활동을 고려한 한국어·영어·일본어 포트폴리오 구조",
+      "SoftMoon 감성 굿즈와 오프라인 체험 키트 고도화",
+      "사진 촬영 결과물을 웹 포트폴리오와 자동 연계하는 관리자 흐름",
+      "블로그·SNS 콘텐츠 제작을 돕는 로컬 AI 업무 도구",
+      "갤럭시 워치 테마와 감성 테스트형 미니 서비스"
     ],
     softMoon: {
       kicker: "In-house Brand",
       title: "SoftMoon",
       body:
-        "SoftMoon은 우주와 자연에서 받은 영감을 바탕으로 일상 속 감정과 기억을 따뜻하게 담아내는 감성 굿즈 브랜드입니다. 엽서, 스티커, 키트, 디지털 굿즈를 통해 브랜드 스토리를 확장하고 있습니다.",
+        "SoftMoon은 우주와 자연에서 받은 영감을 바탕으로 일상 속 감정과 기억을 따뜻하게 담아내는 Lava Labs의 자체 굿즈 브랜드입니다. 엽서, 스티커, 키트, 디지털 굿즈를 통해 브랜드 스토리를 작고 선명한 제품 경험으로 확장합니다.",
       view: "SoftMoon 둘러보기",
       download: "브랜드 소개서 다운로드"
     },
-    audienceTitle: "이런 분들과 함께합니다",
+    audienceTitle: "이런 분들에게 적합합니다",
     audience: [
-      "브랜드의 감성과 철학을 경험으로 풀어내고 싶은 창업자",
-      "소규모 체험 프로그램과 공간 운영에 관심 있는 기획자",
-      "자신만의 이야기를 굿즈나 콘텐츠로 표현하고 싶은 크리에이터",
-      "감성 중심 프로젝트에 공감하는 프리랜서와 파트너"
+      "브랜드 소개 페이지나 포트폴리오가 필요하지만 어디서부터 시작할지 막막한 분",
+      "사진, 문구, 웹사이트를 따로 만들다 보니 전체 톤이 흔들리는 소규모 브랜드",
+      "일본어·영어 페이지까지 고려해 해외 활동 기반을 만들고 싶은 크리에이터",
+      "굿즈, 체험, 콘텐츠를 작게 테스트하고 반응을 보며 확장하고 싶은 팀"
     ],
     contact: {
       kicker: "Contact",
-      title: "브랜드의 다음 장면을 함께 설계해볼까요?",
+      title: "지금 필요한 결과물부터 작게 시작해볼까요?",
       body:
-        "협업, 파트너십, 브랜드 웹 구축, 체험 프로그램 문의를 남겨주시면 프로젝트의 방향과 가능성을 빠르게 검토해 답변드립니다.",
+        "브랜드 웹사이트, 포트폴리오, 촬영, 굿즈, 체험 프로그램 중 필요한 내용을 남겨주세요. 목표와 예산 범위에 맞춰 현실적인 진행 방식을 제안드립니다.",
       name: "이름",
       email: "이메일",
       message: "문의 내용",
@@ -150,119 +150,119 @@ export const content = {
       emailText: "info@lavalabs.co.kr",
       address: "경기도 고양시 일산서구 일현로 47, 2층 Lava Labs"
     },
-    footer: "Lava Labs는 감성 콘텐츠와 브랜드 경험 설계를 중심으로 다양한 프로젝트를 운영합니다."
+    footer: "Lava Labs는 웹, 콘텐츠, 촬영, 굿즈를 연결해 작은 브랜드의 실행력을 높입니다."
   },
   en: {
-    seoTitle: "Lava Labs | Emotional Content & Brand Experience Studio",
+    seoTitle: "Lava Labs | Brand Websites, Content and Visual Production Studio",
     seoDescription:
-      "Lava Labs designs emotional content, brand experiences, goods, and responsive brand websites for memorable customer connections.",
+      "Lava Labs builds brand landing pages, visual content, goods, and experience programs for small brands that need clear, usable launch assets.",
     nav: [
       ["#about", "About"],
       ["#services", "Services"],
-      ["#projects", "Projects"],
+      ["#projects", "Process"],
       ["#softmoon", "SoftMoon"],
       ["#contact", "Contact"]
     ],
     hero: {
-      eyebrow: "Emotional Brand Experience Studio",
+      eyebrow: "Creative Studio for Small Brands",
       title: "Lava Labs",
-      statement: "We design emotion and turn it into brand experiences.",
+      statement: "We turn a brand’s first impression into websites, visuals, and content.",
       body:
-        "We connect content, experiences, design, and digital technology to create moments that stay with people.",
+        "From landing pages and brand decks to photography, goods, and experience planning, we create launch-ready assets that help small brands show, sell, and share faster.",
       primary: "Start a project",
       secondary: "View services",
       proof: [
-        ["2022", "Building emotional content since"],
-        ["4", "Core service areas"],
-        ["3", "Korean, English, and Japanese"]
+        ["1", "One flow from planning to production"],
+        ["2w+", "Fast starts for compact projects"],
+        ["KR·EN·JP", "Korean, English, and Japanese pages"]
       ]
     },
     about: {
       kicker: "About",
-      title: "A creative studio turning brand emotion into tangible experiences",
+      title: "A hands-on creative studio that turns ideas into visible brand assets",
       body:
-        "Lava Labs builds emotional connections between brands and people. We combine content planning, workshops, goods, and web production into a coherent brand journey.",
+        "Lava Labs shapes emotional concepts into practical customer touchpoints. We clarify the brand direction, then connect websites, content, photography, goods, and experience programs into one coherent execution flow.",
       highlights: [
-        "Translate brand philosophy into content and experience",
-        "Direct planning, design, development, and operations",
-        "Flexible collaboration with trusted freelance partners"
+        "Clarify the brand message, target customer, and selling points first",
+        "Align landing pages, decks, social content, and visuals around one direction",
+        "Design multilingual structures for Korean and Japan-facing activity"
       ]
     },
-    servicesTitle: "Core Services",
+    servicesTitle: "Services You Can Start With",
     servicesIntro:
-      "Work with us on one focused task or connect planning, design, production, and delivery into one project.",
+      "You do not need a huge launch. Start with the asset you need now, test the response, and expand the system step by step.",
     services: [
       {
-        icon: "sparkles" as IconKey,
-        title: "Emotional content",
-        body: "Interactive tests and story-led content built around user choices, feelings, and shareable results.",
-        tags: ["Concept", "UX writing", "Result logic"]
+        icon: "screen" as IconKey,
+        title: "Brand landing pages",
+        body: "Company profiles, portfolios, inquiry pages, and QR-linked microsites that help visitors understand and act quickly.",
+        tags: ["Responsive web", "Lead conversion", "Multilingual"]
       },
       {
-        icon: "map" as IconKey,
-        title: "Offline experiences",
-        body: "Small classes, workshops, and pop-up programs designed around the brand concept and on-site flow.",
-        tags: ["Workshops", "Spatial flow", "Operations"]
+        icon: "camera" as IconKey,
+        title: "Photo and content package",
+        body: "Visual direction, image sets, and social-ready content that communicate the mood of a brand or product.",
+        tags: ["Portrait/product", "Social content", "Brand mood"]
       },
       {
         icon: "package" as IconKey,
-        title: "SoftMoon goods",
-        body: "Illustration-led postcards, stickers, kits, and packaging that carry a warm brand story.",
-        tags: ["Illustration", "Packaging", "Sampling"]
+        title: "SoftMoon goods and packaging",
+        body: "Illustration-led postcards, stickers, kits, and packaging that turn a warm story into small physical products.",
+        tags: ["Illustration", "Sampling", "Packaging"]
       },
       {
-        icon: "screen" as IconKey,
-        title: "Brand web builds",
-        body: "Responsive landing pages, micro-sites, and QR-based web apps tailored to each brand goal.",
-        tags: ["Responsive web", "Landing pages", "QR apps"]
+        icon: "sparkles" as IconKey,
+        title: "Interactive content planning",
+        body: "Shareable quizzes, preference tests, and campaign pages designed around user choices and emotional results.",
+        tags: ["Concept", "UX writing", "Shareable"]
       }
     ],
-    processTitle: "How Projects Move",
+    processTitle: "Workflow",
     process: [
-      ["Consult", "We clarify goals, scope, schedule, and budget range."],
-      ["Propose", "We share a tailored direction and estimate."],
-      ["Align", "We confirm scope, timeline, deliverables, and materials."],
-      ["Produce", "Planning, design, and development move in clear feedback rounds."],
-      ["Deliver", "We hand over the final work and discuss operation needs."]
+      ["Diagnose", "Clarify the current brand state, customer, and required asset."],
+      ["Design", "Map the page structure, content direction, and visual tone."],
+      ["Produce", "Move through copy, design, development, and visual production."],
+      ["Review", "Check mobile screens, copy, inquiry flow, and multilingual exposure."],
+      ["Launch", "Ship the asset and define the next improvement points."]
     ],
-    expertiseTitle: "Specialist Coverage",
+    expertiseTitle: "What We Can Produce",
     expertise: [
-      ["handshake" as IconKey, "Brand and content planning"],
-      ["leaf" as IconKey, "Experience and space direction"],
-      ["pen" as IconKey, "Visual design and style guides"],
-      ["screen" as IconKey, "Frontend development"],
-      ["store" as IconKey, "Event and pop-up operation"],
-      ["camera" as IconKey, "Photo and media production"]
+      ["screen" as IconKey, "Brand websites and landing pages"],
+      ["camera" as IconKey, "Photography, video, and social visuals"],
+      ["pen" as IconKey, "Brand copy and deck structure"],
+      ["package" as IconKey, "Goods, packaging, and kits"],
+      ["map" as IconKey, "Experience programs and pop-up flows"],
+      ["handshake" as IconKey, "Collaborative project operation"]
     ],
-    projectsTitle: "Current Projects",
+    projectsTitle: "Current Focus Areas",
     projects: [
-      "SoftMoon offline kit and goods packaging tests",
-      "Seasonal emotional web-test series",
-      "Plant compatibility test UX and result logic upgrades",
-      "Brand landing page and QR web-app templates",
-      "Lava Labs original typeface",
-      "Baseball emotion tests and Galaxy Watch themes"
+      "Fast landing page templates for personal brands and small shops",
+      "Korean, English, and Japanese portfolio structures for Japan-facing activity",
+      "SoftMoon emotional goods and offline kit development",
+      "A portfolio admin flow that connects photography output to the web",
+      "Local AI work tools for blog and social content production",
+      "Galaxy Watch themes and emotional mini-test services"
     ],
     softMoon: {
       kicker: "In-house Brand",
       title: "SoftMoon",
       body:
-        "SoftMoon is a warm goods brand inspired by space and nature. It expands everyday memories through postcards, stickers, kits, and digital goods.",
+        "SoftMoon is Lava Labs’ in-house goods brand inspired by space and nature. Through postcards, stickers, kits, and digital goods, it turns warm memories into small, clear product experiences.",
       view: "Explore SoftMoon",
       download: "Download brand intro"
     },
-    audienceTitle: "Who We Work With",
+    audienceTitle: "Who This Is For",
     audience: [
-      "Founders who want to express a brand philosophy as an experience",
-      "Planners interested in small workshops and spaces",
-      "Creators turning their story into goods or content",
-      "Freelancers and partners who care about emotional projects"
+      "Founders who need a brand page or portfolio but do not know where to start",
+      "Small brands whose photos, copy, and website feel disconnected",
+      "Creators who want a multilingual base for Korea and Japan-facing work",
+      "Teams that want to test goods, experiences, and content before scaling"
     ],
     contact: {
       kicker: "Contact",
-      title: "Shall we design the next scene for your brand?",
+      title: "Shall we start with the asset you need right now?",
       body:
-        "Send a note about collaboration, partnership, brand web builds, or experience programs. We will review the direction and reply thoughtfully.",
+        "Tell us whether you need a website, portfolio, photography, goods, or an experience program. We will suggest a practical plan that fits your goal and budget range.",
       name: "Name",
       email: "Email",
       message: "Message",
@@ -275,119 +275,119 @@ export const content = {
       emailText: "info@lavalabs.co.kr",
       address: "2F, 47 Ilhyeon-ro, Ilsanseo-gu, Goyang-si, Gyeonggi-do, Korea"
     },
-    footer: "Lava Labs designs emotional content and brand experiences across digital and physical touchpoints."
+    footer: "Lava Labs connects websites, content, photography, and goods to help small brands execute faster."
   },
   jp: {
-    seoTitle: "Lava Labs | 感性コンテンツ & ブランド体験設計",
+    seoTitle: "Lava Labs | ブランドWeb・コンテンツ・ビジュアル制作スタジオ",
     seoDescription:
-      "Lava Labsは感性コンテンツ、体験プログラム、グッズ、ブランドWebを通じて、ブランドと人をつなぐ体験を設計します。",
+      "Lava LabsはブランドLP、写真・映像コンテンツ、グッズ、体験プログラムをつなぎ、小さなブランドの実行力を高めるクリエイティブスタジオです。",
     nav: [
       ["#about", "紹介"],
       ["#services", "サービス"],
-      ["#projects", "プロジェクト"],
+      ["#projects", "進行"],
       ["#softmoon", "SoftMoon"],
       ["#contact", "お問い合わせ"]
     ],
     hero: {
-      eyebrow: "Emotional Brand Experience Studio",
+      eyebrow: "Creative Studio for Small Brands",
       title: "Lava Labs",
-      statement: "感情を設計し、ブランド体験として形にします。",
+      statement: "ブランドの第一印象をWeb、写真、コンテンツで形にします。",
       body:
-        "コンテンツ、体験、デザイン、デジタル技術をつなぎ、人の心に残るブランドの瞬間をつくります。",
-      primary: "相談する",
+        "ランディングページ、ブランド資料、写真・映像、グッズ、体験企画まで。小さなブランドがすぐに見せて、売って、共有できる成果物を制作します。",
+      primary: "プロジェクト相談",
       secondary: "サービスを見る",
       proof: [
-        ["2022", "設立以降、感性コンテンツを運営"],
-        ["4", "主要サービス領域"],
-        ["3", "韓国語、英語、日本語対応"]
+        ["1", "企画から制作まで一貫対応"],
+        ["2週~", "小さな案件もすばやく開始"],
+        ["KR·EN·JP", "韓国語・英語・日本語ページ対応"]
       ]
     },
     about: {
       kicker: "About",
-      title: "ブランドの感情を体験に変えるクリエイティブスタジオ",
+      title: "アイデアを見える成果物に変える実行型クリエイティブスタジオ",
       body:
-        "Lava Labsは感性と実験精神をもとに、ブランドと人の情緒的なつながりを設計します。企画、体験、グッズ、Web制作を一つの流れとして構築します。",
+        "Lava Labsは感性的なコンセプトを実際の顧客接点として実装します。ブランドの方向性を整理し、Webサイト、コンテンツ、撮影、グッズ、体験プログラムまで一つの流れで制作します。",
       highlights: [
-        "ブランド哲学をコンテンツと体験に翻訳",
-        "企画、デザイン、開発、運営を一貫してディレクション",
-        "信頼できる外部パートナーとの柔軟な協業"
+        "ブランドメッセージ、顧客像、訴求ポイントを先に整理",
+        "LP、紹介資料、SNSコンテンツ、撮影素材を同じ方向で制作",
+        "韓国市場と日本での活動を考慮した多言語構成"
       ]
     },
-    servicesTitle: "主要サービス",
+    servicesTitle: "すぐに依頼できるサービス",
     servicesIntro:
-      "必要な業務のみの依頼から、企画、制作、納品までを一つにまとめた進行まで対応します。",
+      "最初から大きく作る必要はありません。今必要な成果物から小さく作り、反応を見ながら拡張します。",
     services: [
       {
-        icon: "sparkles" as IconKey,
-        title: "感性コンテンツ企画",
-        body: "ユーザーの感情と選択を中心にした診断型、ストーリー型のインタラクティブコンテンツを企画します。",
-        tags: ["コンセプト", "UXライティング", "結果ロジック"]
+        icon: "screen" as IconKey,
+        title: "ブランドLP制作",
+        body: "会社紹介、ポートフォリオ、予約・問い合わせページ、QR連動ページなど、訪問者が理解して行動しやすいWeb接点を作ります。",
+        tags: ["レスポンシブ", "問い合わせ導線", "多言語"]
       },
       {
-        icon: "map" as IconKey,
-        title: "オフライン体験",
-        body: "ブランドコンセプトに合わせた小規模クラス、ワークショップ、ポップアップ体験を設計します。",
-        tags: ["ワークショップ", "動線設計", "運営"]
+        icon: "camera" as IconKey,
+        title: "写真・コンテンツ制作",
+        body: "ブランドや商品の雰囲気を伝える撮影方向、画像構成、SNS向けコンテンツを設計します。",
+        tags: ["人物・商品撮影", "SNS素材", "ブランドムード"]
       },
       {
         icon: "package" as IconKey,
-        title: "SoftMoonグッズ",
-        body: "イラストを中心に、ポストカード、ステッカー、キット、パッケージを制作します。",
-        tags: ["イラスト", "パッケージ", "サンプル"]
+        title: "SoftMoonグッズ・パッケージ",
+        body: "イラストとストーリーをもとに、ポストカード、ステッカー、キット、パッケージなど小さく始められるグッズを制作します。",
+        tags: ["イラスト", "サンプル", "パッケージ"]
       },
       {
-        icon: "screen" as IconKey,
-        title: "ブランドWeb制作",
-        body: "レスポンシブなランディングページ、マイクロサイト、QR連動Webアプリを構築します。",
-        tags: ["レスポンシブ", "LP", "QRアプリ"]
+        icon: "sparkles" as IconKey,
+        title: "参加型コンテンツ企画",
+        body: "診断テスト、好み分析、キャンペーンページなど、ユーザーが参加して共有しやすいコンテンツを企画します。",
+        tags: ["コンセプト", "UXライティング", "共有型"]
       }
     ],
-    processTitle: "進行プロセス",
+    processTitle: "制作の流れ",
     process: [
-      ["相談", "目標、範囲、日程、予算感を整理します。"],
-      ["提案", "要件に合わせた方向性と見積もりを共有します。"],
-      ["契約", "範囲、日程、成果物、制作資料を確定します。"],
-      ["制作", "企画、デザイン、開発を段階的に進めます。"],
-      ["納品", "最終成果物と運営ガイドをお渡しします。"]
+      ["診断", "現在のブランド状態、顧客像、必要な成果物を整理します。"],
+      ["設計", "ページ構成、コンテンツ方針、撮影・デザインのトーンを設計します。"],
+      ["制作", "コピー、デザイン、開発、ビジュアル制作を段階的に進めます。"],
+      ["確認", "モバイル画面、文章、問い合わせ導線、多言語表示を確認します。"],
+      ["公開", "公開後の運用方法と次の改善ポイントを整理します。"]
     ],
-    expertiseTitle: "対応領域",
+    expertiseTitle: "制作対応領域",
     expertise: [
-      ["handshake" as IconKey, "ブランド & コンテンツ企画"],
-      ["leaf" as IconKey, "空間演出と体験運営"],
-      ["pen" as IconKey, "ビジュアルデザイン"],
-      ["screen" as IconKey, "フロントエンド開発"],
-      ["store" as IconKey, "イベント・ポップアップ支援"],
-      ["camera" as IconKey, "撮影・メディア制作"]
+      ["screen" as IconKey, "ブランドWeb・LP"],
+      ["camera" as IconKey, "写真・映像・SNS画像"],
+      ["pen" as IconKey, "ブランドコピーと資料構成"],
+      ["package" as IconKey, "グッズ・パッケージ・キット"],
+      ["map" as IconKey, "体験プログラム・ポップアップ動線"],
+      ["handshake" as IconKey, "協業プロジェクト運営"]
     ],
-    projectsTitle: "進行中のプロジェクト",
+    projectsTitle: "現在注力しているプロジェクト",
     projects: [
-      "SoftMoon体験キットとグッズパッケージテスト",
-      "感性Web診断シリーズのシーズン展開",
-      "植物相性テストのUXと結果ロジック改善",
-      "ブランドLPとQR Webアプリテンプレート",
-      "Lava Labsオリジナルフォント",
-      "野球感性テストとGalaxy Watchテーマ"
+      "個人ブランドと小規模店舗向けの高速LPテンプレート",
+      "日本での活動を考慮した韓国語・英語・日本語ポートフォリオ構成",
+      "SoftMoon感性グッズとオフライン体験キットの改善",
+      "撮影成果物をWebポートフォリオへつなぐ管理フロー",
+      "ブログ・SNS制作を支援するローカルAI業務ツール",
+      "Galaxy Watchテーマと感性診断型ミニサービス"
     ],
     softMoon: {
       kicker: "In-house Brand",
       title: "SoftMoon",
       body:
-        "SoftMoonは宇宙と自然からインスピレーションを受け、日常の感情と記憶をあたたかく表現する感性グッズブランドです。",
+        "SoftMoonは宇宙と自然からインスピレーションを受け、日常の感情と記憶をあたたかく表現するLava Labsの自社グッズブランドです。ポストカード、ステッカー、キット、デジタルグッズを通じて、小さく明確な商品体験を作ります。",
       view: "SoftMoonを見る",
       download: "ブランド紹介書をダウンロード"
     },
-    audienceTitle: "一緒に取り組みたい方",
+    audienceTitle: "このような方に向いています",
     audience: [
-      "ブランド哲学を体験として表現したい創業者",
-      "小規模体験プログラムや空間運営に関心のある企画者",
-      "自分の物語をグッズやコンテンツで伝えたいクリエイター",
-      "感性中心のプロジェクトに共感するパートナー"
+      "ブランド紹介ページやポートフォリオが必要だが、始め方に迷っている方",
+      "写真、文章、Webサイトのトーンがばらばらになっている小規模ブランド",
+      "日本語・英語ページも含めて海外活動の基盤を作りたいクリエイター",
+      "グッズ、体験、コンテンツを小さく試しながら拡張したいチーム"
     ],
     contact: {
       kicker: "Contact",
-      title: "ブランドの次の場面を一緒に設計しませんか。",
+      title: "今必要な成果物から小さく始めませんか。",
       body:
-        "協業、パートナーシップ、ブランドWeb、体験プログラムについてお気軽にお問い合わせください。",
+        "Webサイト、ポートフォリオ、撮影、グッズ、体験プログラムのうち必要な内容をお知らせください。目標と予算感に合わせて現実的な進行方法をご提案します。",
       name: "お名前",
       email: "メール",
       message: "お問い合わせ内容",
@@ -400,6 +400,6 @@ export const content = {
       emailText: "info@lavalabs.co.kr",
       address: "韓国 京畿道 高陽市 一山西区 一現路47 2F Lava Labs"
     },
-    footer: "Lava Labsは感性コンテンツとブランド体験設計を中心に多様なプロジェクトを運営しています。"
+    footer: "Lava LabsはWeb、コンテンツ、撮影、グッズをつなぎ、小さなブランドの実行力を高めます。"
   }
 } as const;
