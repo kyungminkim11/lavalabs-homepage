@@ -6,6 +6,26 @@
   NODE_VERSION = "22"
 
 [[redirects]]
-  from = "/*"
+  from = "/terms"
+  to = "/terms/"
+  status = 301
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy/"
+  status = 301
+
+[[redirects]]
+  from = "/en"
+  to = "/en/"
+  status = 301
+
+[[redirects]]
+  from = "/jp"
+  to = "/jp/"
+  status = 301
+
+[[redirects]]
+  from = "/:splat"
   to = "/index.html"
   status = 200
