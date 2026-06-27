@@ -17,7 +17,6 @@ function renderRoute(meta) {
   const description = escapeHtml(meta.description);
   const socialImage = meta.page === "softmoon" ? `${origin}/assets/images/lunar-sample-1.jpg` : `${origin}/assets/images/og-image.jpg`;
   const socialImageAlt = meta.page === "softmoon" ? "SoftMoon goods and packaging sample" : "Lava Labs creative studio";
-
   html = replace(html, /<html\s+lang="[^"]*">/i, `<html lang="${meta.lang}">`);
   html = replace(html, /<title>[\s\S]*?<\/title>/i, `<title>${title}</title>`);
   html = replace(html, /<meta\s+name="description"[\s\S]*?\/>/i, `<meta name="description" content="${description}" />`);
@@ -68,6 +67,12 @@ for (const meta of projectRoutes) {
   await mkdir(dirname(output.pathname), { recursive: true });
   await writeFile(output, html, "utf8");
 }
+
+const sitemapPath = new URL("sitemap.xml", distDir);
+let sitemap = await readFile(sitemapPath, "utf8");
+const projectUrls = projectRoutes.map((meta) => `  <url><loc>${origin}${meta.path}</loc><lastmod>2026-06-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`).join("\n");
+if (!sitemap.includes("/projects/follow-checker/")) sitemap = sitemap.replace("</urlset>", `${projectUrls}\n</urlset>`);
+await writeFile(sitemapPath, sitemap, "utf8");
 
 const notFound = renderRoute({ ...routeMeta.home, title: "Page not found | Lava Labs", description: "The requested page could not be found." })
   .replace(/<meta\s+name="robots"[^>]*\/>/i, `<meta name="robots" content="noindex, follow" />`);
