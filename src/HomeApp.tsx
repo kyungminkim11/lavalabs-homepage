@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import Homepage from "./UnfollowProjectCard";
 import { CheckCircle2, ExternalLink, FileArchive, ShieldCheck } from "lucide-react";
 import type { Locale } from "./content";
+import { projectData } from "./projectData";
 
 const copy={
   ko:{home:"/",title:"맞팔체커",lead:"내보낸 데이터 파일을 현재 브라우저에서 분석해 팔로우 관계를 구분하는 Lava Labs의 자체 웹 도구입니다.",start:"분석 시작하기",flow:"작동 방식",trust:"데이터 처리 원칙",steps:[["1. 데이터 준비","계정 설정에서 팔로우 관계 데이터 파일을 내려받습니다."],["2. 브라우저 분석","선택한 파일은 현재 브라우저에서 처리됩니다."],["3. 결과 확인","관계 유형별 결과를 검색하고 확인합니다."]],yes:["브라우저 기반 파일 분석","관계 유형 분류","검색과 결과 확인","PC·모바일 지원"],no:["외부 파일 보관","자동 계정 작업","사용자 대신 수행하는 기능"],notice:"이 도구는 관련 플랫폼이 제공하거나 보증하는 공식 서비스가 아닙니다."},
@@ -18,5 +20,15 @@ function FollowCheckerDetail(){
 }
 
 export default function HomeApp(){
-  return location.pathname.includes("/projects/follow-checker/")?<FollowCheckerDetail/>:<Homepage/>;
+  const locale=getLocale();
+  const detail=location.pathname.includes("/projects/follow-checker/");
+  useEffect(()=>{
+    if(detail)return;
+    const meta=projectData[locale];
+    document.title=meta.seoTitle;
+    document.querySelector('meta[name="description"]')?.setAttribute("content",meta.seoDescription);
+    document.querySelector('meta[property="og:title"]')?.setAttribute("content",meta.seoTitle);
+    document.querySelector('meta[property="og:description"]')?.setAttribute("content",meta.seoDescription);
+  },[detail,locale]);
+  return detail?<FollowCheckerDetail/>:<Homepage/>;
 }
