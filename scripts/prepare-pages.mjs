@@ -22,11 +22,9 @@ function renderRoute(meta) {
   html = replace(html, /<title>[\s\S]*?<\/title>/i, `<title>${title}</title>`);
   html = replace(html, /<meta\s+name="description"[\s\S]*?\/>/i, `<meta name="description" content="${description}" />`);
   html = replace(html, /<link\s+rel="canonical"[^>]*\/>/i, `<link rel="canonical" href="${canonical}" />`);
-
   html = html.replace(/\s*<link\s+rel="alternate"[^>]*\/>/gi, "");
   const alternates = alternateLinks(meta);
   if (alternates) html = html.replace(`<link rel="canonical" href="${canonical}" />`, `<link rel="canonical" href="${canonical}" />\n${alternates}`);
-
   html = replace(html, /<meta\s+property="og:title"[^>]*\/>/i, `<meta property="og:title" content="${title}" />`);
   html = replace(html, /<meta\s+property="og:description"[^>]*\/>/i, `<meta property="og:description" content="${description}" />`);
   html = replace(html, /<meta\s+property="og:url"[^>]*\/>/i, `<meta property="og:url" content="${canonical}" />`);
@@ -37,16 +35,13 @@ function renderRoute(meta) {
   html = replace(html, /<meta\s+name="twitter:description"[^>]*\/>/i, `<meta name="twitter:description" content="${description}" />`);
   html = replace(html, /<meta\s+name="twitter:image"[^>]*\/>/i, `<meta name="twitter:image" content="${socialImage}" />`);
   html = replace(html, /<meta\s+name="twitter:image:alt"[^>]*\/>/i, `<meta name="twitter:image:alt" content="${socialImageAlt}" />`);
-
   const jsonLd = JSON.stringify(structuredData(meta)).replaceAll("<", "\\u003c");
   html = replace(html, /<script[^>]*type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/i, `<script id="route-structured-data" type="application/ld+json">${jsonLd}</script>`);
-
   const body = staticBody(meta);
   if (body) {
     html = replace(html, /<div\s+id="root"><\/div>/i, `<div id="root">${body}</div>`);
     html = html.replace(/\s*<script\s+type="module"[^>]*src="[^"]+"[^>]*><\/script>/gi, "");
   }
-
   return html;
 }
 
@@ -56,10 +51,27 @@ for (const meta of Object.values(routeMeta)) {
   await writeFile(output, renderRoute(meta), "utf8");
 }
 
+const projectRoutes = [
+  { output: "projects/follow-checker/index.html", path: "/projects/follow-checker/", lang: "ko", locale: "ko_KR", title: "맞팔체커 서비스 소개 | Lava Labs", description: "Lava Labs가 개발 중인 맞팔체커 웹 도구의 작동 방식과 데이터 처리 원칙을 소개합니다." },
+  { output: "en/projects/follow-checker/index.html", path: "/en/projects/follow-checker/", lang: "en", locale: "en_US", title: "Follow Checker Case Study | Lava Labs", description: "A case study of the Follow Checker web tool developed by Lava Labs." },
+  { output: "jp/projects/follow-checker/index.html", path: "/jp/projects/follow-checker/", lang: "ja", locale: "ja_JP", title: "フォローチェッカー紹介 | Lava Labs", description: "Lava Labsが開発するフォローチェッカーWebツールの紹介ページです。" }
+];
+
+for (const meta of projectRoutes) {
+  let html = baseHtml;
+  const canonical = `${origin}${meta.path}`;
+  html = replace(html, /<html\s+lang="[^"]*">/i, `<html lang="${meta.lang}">`);
+  html = replace(html, /<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(meta.title)}</title>`);
+  html = replace(html, /<meta\s+name="description"[\s\S]*?\/>/i, `<meta name="description" content="${escapeHtml(meta.description)}" />`);
+  html = replace(html, /<link\s+rel="canonical"[^>]*\/>/i, `<link rel="canonical" href="${canonical}" />`);
+  const output = new URL(meta.output, distDir);
+  await mkdir(dirname(output.pathname), { recursive: true });
+  await writeFile(output, html, "utf8");
+}
+
 const notFound = renderRoute({ ...routeMeta.home, title: "Page not found | Lava Labs", description: "The requested page could not be found." })
   .replace(/<meta\s+name="robots"[^>]*\/>/i, `<meta name="robots" content="noindex, follow" />`);
 await writeFile(new URL("404.html", distDir), notFound, "utf8");
 await writeFile(new URL("CNAME", distDir), "lavalabs.co.kr\n", "utf8");
 await writeFile(new URL("deploy-version.json", distDir), JSON.stringify({ sha: process.env.GITHUB_SHA ?? "local", builtAt: new Date().toISOString() }, null, 2), "utf8");
-
-console.log("Prepared routes:", Object.values(routeMeta).map((meta) => meta.path).join(", "));
+console.log("Prepared routes:", Object.values(routeMeta).map((meta) => meta.path).concat(projectRoutes.map((meta) => meta.path)).join(", "));
