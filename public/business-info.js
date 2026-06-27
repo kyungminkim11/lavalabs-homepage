@@ -121,25 +121,19 @@
     updateContactAddress(data.contactAddress);
   };
 
-  let scheduled = false;
   const scheduleApply = () => {
-    if (scheduled) return;
-    scheduled = true;
-    window.requestAnimationFrame(() => {
-      scheduled = false;
-      applyBusinessInformation();
-    });
+    window.requestAnimationFrame(applyBusinessInformation);
   };
 
   document.addEventListener("DOMContentLoaded", scheduleApply, { once: true });
   window.addEventListener("popstate", scheduleApply);
 
-  const root = document.getElementById("root");
-  if (root) {
-    new MutationObserver(scheduleApply).observe(root, {
-      childList: true,
-      subtree: true,
-      characterData: true
-    });
-  }
+  // Language changes happen inside React with history.pushState. Listen only to
+  // those three buttons instead of observing every DOM mutation on the page.
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target instanceof Element && target.closest(".language-switcher button")) {
+      window.setTimeout(scheduleApply, 0);
+    }
+  });
 })();
