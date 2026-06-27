@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5173",
     "build": "tsc -b && vite build",
+    "prepare:pages": "node scripts/prepare-pages.mjs",
     "preview": "vite preview --host 127.0.0.1",
+    "test:site": "node scripts/smoke-test.mjs",
     "optimize:assets": "node scripts/optimize-assets.mjs"
   },
   "dependencies": {
