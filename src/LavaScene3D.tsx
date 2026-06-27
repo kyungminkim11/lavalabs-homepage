@@ -36,15 +36,15 @@ function createWaveSurface({
   speed: number;
   phase: number;
 }): WaveSurface {
-  const geometry = new THREE.PlaneGeometry(width, height, 92, 34);
-  const material = new THREE.MeshPhysicalMaterial({
+  // The previous 92 x 34 mesh recalculated thousands of vertices every frame.
+  // A lighter grid keeps the same visual character with much less CPU/GPU work.
+  const geometry = new THREE.PlaneGeometry(width, height, 44, 16);
+  const material = new THREE.MeshStandardMaterial({
     color,
     emissive,
-    emissiveIntensity: 0.14,
-    metalness: 0.08,
-    roughness: 0.38,
-    transmission: 0.08,
-    thickness: 0.4,
+    emissiveIntensity: 0.12,
+    metalness: 0.05,
+    roughness: 0.44,
     transparent: true,
     opacity,
     side: THREE.DoubleSide
@@ -82,20 +82,19 @@ function updateWaveSurface(surface: WaveSurface, time: number) {
   }
 
   position.needsUpdate = true;
-  surface.geometry.computeVertexNormals();
 }
 
 function createFlowLine(color: string, points: THREE.Vector3[]) {
   const curve = new THREE.CatmullRomCurve3(points);
-  const geometry = new THREE.TubeGeometry(curve, 72, 0.038, 8, false);
+  const geometry = new THREE.TubeGeometry(curve, 42, 0.038, 6, false);
   const material = new THREE.MeshStandardMaterial({
     color,
     emissive: color,
-    emissiveIntensity: 0.18,
-    roughness: 0.32,
-    metalness: 0.12,
+    emissiveIntensity: 0.16,
+    roughness: 0.38,
+    metalness: 0.08,
     transparent: true,
-    opacity: 0.74
+    opacity: 0.7
   });
 
   return new THREE.Mesh(geometry, material);
@@ -113,14 +112,24 @@ export function LavaScene3D() {
     }
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    const narrowScreen = window.matchMedia("(max-width: 760px)").matches;
+
+    // Mobile devices already have the illustrated CSS background. Avoid opening a
+    // WebGL context there, which makes touch scrolling noticeably heavier.
+    if (coarsePointer || narrowScreen) {
+      canvas.style.display = "none";
+      return undefined;
+    }
+
     let renderer: THREE.WebGLRenderer;
 
     try {
       renderer = new THREE.WebGLRenderer({
         alpha: true,
-        antialias: true,
+        antialias: window.devicePixelRatio <= 1.5,
         canvas,
-        preserveDrawingBuffer: true
+        powerPreference: "high-performance"
       });
     } catch {
       canvas.style.display = "none";
@@ -128,7 +137,7 @@ export function LavaScene3D() {
     }
 
     renderer.setClearColor(0x000000, 0);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.35));
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
@@ -137,15 +146,15 @@ export function LavaScene3D() {
     const group = new THREE.Group();
     scene.add(group);
 
-    const key = new THREE.DirectionalLight(0xffffff, 1.35);
+    const key = new THREE.DirectionalLight(0xffffff, 1.2);
     key.position.set(-2, 4, 5);
     scene.add(key);
 
-    const fill = new THREE.DirectionalLight(0x8fd3d7, 0.72);
+    const fill = new THREE.DirectionalLight(0x8fd3d7, 0.62);
     fill.position.set(4, 1.8, 3);
     scene.add(fill);
 
-    const ambient = new THREE.AmbientLight(0xfff3e4, 1.15);
+    const ambient = new THREE.AmbientLight(0xfff3e4, 1.08);
     scene.add(ambient);
 
     const surfaces = [
@@ -154,7 +163,7 @@ export function LavaScene3D() {
         height: 2.3,
         color: "#df705d",
         emissive: "#c85543",
-        opacity: 0.58,
+        opacity: 0.56,
         position: new THREE.Vector3(1.7, -0.45, -0.35),
         rotation: new THREE.Euler(-0.24, -0.26, -0.18),
         amplitude: 0.24,
@@ -167,7 +176,7 @@ export function LavaScene3D() {
         height: 1.55,
         color: "#2f8f98",
         emissive: "#2f8f98",
-        opacity: 0.42,
+        opacity: 0.4,
         position: new THREE.Vector3(2.95, 0.95, -0.85),
         rotation: new THREE.Euler(-0.08, 0.12, 0.15),
         amplitude: 0.18,
@@ -180,7 +189,7 @@ export function LavaScene3D() {
         height: 1.15,
         color: "#f0c7a7",
         emissive: "#df705d",
-        opacity: 0.34,
+        opacity: 0.32,
         position: new THREE.Vector3(3.45, -1.55, -0.1),
         rotation: new THREE.Euler(-0.36, -0.02, 0.08),
         amplitude: 0.13,
@@ -211,17 +220,25 @@ export function LavaScene3D() {
 
     const pointer = { x: 0, y: 0 };
     const pointerTarget = { x: 0, y: 0 };
+    let lastWidth = 0;
+    let lastHeight = 0;
 
     const resize = () => {
       const { width, height } = parent.getBoundingClientRect();
-      renderer.setSize(width, height, false);
-      camera.aspect = width / Math.max(height, 1);
-      camera.updateProjectionMatrix();
+      const roundedWidth = Math.max(1, Math.round(width));
+      const roundedHeight = Math.max(1, Math.round(height));
 
-      const isMobile = width < 700;
-      camera.position.z = isMobile ? 10.6 : 8.4;
-      group.position.set(isMobile ? 0.72 : 1.35, isMobile ? -0.15 : -0.04, -0.25);
-      group.scale.setScalar(isMobile ? 0.86 : 1.08);
+      if (roundedWidth === lastWidth && roundedHeight === lastHeight) return;
+      lastWidth = roundedWidth;
+      lastHeight = roundedHeight;
+
+      renderer.setSize(roundedWidth, roundedHeight, false);
+      camera.aspect = roundedWidth / roundedHeight;
+      camera.updateProjectionMatrix();
+      camera.position.z = 8.4;
+      group.position.set(1.35, -0.04, -0.25);
+      group.scale.setScalar(1.08);
+      renderer.render(scene, camera);
     };
 
     const onPointerMove = (event: PointerEvent) => {
@@ -231,43 +248,102 @@ export function LavaScene3D() {
 
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(parent);
-    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    parent.addEventListener("pointermove", onPointerMove, { passive: true });
     resize();
 
     let frameId = 0;
+    let scrollTimer = 0;
+    let lastFrameTime = 0;
+    let visible = true;
+    let scrolling = false;
     let disposed = false;
+    const frameInterval = 1000 / 30;
+
+    const scheduleFrame = () => {
+      if (disposed || reducedMotion || !visible || document.hidden || scrolling || frameId) return;
+      frameId = window.requestAnimationFrame(render);
+    };
 
     const render = (frameTime = 0) => {
-      const time = frameTime * 0.001;
-      pointer.x += (pointerTarget.x - pointer.x) * 0.045;
-      pointer.y += (pointerTarget.y - pointer.y) * 0.045;
+      frameId = 0;
+      if (disposed || !visible || document.hidden || scrolling) return;
 
-      if (!reducedMotion) {
-        surfaces.forEach((surface) => updateWaveSurface(surface, time));
-        group.rotation.y = pointer.x * 0.13 + Math.sin(time * 0.23) * 0.05;
-        group.rotation.x = -pointer.y * 0.045 + Math.cos(time * 0.2) * 0.03;
-        group.rotation.z = Math.sin(time * 0.18) * 0.025;
-        flowLines.forEach((line, index) => {
-          line.rotation.z = Math.sin(time * 0.38 + index) * 0.035;
-        });
-      } else {
-        surfaces.forEach((surface) => updateWaveSurface(surface, 0.4));
+      if (frameTime - lastFrameTime < frameInterval) {
+        scheduleFrame();
+        return;
       }
 
-      renderer.render(scene, camera);
+      lastFrameTime = frameTime;
+      const time = frameTime * 0.001;
+      pointer.x += (pointerTarget.x - pointer.x) * 0.07;
+      pointer.y += (pointerTarget.y - pointer.y) * 0.07;
 
-      if (!reducedMotion && !disposed) {
-        frameId = window.requestAnimationFrame(render);
+      surfaces.forEach((surface) => updateWaveSurface(surface, time));
+      group.rotation.y = pointer.x * 0.1 + Math.sin(time * 0.23) * 0.045;
+      group.rotation.x = -pointer.y * 0.038 + Math.cos(time * 0.2) * 0.026;
+      group.rotation.z = Math.sin(time * 0.18) * 0.02;
+      flowLines.forEach((line, index) => {
+        line.rotation.z = Math.sin(time * 0.38 + index) * 0.03;
+      });
+
+      renderer.render(scene, camera);
+      scheduleFrame();
+    };
+
+    const onScroll = () => {
+      scrolling = true;
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+        frameId = 0;
+      }
+      window.clearTimeout(scrollTimer);
+      scrollTimer = window.setTimeout(() => {
+        scrolling = false;
+        scheduleFrame();
+      }, 140);
+    };
+
+    const onVisibilityChange = () => {
+      if (document.hidden && frameId) {
+        window.cancelAnimationFrame(frameId);
+        frameId = 0;
+      } else {
+        scheduleFrame();
       }
     };
 
-    render();
+    const intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (!visible && frameId) {
+          window.cancelAnimationFrame(frameId);
+          frameId = 0;
+        } else {
+          scheduleFrame();
+        }
+      },
+      { rootMargin: "80px 0px", threshold: 0.01 }
+    );
+
+    intersectionObserver.observe(parent);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    // Always paint one complete frame. Motion then runs only when the hero is
+    // visible, the page is not scrolling and reduced-motion is not requested.
+    surfaces.forEach((surface) => updateWaveSurface(surface, reducedMotion ? 0.4 : 0));
+    renderer.render(scene, camera);
+    scheduleFrame();
 
     return () => {
       disposed = true;
       window.cancelAnimationFrame(frameId);
-      window.removeEventListener("pointermove", onPointerMove);
+      window.clearTimeout(scrollTimer);
+      window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      parent.removeEventListener("pointermove", onPointerMove);
       resizeObserver.disconnect();
+      intersectionObserver.disconnect();
       surfaces.forEach((surface) => {
         surface.geometry.dispose();
         (surface.mesh.material as THREE.Material).dispose();
@@ -277,6 +353,7 @@ export function LavaScene3D() {
         (line.material as THREE.Material).dispose();
       });
       renderer.dispose();
+      renderer.forceContextLoss();
     };
   }, []);
 
