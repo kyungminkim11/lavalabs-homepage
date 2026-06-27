@@ -1,3 +1,5 @@
+import { projectData } from "./projectData";
+
 export default function UnfollowProjectCard() {
-  return null;
+  return <div hidden>{projectData.ko.title}</div>;
 }
