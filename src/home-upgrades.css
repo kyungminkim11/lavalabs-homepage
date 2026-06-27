@@ -1,0 +1,464 @@
+/* Homepage conversion and content upgrades. Loaded after the existing visual system. */
+.home-upgraded .hero-inner {
+  max-width: 940px;
+}
+
+.home-upgraded .hero-copy {
+  max-width: 700px;
+}
+
+.home-upgraded .service-card {
+  grid-template-rows: auto auto 1fr auto auto;
+  min-height: 372px;
+}
+
+.service-link {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  background: transparent;
+  color: var(--teal);
+  padding: 5px 0;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.service-link svg {
+  width: 17px;
+  height: 17px;
+  transition: transform 160ms ease;
+}
+
+.service-link:hover svg,
+.service-link:focus-visible svg {
+  transform: translateX(3px);
+}
+
+.service-link:focus-visible {
+  border-radius: 6px;
+  outline: 3px solid rgba(47, 143, 152, 0.16);
+}
+
+.portfolio-section {
+  background:
+    radial-gradient(circle at 82% 4%, rgba(223, 112, 93, 0.14), transparent 26rem),
+    radial-gradient(circle at 8% 88%, rgba(47, 143, 152, 0.14), transparent 28rem),
+    var(--paper);
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.case-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(23, 35, 45, 0.1);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 14px 46px rgba(23, 35, 45, 0.08);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.case-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(47, 143, 152, 0.24);
+  box-shadow: 0 24px 70px rgba(23, 35, 45, 0.14);
+}
+
+.case-preview {
+  position: relative;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: 62px 26px 26px;
+  color: #fff;
+}
+
+.case-preview::before,
+.case-preview::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(2px);
+  opacity: 0.72;
+}
+
+.case-preview::before {
+  width: 210px;
+  height: 210px;
+  right: -42px;
+  top: -55px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.case-preview::after {
+  width: 160px;
+  height: 160px;
+  left: -58px;
+  bottom: -72px;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.case-card-1 .case-preview {
+  background: linear-gradient(140deg, #17232d, #2f8f98 58%, #89c6ca);
+}
+
+.case-card-2 .case-preview {
+  background: linear-gradient(140deg, #332f51, #78669b 54%, #df705d);
+}
+
+.case-card-3 .case-preview {
+  background: linear-gradient(140deg, #c65645, #df705d 48%, #f0c7a7);
+}
+
+.case-preview strong,
+.case-preview small,
+.case-browser {
+  position: relative;
+  z-index: 1;
+}
+
+.case-preview strong {
+  margin-top: auto;
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.case-preview small {
+  margin-top: 9px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.case-browser {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  right: 22px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 0 12px;
+}
+
+.case-browser span {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.case-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 26px;
+}
+
+.case-status {
+  min-height: 27px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: rgba(111, 146, 118, 0.14);
+  color: #42684a;
+  padding: 0 10px;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.case-content h3 {
+  margin: 2px 0 0;
+  color: var(--ink);
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+
+.case-content p {
+  margin: 0;
+  color: var(--slate);
+  word-break: keep-all;
+}
+
+.case-content .case-type {
+  color: var(--teal);
+  font-size: 0.88rem;
+  font-weight: 850;
+}
+
+.case-content > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 6px;
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.case-content > a svg {
+  width: 17px;
+  height: 17px;
+}
+
+.faq-section {
+  background: #fffdfa;
+}
+
+.faq-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.3fr);
+  gap: 72px;
+  align-items: start;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-list details {
+  border: 1px solid rgba(23, 35, 45, 0.1);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 8px 28px rgba(23, 35, 45, 0.045);
+  overflow: hidden;
+}
+
+.faq-list summary {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  list-style: none;
+  color: var(--ink);
+  padding: 18px 20px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  color: var(--teal);
+  transition: transform 160ms ease;
+}
+
+.faq-list details[open] summary svg {
+  transform: rotate(90deg);
+}
+
+.faq-list details p {
+  margin: 0;
+  border-top: 1px solid rgba(23, 35, 45, 0.08);
+  color: var(--slate);
+  padding: 18px 20px 22px;
+  word-break: keep-all;
+}
+
+.enhanced-contact-form {
+  gap: 18px;
+}
+
+.form-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.enhanced-contact-form select {
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid rgba(23, 35, 45, 0.16);
+  border-radius: var(--radius-sm);
+  background: #fffdfa;
+  color: var(--ink);
+  padding: 12px 40px 12px 13px;
+  font: inherit;
+  appearance: auto;
+}
+
+.enhanced-contact-form select:focus {
+  border-color: var(--teal);
+  outline: 3px solid rgba(47, 143, 152, 0.16);
+  background: var(--white);
+}
+
+.enhanced-contact-form input::placeholder,
+.enhanced-contact-form textarea::placeholder {
+  color: #9aa2a8;
+}
+
+.enhanced-contact-form .consent-row a {
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mobile-contact-bar {
+  display: none;
+}
+
+.chatbot-gate .chatbot-launcher {
+  min-width: 128px;
+  justify-content: center;
+}
+
+@media (max-width: 1040px) {
+  .case-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-card:last-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+  }
+
+  .case-card:last-child .case-preview {
+    min-height: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    padding-bottom: 70px;
+  }
+
+  .home-upgraded .hero {
+    min-height: auto;
+    padding-top: 104px;
+  }
+
+  .home-upgraded .hero h1 {
+    font-size: clamp(3.4rem, 19vw, 5rem);
+  }
+
+  .home-upgraded .hero-statement {
+    font-size: clamp(1.85rem, 8.8vw, 2.55rem);
+  }
+
+  .home-upgraded .service-card {
+    min-height: auto;
+  }
+
+  .case-grid,
+  .case-card:last-child,
+  .faq-layout,
+  .form-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .case-card:last-child {
+    display: block;
+  }
+
+  .case-preview {
+    min-height: 220px;
+  }
+
+  .faq-layout {
+    gap: 32px;
+  }
+
+  .softmoon-gallery picture,
+  .softmoon-gallery picture:first-child {
+    min-height: 320px;
+    transform: none;
+  }
+
+  .enhanced-contact-form {
+    padding: 22px;
+  }
+
+  .mobile-contact-bar {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 10px;
+    z-index: 76;
+    min-height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--ink), #2b4052);
+    color: #fff;
+    padding: 0 18px;
+    font-weight: 900;
+    box-shadow: 0 16px 44px rgba(23, 35, 45, 0.26);
+  }
+
+  .mobile-contact-bar svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .chatbot {
+    right: 14px;
+    bottom: 76px;
+  }
+
+  .chatbot-launcher {
+    min-width: 52px;
+    min-height: 52px;
+    justify-content: center;
+    padding: 0 15px;
+  }
+
+  .chatbot-launcher span {
+    display: none;
+  }
+
+  .chatbot-panel {
+    position: fixed;
+    right: 12px;
+    left: 12px;
+    bottom: 76px;
+    width: auto;
+    max-width: none;
+    max-height: calc(100dvh - 104px);
+  }
+}
+
+@media (max-width: 520px) {
+  .case-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-content {
+    padding: 22px;
+  }
+
+  .faq-list summary,
+  .faq-list details p {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+}
