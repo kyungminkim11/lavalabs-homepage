@@ -1,0 +1,103 @@
+.business-disclosure {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(circle at 16% 0%, rgba(47, 143, 152, 0.18), transparent 28rem),
+    #111b23;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.business-disclosure__inner {
+  width: min(100% - 40px, 1120px);
+  margin: 0 auto;
+  padding: 28px 0 40px;
+}
+
+.business-disclosure__eyebrow {
+  margin: 0 0 6px;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.business-disclosure h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.business-disclosure__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px 28px;
+  margin: 20px 0 0;
+}
+
+.business-disclosure__item {
+  min-width: 0;
+}
+
+.business-disclosure__item--wide {
+  grid-column: span 2;
+}
+
+.business-disclosure dt {
+  margin: 0 0 4px;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.business-disclosure dd {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.84rem;
+  font-weight: 650;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.business-disclosure a {
+  color: inherit;
+  text-decoration-color: rgba(255, 255, 255, 0.32);
+  text-underline-offset: 3px;
+}
+
+.business-disclosure a:hover,
+.business-disclosure a:focus-visible {
+  color: #ffffff;
+  text-decoration-color: rgba(255, 255, 255, 0.8);
+}
+
+.business-disclosure__note {
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 860px) {
+  .business-disclosure__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .business-disclosure__inner {
+    width: min(100% - 28px, 1120px);
+    padding: 24px 0 34px;
+  }
+
+  .business-disclosure__grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .business-disclosure__item--wide {
+    grid-column: auto;
+  }
+}
