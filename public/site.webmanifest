@@ -1,7 +1,11 @@
 {
-  "name": "Lava Labs",
+  "id": "/",
+  "name": "Lava Labs Creative Studio",
   "short_name": "Lava Labs",
+  "description": "작은 브랜드와 크리에이터를 위한 홈페이지, 사진과 콘텐츠 제작 스튜디오",
+  "lang": "ko",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#fbfaf7",
   "theme_color": "#f7f4ef",
@@ -9,7 +13,20 @@
     {
       "src": "/assets/images/lava-logo-transparent.png",
       "sizes": "1024x1024",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "프로젝트 문의",
+      "short_name": "문의",
+      "url": "/#contact"
+    },
+    {
+      "name": "SoftMoon",
+      "short_name": "SoftMoon",
+      "url": "/soft_moon/"
     }
   ]
 }
