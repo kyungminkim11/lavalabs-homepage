@@ -8,10 +8,10 @@ import "./performance.css";
 import "./home-upgrades.css";
 
 const path = window.location.pathname.toLowerCase();
-const showLegalPage = path.startsWith("/terms") || path.startsWith("/privacy");
+const showStaticPage = path.includes("/terms") || path.includes("/privacy") || path.includes("/soft_moon");
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    {showLegalPage ? <App /> : <HomeApp />}
+    {showStaticPage ? <App /> : <HomeApp />}
   </React.StrictMode>
 );
