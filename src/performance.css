@@ -1,0 +1,51 @@
+/* Runtime performance overrides. Keep scrolling on the compositor whenever possible. */
+body {
+  background: var(--paper);
+}
+
+.site-header {
+  background: rgba(251, 250, 247, 0.98);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: 0 4px 18px rgba(23, 35, 45, 0.045);
+}
+
+.lava-scene {
+  contain: strict;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.chatbot-panel {
+  background: rgba(255, 253, 250, 0.99);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+@media (max-width: 760px), (pointer: coarse) {
+  .lava-scene {
+    display: none;
+  }
+
+  .site-header {
+    box-shadow: 0 2px 12px rgba(23, 35, 45, 0.04);
+  }
+
+  .service-card,
+  .contact-form,
+  .softmoon-gallery picture,
+  .chatbot-launcher {
+    box-shadow: 0 10px 32px rgba(23, 35, 45, 0.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
