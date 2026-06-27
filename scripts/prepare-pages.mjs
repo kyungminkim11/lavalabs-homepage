@@ -15,6 +15,8 @@ function renderRoute(meta) {
   const canonical = `${origin}${meta.path}`;
   const title = escapeHtml(meta.title);
   const description = escapeHtml(meta.description);
+  const socialImage = meta.page === "softmoon" ? `${origin}/assets/images/lunar-sample-1.jpg` : `${origin}/assets/images/og-image.jpg`;
+  const socialImageAlt = meta.page === "softmoon" ? "SoftMoon goods and packaging sample" : "Lava Labs creative studio";
 
   html = replace(html, /<html\s+lang="[^"]*">/i, `<html lang="${meta.lang}">`);
   html = replace(html, /<title>[\s\S]*?<\/title>/i, `<title>${title}</title>`);
@@ -29,11 +31,15 @@ function renderRoute(meta) {
   html = replace(html, /<meta\s+property="og:description"[^>]*\/>/i, `<meta property="og:description" content="${description}" />`);
   html = replace(html, /<meta\s+property="og:url"[^>]*\/>/i, `<meta property="og:url" content="${canonical}" />`);
   html = replace(html, /<meta\s+property="og:locale"[^>]*\/>/i, `<meta property="og:locale" content="${meta.locale}" />`);
+  html = replace(html, /<meta\s+property="og:image"[^>]*\/>/i, `<meta property="og:image" content="${socialImage}" />`);
+  html = replace(html, /<meta\s+property="og:image:alt"[^>]*\/>/i, `<meta property="og:image:alt" content="${socialImageAlt}" />`);
   html = replace(html, /<meta\s+name="twitter:title"[^>]*\/>/i, `<meta name="twitter:title" content="${title}" />`);
   html = replace(html, /<meta\s+name="twitter:description"[^>]*\/>/i, `<meta name="twitter:description" content="${description}" />`);
+  html = replace(html, /<meta\s+name="twitter:image"[^>]*\/>/i, `<meta name="twitter:image" content="${socialImage}" />`);
+  html = replace(html, /<meta\s+name="twitter:image:alt"[^>]*\/>/i, `<meta name="twitter:image:alt" content="${socialImageAlt}" />`);
 
   const jsonLd = JSON.stringify(structuredData(meta)).replaceAll("<", "\\u003c");
-  html = replace(html, /<script\s+type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/i, `<script id="route-structured-data" type="application/ld+json">${jsonLd}</script>`);
+  html = replace(html, /<script[^>]*type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/i, `<script id="route-structured-data" type="application/ld+json">${jsonLd}</script>`);
 
   const body = staticBody(meta);
   if (body) {
