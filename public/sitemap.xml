@@ -1,33 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lavalabs.co.kr/</loc>
     <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lavalabs.co.kr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lavalabs.co.kr/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lavalabs.co.kr/jp/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lavalabs.co.kr/" />
   </url>
   <url>
     <loc>https://lavalabs.co.kr/en/</loc>
     <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lavalabs.co.kr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lavalabs.co.kr/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lavalabs.co.kr/jp/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lavalabs.co.kr/" />
   </url>
   <url>
     <loc>https://lavalabs.co.kr/jp/</loc>
     <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lavalabs.co.kr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lavalabs.co.kr/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lavalabs.co.kr/jp/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lavalabs.co.kr/" />
   </url>
   <url>
     <loc>https://lavalabs.co.kr/soft_moon/</loc>
     <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lavalabs.co.kr/soft_moon/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lavalabs.co.kr/en/soft_moon/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lavalabs.co.kr/jp/soft_moon/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lavalabs.co.kr/soft_moon/" />
   </url>
   <url>
-    <loc>https://lavalabs.co.kr/terms/</loc>
+    <loc>https://lavalabs.co.kr/en/soft_moon/</loc>
     <lastmod>2026-06-28</lastmod>
-    <priority>0.3</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lavalabs.co.kr/soft_moon/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lavalabs.co.kr/en/soft_moon/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lavalabs.co.kr/jp/soft_moon/" />
   </url>
   <url>
-    <loc>https://lavalabs.co.kr/privacy/</loc>
+    <loc>https://lavalabs.co.kr/jp/soft_moon/</loc>
     <lastmod>2026-06-28</lastmod>
-    <priority>0.3</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lavalabs.co.kr/soft_moon/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lavalabs.co.kr/en/soft_moon/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lavalabs.co.kr/jp/soft_moon/" />
   </url>
+  <url><loc>https://lavalabs.co.kr/terms/</loc><lastmod>2026-06-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://lavalabs.co.kr/privacy/</loc><lastmod>2026-06-28</lastmod><priority>0.3</priority></url>
 </urlset>
