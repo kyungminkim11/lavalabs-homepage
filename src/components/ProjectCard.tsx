@@ -7,6 +7,7 @@ const previewSource = {
   snap: "/assets/project-previews/snap.svg",
   follow: "/assets/project-previews/follow.svg",
   emoseed: "/assets/project-previews/emoseed.svg",
+  heart: "/assets/project-previews/heart.svg",
   softmoon: "/assets/images/lunar-sample-1-720.webp"
 } as const;
 
