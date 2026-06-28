@@ -10,6 +10,9 @@ const routes = [
   ["/projects/follow-checker/", "맞팔체커", "https://lavalabs.co.kr/projects/follow-checker/"],
   ["/en/projects/follow-checker/", "Follow Checker", "https://lavalabs.co.kr/en/projects/follow-checker/"],
   ["/jp/projects/follow-checker/", "フォローチェッカー", "https://lavalabs.co.kr/jp/projects/follow-checker/"],
+  ["/projects/emoseed/", "EmoSeed", "https://lavalabs.co.kr/projects/emoseed/"],
+  ["/en/projects/emoseed/", "EmoSeed", "https://lavalabs.co.kr/en/projects/emoseed/"],
+  ["/jp/projects/emoseed/", "EmoSeed", "https://lavalabs.co.kr/jp/projects/emoseed/"],
   ["/terms/", "서비스 이용약관", "https://lavalabs.co.kr/terms/"],
   ["/privacy/", "개인정보처리방침", "https://lavalabs.co.kr/privacy/"],
   ["/soft_moon/", "SoftMoon", "https://lavalabs.co.kr/soft_moon/"],
@@ -29,6 +32,11 @@ async function assertNoOverflow(page, label) {
 try {
   const notFound = await readFile(new URL("../dist/404.html", import.meta.url), "utf8");
   assert(notFound.includes('content="noindex, follow"'), "Generated 404 page must be noindex");
+  for (const file of ["snap.svg", "follow.svg", "emoseed.svg"]) {
+    const preview = await readFile(new URL(`../dist/assets/project-previews/${file}`, import.meta.url), "utf8");
+    assert(preview.includes("<svg"), `${file} project preview is missing`);
+  }
+
   for (let attempt = 0; attempt < 40; attempt += 1) {
     try { if ((await fetch(base)).ok) break; } catch {}
     await new Promise((resolve) => setTimeout(resolve, 250));
@@ -52,6 +60,7 @@ try {
       assert(await page.locator('input[name="website"]').count() === 1, `${path} has no spam trap`);
       assert(await page.locator(".project-follow").count() === 1, `${path} has no Follow Checker card`);
       assert(await page.locator(".project-emoseed").count() === 1, `${path} has no EmoSeed card`);
+      assert(await page.locator(".project-image-preview img").count() >= 4, `${path} has incomplete project previews`);
       assert(await page.locator("iframe[src]").count() === 0, `${path} still loads a live project iframe`);
       const fixedCta = await page.locator(".mobile-contact-bar").boundingBox();
       assert((fixedCta?.height ?? 0) >= 52, `${path} mobile contact CTA is too small`);
@@ -62,6 +71,10 @@ try {
       assert(await page.locator(".follow-case-boundaries").count() === 1, `${path} has no service boundary section`);
       assert(await page.locator(".follow-case-grid-cards article").count() === 3, `${path} has incomplete process steps`);
     }
+    if (path.includes("/projects/emoseed/")) {
+      assert(await page.locator(".emoseed-case-features article").count() === 4, `${path} has incomplete EmoSeed feature cards`);
+      assert(await page.locator(".emoseed-decision-list li").count() === 5, `${path} has incomplete mobile UX decisions`);
+    }
     await page.close();
   }
   await context.close();
@@ -69,17 +82,22 @@ try {
   const compact = await browser.newContext({ viewport: { width: 320, height: 700 }, isMobile: true, hasTouch: true });
   const home = await compact.newPage();
   await home.goto(base, { waitUntil: "domcontentloaded" });
-  await home.waitForSelector(".nav-toggle");
+  const toggle = home.locator(".nav-toggle");
+  await toggle.waitFor();
+  assert((await toggle.getAttribute("aria-expanded")) === "false", "Mobile navigation must start collapsed");
   await assertNoOverflow(home, "320px homepage");
-  await home.locator(".nav-toggle").click();
+  await toggle.click();
+  assert((await toggle.getAttribute("aria-expanded")) === "true", "Mobile navigation aria-expanded did not update");
   assert(await home.locator('.site-header[data-open="true"]').count() === 1, "Mobile navigation did not open");
   assert(await home.locator(".primary-nav a").first().isVisible(), "Mobile navigation links are hidden");
   const menuLink = await home.locator(".primary-nav a").first().boundingBox();
   assert((menuLink?.height ?? 0) >= 48, "Mobile navigation target is too small");
-  await assertNoOverflow(home, "320px open navigation");
+  await home.keyboard.press("Escape");
+  assert((await toggle.getAttribute("aria-expanded")) === "false", "Escape did not close mobile navigation");
+  await assertNoOverflow(home, "320px closed navigation");
   await compact.close();
 
-  console.log(`Validated ${routes.length} public routes and compact mobile navigation.`);
+  console.log(`Validated ${routes.length} public routes, project previews, and compact mobile navigation.`);
 } finally {
   await browser?.close();
   server.kill();
