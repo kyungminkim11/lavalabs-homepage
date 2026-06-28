@@ -15,23 +15,13 @@ const escapeHtml = (value) => value.replaceAll("&", "&amp;").replaceAll('"', "&q
 
 for (const route of routes) {
   const canonical = `${origin}${route.path}`;
-  const image = `${origin}/assets/project-previews/emoseed.svg`;
-  const alternates = [
-    ["ko", "/projects/emoseed/"],
-    ["en", "/en/projects/emoseed/"],
-    ["ja", "/jp/projects/emoseed/"],
-    ["x-default", "/projects/emoseed/"]
-  ].map(([lang, path]) => `<link rel="alternate" hreflang="${lang}" href="${origin}${path}" />`).join("\n");
+  const image = `${origin}/assets/images/og-image.jpg`;
+  const alternates = [["ko", "/projects/emoseed/"], ["en", "/en/projects/emoseed/"], ["ja", "/jp/projects/emoseed/"], ["x-default", "/projects/emoseed/"]]
+    .map(([lang, path]) => `<link rel="alternate" hreflang="${lang}" href="${origin}${path}" />`).join("\n");
   const schema = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "EmoSeed",
-    url: "https://emoseed.lavalabs.co.kr/",
-    applicationCategory: "LifestyleApplication",
-    operatingSystem: "Any",
-    isAccessibleForFree: true,
-    creator: { "@type": "Organization", name: "Lava Labs", url: origin },
-    description: route.description
+    "@context": "https://schema.org", "@type": "SoftwareApplication", name: "EmoSeed", url: "https://emoseed.lavalabs.co.kr/",
+    applicationCategory: "LifestyleApplication", operatingSystem: "Any", isAccessibleForFree: true,
+    creator: { "@type": "Organization", name: "Lava Labs", url: origin }, description: route.description
   }).replaceAll("<", "\\u003c");
 
   let html = baseHtml;
