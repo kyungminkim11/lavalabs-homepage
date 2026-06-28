@@ -23,7 +23,8 @@ function BrandMark(){ return <picture className="brand-mark"><source srcSet="/as
 
 function ProjectPreview({ kind, title }: { kind: ProjectPreviewKind; title:string }){
   if(kind === "softmoon") return <div className="case-preview project-image-preview softmoon"><img src="/assets/images/lunar-sample-1-720.webp" alt="" loading="lazy" width="1200" height="800"/><div className="case-preview-label"><strong>{title}</strong></div></div>;
-  return <div className={`case-preview project-static-preview project-${kind}-preview`}><div className="preview-window"><span/><span/><span/><small>{kind === "snap" ? "snap.lavalabs.co.kr" : "unfollow.lavalabs.co.kr"}</small></div><div className="preview-dashboard" aria-hidden="true">{kind === "follow" ? <><div><UsersRound/><b>Mutual</b></div><div><ShieldCheck/><b>Local</b></div><div><FileArchive/><b>ZIP</b></div></> : <><i/><i/><i/></>}</div><div className="case-preview-label"><strong>{title}</strong><small>Static preview</small></div></div>;
+  const domain = kind === "snap" ? "snap.lavalabs.co.kr" : kind === "follow" ? "unfollow.lavalabs.co.kr" : "emoseed.lavalabs.co.kr";
+  return <div className={`case-preview project-static-preview project-${kind}-preview`}><div className="preview-window"><span/><span/><span/><small>{domain}</small></div><div className="preview-dashboard" aria-hidden="true">{kind === "follow" ? <><div><UsersRound/><b>Mutual</b></div><div><ShieldCheck/><b>Local</b></div><div><FileArchive/><b>ZIP</b></div></> : kind === "emoseed" ? <><div><Sparkles/><b>Plant Test</b></div><div><MonitorSmartphone/><b>Daily</b></div><div><CheckCircle2/><b>Share</b></div></> : <><i/><i/><i/></>}</div><div className="case-preview-label"><strong>{title}</strong><small>Static preview</small></div></div>;
 }
 
 function ProjectCardView({project,locale}:{project:ProjectCard;locale:Locale}){
