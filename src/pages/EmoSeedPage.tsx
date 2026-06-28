@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { CheckCircle2, ExternalLink, Heart, ImageDown, Leaf, ShieldCheck, Smartphone } from "lucide-react";
+import { CheckCircle2, ExternalLink, Heart, ImageDown, Leaf, ShieldCheck, Smartphone, Sparkles } from "lucide-react";
 import type { Locale } from "../content";
 import BrandMark from "../components/BrandMark";
 import { trackEvent } from "../analytics";
@@ -39,6 +39,7 @@ const localeFromPath = (): Locale => location.pathname.startsWith("/en") ? "en" 
 export default function EmoSeedPage() {
   const locale = localeFromPath();
   const text = copy[locale];
+  const featureIcons = [Leaf, Heart, Sparkles, Smartphone];
 
   useEffect(() => {
     document.title = locale === "ko" ? "EmoSeed 서비스 사례 | Lava Labs" : locale === "en" ? "EmoSeed Case Study | Lava Labs" : "EmoSeed サービス事例 | Lava Labs";
@@ -50,20 +51,12 @@ export default function EmoSeedPage() {
       <header className="site-header"><div className="nav-shell"><BrandMark href={text.home} /><div className="language-switcher"><a href="/projects/emoseed/" aria-current={locale === "ko" ? "page" : undefined}>KO</a><a href="/en/projects/emoseed/" aria-current={locale === "en" ? "page" : undefined}>EN</a><a href="/jp/projects/emoseed/" aria-current={locale === "jp" ? "page" : undefined}>JP</a></div></div></header>
       <main id="main-content">
         <section className="section emoseed-case-hero"><div className="section-inner emoseed-case-hero-grid"><div><p className="eyebrow">Lava Labs Interactive Service</p><h1>{text.title}</h1><p className="emoseed-case-lead">{text.lead}</p><div className="button-row"><a className="button primary" href="https://emoseed.lavalabs.co.kr/" target="_blank" rel="noreferrer" onClick={() => trackEvent("case_study_cta", { locale, project: "EmoSeed" })}>{text.start}<ExternalLink aria-hidden="true" /></a><a className="button secondary" href={text.home}>Lava Labs</a></div></div><div className="emoseed-case-visual"><img src="/assets/project-previews/emoseed.svg" alt="EmoSeed 실제 서비스 화면" width="1280" height="800" /></div></div></section>
-
         <section className="section"><div className="section-inner emoseed-concept-grid"><div className="section-heading"><p className="eyebrow">Concept</p><h2>{text.concept}</h2><p>{text.conceptBody}</p></div><div className="emoseed-concept-card"><Leaf aria-hidden="true" /><strong>Emotion × Plant × Daily Care</strong><p>{text.outcomeBody}</p></div></div></section>
-
-        <section className="section emoseed-feature-section"><div className="section-inner"><div className="section-heading compact"><p className="eyebrow">Experience Design</p><h2>{text.features}</h2><p>{text.featuresIntro}</p></div><div className="emoseed-case-features">{text.cards.map(([title, body], index) => { const icons = [Leaf, Heart, SparklesIcon, Smartphone]; const Icon = icons[index]; return <article key={title}><Icon aria-hidden="true" /><h3>{title}</h3><p>{body}</p></article>; })}</div></div></section>
-
+        <section className="section emoseed-feature-section"><div className="section-inner"><div className="section-heading compact"><p className="eyebrow">Experience Design</p><h2>{text.features}</h2><p>{text.featuresIntro}</p></div><div className="emoseed-case-features">{text.cards.map(([title, body], index) => { const Icon = featureIcons[index]; return <article key={title}><Icon aria-hidden="true" /><h3>{title}</h3><p>{body}</p></article>; })}</div></div></section>
         <section className="section emoseed-decision-section"><div className="section-inner emoseed-decision-grid"><div><div className="section-heading"><p className="eyebrow">Mobile UX</p><h2>{text.decisions}</h2></div><ul className="emoseed-decision-list">{text.decisionsItems.map((item) => <li key={item}><CheckCircle2 aria-hidden="true" /><span>{item}</span></li>)}</ul></div><div className="emoseed-device-card"><Smartphone aria-hidden="true" /><p>{text.privacy}</p><strong>{text.privacyBody}</strong><div className="emoseed-privacy-icons"><ShieldCheck aria-hidden="true" /><ImageDown aria-hidden="true" /></div></div></div></section>
-
         <section className="section emoseed-outcome-section"><div className="section-inner"><div className="section-heading compact"><p className="eyebrow">Lava Labs Process</p><h2>{text.outcome}</h2><p>{text.outcomeBody}</p></div><a className="button primary" href="https://emoseed.lavalabs.co.kr/" target="_blank" rel="noreferrer">{text.start}<ExternalLink aria-hidden="true" /></a></div></section>
       </main>
       <footer className="site-footer"><div className="section-inner footer-layout"><BrandMark href={text.home} /><small>(c) 2026 Lava Labs. All rights reserved.</small></div></footer>
     </div>
   );
-}
-
-function SparklesIcon(props: React.SVGProps<SVGSVGElement>) {
-  return <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.9 4.6L5.5 9.5l4.6 1.9L12 16l1.9-4.6 4.6-1.9-4.6-1.9L12 3Z"/><path d="M5 3v4"/><path d="M3 5h4"/><path d="M19 17v4"/><path d="M17 19h4"/></svg>;
 }
