@@ -46,6 +46,7 @@ try {
       assert(await page.locator('select[name="projectType"]').count() === 1, `${path} has no project selector`);
       assert(await page.locator('input[name="website"]').count() === 1, `${path} has no spam trap`);
       assert(await page.locator(".project-follow").count() === 1, `${path} has no Follow Checker card`);
+      assert(await page.locator(".project-emoseed").count() === 1, `${path} has no EmoSeed card`);
       assert(await page.locator("iframe[src]").count() === 0, `${path} still loads a live project iframe`);
     }
     if (path.includes("/projects/follow-checker/")) {
