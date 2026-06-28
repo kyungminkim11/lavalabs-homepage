@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffaf8"/><stop offset="1" stop-color="#fce9e7"/></linearGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd9d8"/><stop offset="1" stop-color="#fff0d9"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#593437" flood-opacity=".14"/></filter>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <circle cx="1110" cy="96" r="245" fill="#c9b6e9" opacity=".24"/>
+  <circle cx="95" cy="720" r="210" fill="#f4a77e" opacity=".2"/>
+  <rect x="62" y="48" width="1156" height="704" rx="36" fill="#fff" filter="url(#shadow)"/>
+  <rect x="62" y="48" width="1156" height="76" rx="36" fill="#fffaf8"/>
+  <path d="M62 124h1156" stroke="#604444" stroke-opacity=".12"/>
+  <g transform="translate(94 70)">
+    <rect width="42" height="42" rx="13" fill="url(#mark)"/>
+    <path d="M21 31S10 25 10 17.5A6 6 0 0 1 21 14a6 6 0 0 1 11 3.5C32 25 21 31 21 31Z" fill="#e77078"/>
+    <text x="56" y="19" fill="#312a2a" font-family="Arial,sans-serif" font-size="18" font-weight="800">마음의 모양</text>
+    <text x="56" y="36" fill="#958686" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1">SHAPE OF HEART</text>
+  </g>
+  <g fill="#6f6262" font-family="Arial,sans-serif" font-size="14" font-weight="700">
+    <text x="704" y="94">홈</text><text x="756" y="94">유형</text><text x="812" y="94">조합</text><text x="868" y="94">테스트</text><text x="936" y="94">용어사전</text><text x="1020" y="94">백과사전</text>
+  </g>
+  <rect x="90" y="154" width="205" height="560" rx="24" fill="#fff7f5"/>
+  <text x="116" y="194" fill="#c85661" font-family="Arial,sans-serif" font-size="12" font-weight="800" letter-spacing="2">MAIN</text>
+  <g fill="#6f6262" font-family="Arial,sans-serif" font-size="16" font-weight="700">
+    <text x="116" y="232">홈</text><text x="116" y="270">유형 테스트</text>
+  </g>
+  <text x="116" y="326" fill="#c85661" font-family="Arial,sans-serif" font-size="12" font-weight="800" letter-spacing="2">LEARN</text>
+  <g fill="#6f6262" font-family="Arial,sans-serif" font-size="16" font-weight="700">
+    <text x="116" y="364">유형별 특징</text><text x="116" y="402">16가지 조합</text><text x="116" y="440">용어 사전</text><text x="116" y="478">애착 백과사전</text>
+  </g>
+  <text x="116" y="534" fill="#c85661" font-family="Arial,sans-serif" font-size="12" font-weight="800" letter-spacing="2">GUIDE</text>
+  <g fill="#6f6262" font-family="Arial,sans-serif" font-size="16" font-weight="700">
+    <text x="116" y="572">안정화 연습</text><text x="116" y="610">측정과 연구</text><text x="116" y="648">주요 참고자료</text>
+  </g>
+  <g transform="translate(330 160)">
+    <rect width="850" height="264" rx="28" fill="#fff3f1"/>
+    <text x="42" y="48" fill="#c85661" font-family="Arial,sans-serif" font-size="13" font-weight="800" letter-spacing="2">ADULT ATTACHMENT INFORMATION HUB</text>
+    <text x="42" y="112" fill="#312a2a" font-family="Arial,sans-serif" font-size="48" font-weight="900">내 마음과 관계를 이해하는</text>
+    <text x="42" y="170" fill="#e77078" font-family="Arial,sans-serif" font-size="48" font-weight="900">성인 애착 정보 사이트</text>
+    <text x="42" y="211" fill="#6f6262" font-family="Arial,sans-serif" font-size="18">두 축, 네 원형, 관계 조합과 자기점검 테스트를 한곳에서 살펴봅니다.</text>
+    <rect x="42" y="230" width="174" height="46" rx="14" fill="#e77078"/><text x="70" y="260" fill="#fff" font-family="Arial,sans-serif" font-size="15" font-weight="800">내 유형 테스트하기</text>
+    <rect x="228" y="230" width="174" height="46" rx="14" fill="#fff" stroke="#604444" stroke-opacity=".14"/><text x="258" y="260" fill="#6f6262" font-family="Arial,sans-serif" font-size="15" font-weight="800">백과사전 둘러보기</text>
+  </g>
+  <g transform="translate(330 450)">
+    <text x="0" y="18" fill="#c85661" font-family="Arial,sans-serif" font-size="12" font-weight="800" letter-spacing="2">QUICK ACCESS</text>
+    <text x="0" y="58" fill="#312a2a" font-family="Arial,sans-serif" font-size="30" font-weight="900">무엇부터 볼까요?</text>
+    <g transform="translate(0 82)">
+      <rect width="196" height="154" rx="22" fill="#fff3f1"/><circle cx="34" cy="34" r="17" fill="#ffd9d8"/><text x="28" y="41" fill="#c85661" font-family="Arial,sans-serif" font-size="20" font-weight="900">✓</text><text x="24" y="82" fill="#312a2a" font-family="Arial,sans-serif" font-size="19" font-weight="800">유형 테스트</text><text x="24" y="111" fill="#6f6262" font-family="Arial,sans-serif" font-size="13">12문항 · 36문항</text>
+      <rect x="214" width="196" height="154" rx="22" fill="#fff0d9"/><circle cx="248" cy="34" r="17" fill="#f4a77e" opacity=".42"/><text x="241" y="41" fill="#c85661" font-family="Arial,sans-serif" font-size="20" font-weight="900">♡</text><text x="238" y="82" fill="#312a2a" font-family="Arial,sans-serif" font-size="19" font-weight="800">유형별 특징</text><text x="238" y="111" fill="#6f6262" font-family="Arial,sans-serif" font-size="13">네 가지 애착 원형</text>
+      <rect x="428" width="196" height="154" rx="22" fill="#f3eefb"/><circle cx="462" cy="34" r="17" fill="#c9b6e9" opacity=".55"/><text x="455" y="41" fill="#765c9f" font-family="Arial,sans-serif" font-size="20" font-weight="900">∞</text><text x="452" y="82" fill="#312a2a" font-family="Arial,sans-serif" font-size="19" font-weight="800">16가지 조합</text><text x="452" y="111" fill="#6f6262" font-family="Arial,sans-serif" font-size="13">관계 패턴 이해</text>
+      <rect x="642" width="196" height="154" rx="22" fill="#edf6f1"/><circle cx="676" cy="34" r="17" fill="#aecdb8" opacity=".55"/><text x="670" y="41" fill="#4d7b5b" font-family="Arial,sans-serif" font-size="18" font-weight="900">A</text><text x="666" y="82" fill="#312a2a" font-family="Arial,sans-serif" font-size="19" font-weight="800">용어 사전</text><text x="666" y="111" fill="#6f6262" font-family="Arial,sans-serif" font-size="13">핵심 개념 검색</text>
+    </g>
+  </g>
+</svg>
