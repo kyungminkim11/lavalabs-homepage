@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 import { alternateLinks, routeMeta, staticBody, structuredData } from "./page-data.mjs";
+import { renderSoftmoonBody } from "./softmoon-page.mjs";
 
 const origin = "https://lavalabs.co.kr";
 const distDir = new URL("../dist/", import.meta.url);
@@ -36,7 +37,7 @@ function renderRoute(meta) {
   html = replace(html, /<meta\s+name="twitter:image:alt"[^>]*\/>/i, `<meta name="twitter:image:alt" content="${socialImageAlt}" />`);
   const jsonLd = JSON.stringify(structuredData(meta)).replaceAll("<", "\\u003c");
   html = replace(html, /<script[^>]*type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/i, `<script id="route-structured-data" type="application/ld+json">${jsonLd}</script>`);
-  const body = staticBody(meta);
+  const body = meta.page === "softmoon" ? renderSoftmoonBody(meta.localeKey) : staticBody(meta);
   if (body) {
     html = replace(html, /<div\s+id="root"><\/div>/i, `<div id="root">${body}</div>`);
     html = html.replace(/\s*<script\s+type="module"[^>]*src="[^"]+"[^>]*><\/script>/gi, "");
