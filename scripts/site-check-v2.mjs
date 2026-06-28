@@ -32,7 +32,7 @@ async function assertNoOverflow(page, label) {
 try {
   const notFound = await readFile(new URL("../dist/404.html", import.meta.url), "utf8");
   assert(notFound.includes('content="noindex, follow"'), "Generated 404 page must be noindex");
-  for (const file of ["snap.svg", "follow.svg", "emoseed.svg"]) {
+  for (const file of ["snap.svg", "follow.svg", "emoseed.svg", "heart.svg"]) {
     const preview = await readFile(new URL(`../dist/assets/project-previews/${file}`, import.meta.url), "utf8");
     assert(preview.includes("<svg"), `${file} project preview is missing`);
   }
@@ -60,9 +60,10 @@ try {
       assert(await page.locator('input[name="website"]').count() === 1, `${path} has no spam trap`);
       assert(await page.locator(".project-follow").count() === 1, `${path} has no Follow Checker card`);
       assert(await page.locator(".project-emoseed").count() === 1, `${path} has no EmoSeed card`);
-      assert(await page.locator(".project-card-v2").count() >= 4, `${path} has incomplete redesigned project cards`);
-      assert(await page.locator(".project-preview-link").count() >= 4, `${path} has incomplete clickable project previews`);
-      assert(await page.locator(".project-preview-frame img").count() >= 4, `${path} has incomplete project preview images`);
+      assert(await page.locator(".project-heart").count() === 1, `${path} has no Shape of Heart card`);
+      assert(await page.locator(".project-card-v2").count() >= 5, `${path} has incomplete redesigned project cards`);
+      assert(await page.locator(".project-preview-link").count() >= 5, `${path} has incomplete clickable project previews`);
+      assert(await page.locator(".project-preview-frame img").count() >= 5, `${path} has incomplete project preview images`);
       assert(await page.locator(".case-preview-label").count() === 0, `${path} still duplicates project titles over preview images`);
       assert((await page.locator("body").innerText()).includes("Static preview") === false, `${path} still displays the old static preview label`);
       assert(await page.locator("iframe[src]").count() === 0, `${path} still loads a live project iframe`);
