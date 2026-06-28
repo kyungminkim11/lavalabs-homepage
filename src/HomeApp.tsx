@@ -1,34 +1,10 @@
-import { useEffect } from "react";
-import Homepage from "./UnfollowProjectCard";
-import { CheckCircle2, ExternalLink, FileArchive, ShieldCheck } from "lucide-react";
-import type { Locale } from "./content";
-import { projectData } from "./projectData";
+import HomePage from "./pages/HomePage";
+import FollowCheckerPage from "./pages/FollowCheckerPage";
+import EmoSeedPage from "./pages/EmoSeedPage";
 
-const copy={
-  ko:{home:"/",title:"맞팔체커",lead:"내보낸 데이터 파일을 현재 브라우저에서 분석해 팔로우 관계를 구분하는 Lava Labs의 자체 웹 도구입니다.",start:"분석 시작하기",flow:"작동 방식",trust:"데이터 처리 원칙",steps:[["1. 데이터 준비","계정 설정에서 팔로우 관계 데이터 파일을 내려받습니다."],["2. 브라우저 분석","선택한 파일은 현재 브라우저에서 처리됩니다."],["3. 결과 확인","관계 유형별 결과를 검색하고 확인합니다."]],yes:["브라우저 기반 파일 분석","관계 유형 분류","검색과 결과 확인","PC·모바일 지원"],no:["외부 파일 보관","자동 계정 작업","사용자 대신 수행하는 기능"],notice:"이 도구는 관련 플랫폼이 제공하거나 보증하는 공식 서비스가 아닙니다."},
-  en:{home:"/en/",title:"Follow Checker",lead:"A Lava Labs web tool that reviews follow relationships by processing an exported data file in the current browser.",start:"Start analysis",flow:"How it works",trust:"Data handling principles",steps:[["1. Prepare data","Download the relationship data file from account settings."],["2. Browser analysis","The selected file is processed in the current browser."],["3. Review results","Search and review each relationship category."]],yes:["Browser-based file analysis","Relationship categories","Search and review","Desktop and mobile support"],no:["External file storage","Automatic account actions","Actions performed for the user"],notice:"This tool is not an official product provided or endorsed by the related platform."},
-  jp:{home:"/jp/",title:"フォローチェッカー",lead:"エクスポートしたデータファイルを現在のブラウザ内で処理し、フォロー関係を分類するLava LabsのWebツールです。",start:"分析を始める",flow:"仕組み",trust:"データ処理方針",steps:[["1. データを準備","アカウント設定から関係データをダウンロードします。"],["2. ブラウザで分析","選択したファイルは現在のブラウザ内で処理されます。"],["3. 結果を確認","関係タイプ別に検索・確認します。"]],yes:["ブラウザ内ファイル分析","関係タイプの分類","検索と結果確認","PC・モバイル対応"],no:["外部ファイル保存","自動アカウント操作","ユーザーに代わる操作"],notice:"本ツールは関連プラットフォームが提供・保証する公式サービスではありません。"}
-} as const;
-
-const getLocale=():Locale=>location.pathname.startsWith("/en")?"en":location.pathname.startsWith("/jp")?"jp":"ko";
-
-function Brand(){return <a className="brand-link" href="/"><picture className="brand-mark"><source srcSet="/assets/images/lava-logo-transparent-160.webp" type="image/webp"/><img src="/assets/images/lava-logo-transparent.png" alt="Lava Labs" width="40" height="40"/></picture><span>Lava Labs</span></a>}
-
-function FollowCheckerDetail(){
-  const locale=getLocale();const t=copy[locale];
-  return <div className="app-shell follow-case-shell"><header className="site-header"><div className="nav-shell"><Brand/><div className="language-switcher"><a href="/projects/follow-checker/" aria-current={locale==="ko"?"page":undefined}>KO</a><a href="/en/projects/follow-checker/" aria-current={locale==="en"?"page":undefined}>EN</a><a href="/jp/projects/follow-checker/" aria-current={locale==="jp"?"page":undefined}>JP</a></div></div></header><main id="main-content"><section className="section follow-case-hero"><div className="section-inner follow-case-grid"><div><p className="eyebrow">Lava Labs Web Tool</p><h1>{t.title}</h1><p className="follow-case-lead">{t.lead}</p><div className="button-row"><a className="button primary" href="https://unfollow.lavalabs.co.kr/" target="_blank" rel="noreferrer">{t.start}<ExternalLink/></a><a className="button secondary" href={t.home}>Lava Labs</a></div></div><aside className="follow-case-panel"><span className="follow-case-badge">Public Beta</span><ul className="follow-case-points"><li><CheckCircle2/><span>Local browser analysis</span></li><li><ShieldCheck/><span>Privacy-first workflow</span></li><li><FileArchive/><span>Exported data file</span></li></ul></aside></div></section><section className="section"><div className="section-inner"><div className="section-heading compact"><p className="eyebrow">Process</p><h2>{t.flow}</h2></div><div className="follow-case-grid-cards">{t.steps.map(([title,body])=><article key={title}><h3>{title}</h3><p>{body}</p></article>)}</div></div></section><section className="section follow-case-trust"><div className="section-inner"><div className="section-heading compact"><p className="eyebrow">Privacy & Boundaries</p><h2>{t.trust}</h2></div><div className="follow-case-boundaries"><article><h3>{locale==="ko"?"제공하는 기능":locale==="en"?"Available":"提供する機能"}</h3><ul>{t.yes.map(item=><li key={item}>{item}</li>)}</ul></article><article><h3>{locale==="ko"?"제공하지 않는 기능":locale==="en"?"Not provided":"提供しない機能"}</h3><ul>{t.no.map(item=><li key={item}>{item}</li>)}</ul></article></div><p className="follow-case-disclaimer">{t.notice}</p></div></section></main><footer className="site-footer"><div className="section-inner footer-layout"><Brand/><small>(c) 2026 Lava Labs. All rights reserved.</small></div></footer></div>;
-}
-
-export default function HomeApp(){
-  const locale=getLocale();
-  const detail=location.pathname.includes("/projects/follow-checker/");
-  useEffect(()=>{
-    if(detail)return;
-    const meta=projectData[locale];
-    document.title=meta.seoTitle;
-    document.querySelector('meta[name="description"]')?.setAttribute("content",meta.seoDescription);
-    document.querySelector('meta[property="og:title"]')?.setAttribute("content",meta.seoTitle);
-    document.querySelector('meta[property="og:description"]')?.setAttribute("content",meta.seoDescription);
-  },[detail,locale]);
-  return detail?<FollowCheckerDetail/>:<Homepage/>;
+export default function HomeApp() {
+  const path = window.location.pathname;
+  if (path.includes("/projects/follow-checker/")) return <FollowCheckerPage />;
+  if (path.includes("/projects/emoseed/")) return <EmoSeedPage />;
+  return <HomePage />;
 }
