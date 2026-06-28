@@ -1,0 +1,902 @@
+/* SoftMoon standalone brand page. Kept isolated for a future repository split. */
+.softmoon-page-shell {
+  --moon-night: #13212c;
+  --moon-night-soft: #1c3240;
+  --moon-cream: #f7f0e7;
+  --moon-paper: #fffdfa;
+  --moon-coral: #d96f61;
+  --moon-teal: #2f8f98;
+  --moon-gold: #d5a65c;
+  background: var(--moon-paper);
+  color: var(--ink);
+  overflow: clip;
+}
+
+.softmoon-site-header {
+  border-bottom: 1px solid rgba(23, 35, 45, 0.08);
+  background: rgba(255, 253, 250, 0.84);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.softmoon-nav {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 28px;
+  justify-content: initial;
+}
+
+.softmoon-section-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.softmoon-section-nav a {
+  border-radius: 999px;
+  color: var(--slate);
+  padding: 8px 11px;
+  font-size: 0.84rem;
+  font-weight: 850;
+  text-decoration: none;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.softmoon-section-nav a:hover,
+.softmoon-section-nav a:focus-visible {
+  background: rgba(47, 143, 152, 0.1);
+  color: var(--moon-teal);
+  transform: translateY(-1px);
+}
+
+.softmoon-page-hero {
+  position: relative;
+  min-height: min(940px, 94vh);
+  padding: 154px 0 112px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 14% 22%, rgba(217, 111, 97, 0.19), transparent 26rem),
+    radial-gradient(circle at 88% 15%, rgba(47, 143, 152, 0.2), transparent 29rem),
+    linear-gradient(180deg, #fbf5ec 0%, #f2eadf 72%, #eee5d8 100%);
+}
+
+.softmoon-page-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(19, 33, 44, 0.22), transparent);
+}
+
+.softmoon-sky {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.softmoon-sky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.42;
+  background-image:
+    radial-gradient(circle, rgba(19, 33, 44, 0.38) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(47, 143, 152, 0.42) 0 1px, transparent 1.5px);
+  background-position: 0 0, 32px 38px;
+  background-size: 92px 92px, 128px 128px;
+  mask-image: linear-gradient(180deg, #000, transparent 74%);
+}
+
+.softmoon-sky span {
+  position: absolute;
+  border: 1px solid rgba(19, 33, 44, 0.12);
+  border-radius: 50%;
+}
+
+.softmoon-sky span:nth-child(1) {
+  width: 420px;
+  height: 420px;
+  top: 108px;
+  right: -160px;
+}
+
+.softmoon-sky span:nth-child(2) {
+  width: 170px;
+  height: 170px;
+  left: 5vw;
+  bottom: 42px;
+  border-color: rgba(217, 111, 97, 0.18);
+}
+
+.softmoon-sky span:nth-child(3) {
+  width: 14px;
+  height: 14px;
+  top: 28%;
+  left: 46%;
+  border: 0;
+  background: var(--moon-gold);
+  box-shadow: 0 0 0 11px rgba(213, 166, 92, 0.1), 0 0 46px rgba(213, 166, 92, 0.48);
+}
+
+.softmoon-page-hero-grid {
+  position: relative;
+  z-index: 1;
+  grid-template-columns: minmax(0, 0.86fr) minmax(430px, 1.14fr);
+  gap: clamp(54px, 7vw, 98px);
+  align-items: center;
+}
+
+.softmoon-hero-copy {
+  max-width: 650px;
+}
+
+.softmoon-page-hero h1 {
+  margin: 17px 0 0;
+  color: var(--moon-night);
+  font-size: clamp(4.6rem, 10vw, 8.6rem);
+  line-height: 0.84;
+  letter-spacing: -0.075em;
+}
+
+.softmoon-page-statement {
+  max-width: 680px;
+  margin: 34px 0 0;
+  color: var(--moon-night);
+  font-size: clamp(1.65rem, 3.5vw, 2.8rem);
+  font-weight: 920;
+  line-height: 1.16;
+  letter-spacing: -0.045em;
+  word-break: keep-all;
+}
+
+.softmoon-page-body {
+  max-width: 620px;
+  margin: 23px 0 0;
+  color: #42535e;
+  font-size: 1.05rem;
+  line-height: 1.82;
+  word-break: keep-all;
+}
+
+.softmoon-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.softmoon-hero-meta li {
+  border: 1px solid rgba(19, 33, 44, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.46);
+  color: #4a5a64;
+  padding: 8px 12px;
+  font-size: 0.79rem;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+}
+
+.softmoon-hero-copy .button-row {
+  margin-top: 34px;
+}
+
+.softmoon-page-gallery {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.softmoon-page-gallery::before {
+  content: "SOFT / MOON";
+  position: absolute;
+  top: -38px;
+  right: 2px;
+  color: rgba(19, 33, 44, 0.35);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+}
+
+.softmoon-page-gallery figure {
+  position: relative;
+  margin: 0;
+}
+
+.softmoon-page-gallery figure:nth-child(2) {
+  margin-top: 74px;
+}
+
+.softmoon-page-gallery picture,
+.softmoon-page-gallery picture:first-child {
+  display: block;
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 24px;
+  background: #e8dfd2;
+  box-shadow: 0 28px 70px rgba(27, 44, 55, 0.18);
+  transform: none;
+}
+
+.softmoon-page-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease, filter 500ms ease;
+}
+
+.softmoon-page-gallery figure:hover img {
+  transform: scale(1.025);
+  filter: saturate(1.04);
+}
+
+.softmoon-page-gallery figcaption {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  margin-top: 13px;
+  color: #57666f;
+  font-size: 0.82rem;
+  font-weight: 780;
+  line-height: 1.45;
+}
+
+.softmoon-page-gallery figcaption span {
+  flex: 0 0 auto;
+  color: var(--moon-coral);
+  font-size: 0.7rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+}
+
+.softmoon-manifesto-section {
+  position: relative;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(47, 143, 152, 0.2), transparent 28rem),
+    radial-gradient(circle at 12% 92%, rgba(217, 111, 97, 0.18), transparent 24rem),
+    var(--moon-night);
+  color: #fff;
+}
+
+.softmoon-manifesto-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 0 62%, rgba(255, 255, 255, 0.035) 62% 63%, transparent 63%);
+  pointer-events: none;
+}
+
+.softmoon-manifesto {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  gap: clamp(50px, 8vw, 116px);
+  align-items: end;
+  padding-top: 44px;
+  padding-bottom: 44px;
+}
+
+.softmoon-manifesto .eyebrow {
+  color: #78c8cf;
+}
+
+.softmoon-manifesto h2 {
+  max-width: 850px;
+  margin: 18px 0 0;
+  color: #fff;
+  font-size: clamp(2.8rem, 6vw, 5.8rem);
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+  word-break: keep-all;
+}
+
+.softmoon-manifesto > p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.04rem;
+  line-height: 1.9;
+  word-break: keep-all;
+}
+
+.softmoon-principles-section {
+  background: #f3ece2;
+}
+
+.softmoon-principles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 42px;
+}
+
+.softmoon-principles-grid article {
+  min-height: 280px;
+  border-top: 1px solid rgba(19, 33, 44, 0.2);
+  padding: 24px 8px 8px;
+}
+
+.softmoon-principles-grid article > span {
+  display: inline-flex;
+  color: var(--moon-coral);
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+}
+
+.softmoon-principles-grid h3 {
+  margin: 64px 0 0;
+  color: var(--moon-night);
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  letter-spacing: -0.035em;
+}
+
+.softmoon-principles-grid p {
+  margin: 15px 0 0;
+  color: #53626b;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.softmoon-research-section {
+  background: var(--moon-paper);
+}
+
+.softmoon-section-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.65fr);
+  gap: 54px;
+  align-items: end;
+  margin-bottom: 46px;
+}
+
+.softmoon-section-intro > p {
+  margin: 0 0 6px;
+  color: #596870;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+.softmoon-research-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.softmoon-research-grid article {
+  position: relative;
+  min-height: 310px;
+  overflow: hidden;
+  border: 1px solid rgba(19, 33, 44, 0.11);
+  border-radius: 24px;
+  background: #fff;
+  padding: 28px;
+  box-shadow: 0 14px 44px rgba(23, 35, 45, 0.06);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.softmoon-research-grid article::after {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  right: -82px;
+  bottom: -96px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(47, 143, 152, 0.14), transparent 70%);
+}
+
+.softmoon-research-grid article:hover {
+  border-color: rgba(47, 143, 152, 0.28);
+  box-shadow: 0 24px 60px rgba(23, 35, 45, 0.11);
+  transform: translateY(-4px);
+}
+
+.softmoon-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.softmoon-card-head > span:first-child {
+  color: var(--moon-coral);
+  font-size: 0.73rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+}
+
+.softmoon-card-orbit {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(19, 33, 44, 0.18);
+  border-radius: 50%;
+}
+
+.softmoon-card-orbit::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  top: 2px;
+  right: 1px;
+  border-radius: 50%;
+  background: var(--moon-gold);
+  box-shadow: 0 0 0 4px rgba(213, 166, 92, 0.12);
+}
+
+.softmoon-research-grid h3 {
+  margin: 46px 0 0;
+  color: var(--moon-night);
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  letter-spacing: -0.04em;
+}
+
+.softmoon-research-grid p {
+  max-width: 590px;
+  margin: 14px 0 0;
+  color: #52616a;
+  line-height: 1.76;
+}
+
+.softmoon-research-grid article > ul {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.softmoon-research-grid article > ul li {
+  border-radius: 999px;
+  background: #f2eee8;
+  color: #56636b;
+  padding: 7px 10px;
+  font-size: 0.72rem;
+  font-weight: 850;
+}
+
+.softmoon-process-section {
+  background:
+    radial-gradient(circle at 8% 20%, rgba(217, 111, 97, 0.13), transparent 24rem),
+    linear-gradient(180deg, #eee6da, #f8f3eb);
+}
+
+.softmoon-process-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.softmoon-process-grid::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 7%;
+  right: 7%;
+  height: 1px;
+  background: rgba(19, 33, 44, 0.16);
+}
+
+.softmoon-process-grid article {
+  position: relative;
+  min-height: 260px;
+  padding: 0 18px 18px;
+}
+
+.softmoon-process-grid article > span {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(19, 33, 44, 0.15);
+  border-radius: 50%;
+  background: #f7f1e8;
+  color: var(--moon-teal);
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.06em;
+}
+
+.softmoon-process-grid h3 {
+  margin: 42px 0 0;
+  color: var(--moon-night);
+  font-size: 1.42rem;
+  letter-spacing: -0.03em;
+}
+
+.softmoon-process-grid p {
+  margin: 13px 0 0;
+  color: #596870;
+  line-height: 1.72;
+  word-break: keep-all;
+}
+
+.softmoon-status-section {
+  background: var(--moon-paper);
+}
+
+.softmoon-status-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+  gap: clamp(42px, 7vw, 94px);
+  align-items: center;
+  border: 1px solid rgba(19, 33, 44, 0.1);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 92% 16%, rgba(47, 143, 152, 0.16), transparent 22rem),
+    #f6f0e7;
+  padding: clamp(34px, 6vw, 72px);
+}
+
+.softmoon-status-card h2 {
+  max-width: 760px;
+  margin: 17px 0 0;
+  color: var(--moon-night);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.05em;
+  word-break: keep-all;
+}
+
+.softmoon-status-card p:not(.eyebrow) {
+  max-width: 720px;
+  margin: 20px 0 0;
+  color: #55646d;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+.softmoon-status-card > ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.softmoon-status-card > ul li {
+  position: relative;
+  border-bottom: 1px solid rgba(19, 33, 44, 0.1);
+  color: var(--moon-night-soft);
+  padding: 16px 12px 16px 36px;
+  font-weight: 850;
+  line-height: 1.45;
+}
+
+.softmoon-status-card > ul li::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 22px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--moon-coral);
+  box-shadow: 0 0 0 6px rgba(217, 111, 97, 0.1);
+}
+
+.softmoon-collaboration-section {
+  padding-top: 34px;
+  background: var(--moon-paper);
+}
+
+.softmoon-collaboration-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.55fr);
+  gap: 52px;
+  align-items: center;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 86% 10%, rgba(213, 166, 92, 0.17), transparent 24rem),
+    linear-gradient(135deg, #152530, #203b49);
+  padding: clamp(38px, 7vw, 82px);
+  box-shadow: 0 30px 80px rgba(19, 33, 44, 0.18);
+}
+
+.softmoon-collaboration-card .eyebrow {
+  color: #79cbd1;
+}
+
+.softmoon-collaboration-card h2 {
+  max-width: 900px;
+  margin: 17px 0 0;
+  color: #fff;
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+  word-break: keep-all;
+}
+
+.softmoon-collaboration-card p:not(.eyebrow) {
+  max-width: 760px;
+  margin: 21px 0 0;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.82;
+  word-break: keep-all;
+}
+
+.softmoon-collaboration-actions {
+  display: grid;
+  gap: 10px;
+  align-content: center;
+}
+
+.softmoon-collaboration-actions .button {
+  width: 100%;
+  justify-content: center;
+}
+
+.softmoon-collaboration-actions .button.secondary {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+
+.softmoon-collaboration-actions .button.secondary:hover {
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.softmoon-collaboration-actions .softmoon-back-link {
+  justify-content: center;
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.softmoon-footer {
+  margin-top: 0;
+  background: var(--moon-paper);
+}
+
+.softmoon-footer .footer-layout {
+  border-top-color: rgba(19, 33, 44, 0.1);
+}
+
+.softmoon-page-shell section[id] {
+  scroll-margin-top: 96px;
+}
+
+@media (max-width: 1080px) {
+  .softmoon-nav {
+    gap: 14px;
+  }
+
+  .softmoon-section-nav a {
+    padding-inline: 8px;
+    font-size: 0.78rem;
+  }
+
+  .softmoon-page-hero-grid {
+    grid-template-columns: minmax(0, 0.92fr) minmax(390px, 1.08fr);
+    gap: 42px;
+  }
+
+  .softmoon-process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 38px;
+  }
+
+  .softmoon-process-grid::before {
+    display: none;
+  }
+}
+
+@media (max-width: 920px) {
+  .softmoon-nav {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .softmoon-section-nav {
+    display: none;
+  }
+
+  .softmoon-page-hero {
+    min-height: 0;
+  }
+
+  .softmoon-page-hero-grid,
+  .softmoon-manifesto,
+  .softmoon-section-intro,
+  .softmoon-status-card,
+  .softmoon-collaboration-card {
+    grid-template-columns: 1fr;
+  }
+
+  .softmoon-page-gallery {
+    max-width: 760px;
+    margin-top: 16px;
+  }
+
+  .softmoon-manifesto {
+    align-items: start;
+  }
+
+  .softmoon-manifesto > p,
+  .softmoon-section-intro > p {
+    max-width: 680px;
+  }
+
+  .softmoon-principles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .softmoon-principles-grid article {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 54px minmax(150px, 0.35fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+    padding: 24px 0;
+  }
+
+  .softmoon-principles-grid h3,
+  .softmoon-principles-grid p {
+    margin: 0;
+  }
+
+  .softmoon-collaboration-actions {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 760px) {
+  .softmoon-page-hero {
+    padding: 118px 0 82px;
+  }
+
+  .softmoon-page-hero h1 {
+    font-size: clamp(4rem, 20vw, 6.4rem);
+  }
+
+  .softmoon-page-statement {
+    margin-top: 28px;
+  }
+
+  .softmoon-page-gallery {
+    gap: 12px;
+  }
+
+  .softmoon-page-gallery figure:nth-child(2) {
+    margin-top: 42px;
+  }
+
+  .softmoon-page-gallery picture,
+  .softmoon-page-gallery picture:first-child {
+    min-height: 0;
+  }
+
+  .softmoon-manifesto,
+  .softmoon-status-card,
+  .softmoon-collaboration-card {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .softmoon-principles-grid article {
+    grid-template-columns: 44px 1fr;
+  }
+
+  .softmoon-principles-grid article p {
+    grid-column: 2;
+  }
+
+  .softmoon-research-grid,
+  .softmoon-process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .softmoon-process-grid article {
+    min-height: 0;
+    padding-bottom: 26px;
+  }
+
+  .softmoon-process-grid h3 {
+    margin-top: 22px;
+  }
+
+  .softmoon-status-card,
+  .softmoon-collaboration-card {
+    border-radius: 24px;
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .softmoon-nav {
+    gap: 8px;
+  }
+
+  .softmoon-nav .brand-link span {
+    display: none;
+  }
+
+  .softmoon-nav .language-switcher {
+    display: flex;
+  }
+
+  .softmoon-nav .language-switcher a {
+    padding: 7px 6px;
+    font-size: 0.72rem;
+  }
+
+  .softmoon-page-hero {
+    padding-top: 106px;
+  }
+
+  .softmoon-hero-meta {
+    gap: 6px;
+  }
+
+  .softmoon-hero-meta li {
+    font-size: 0.69rem;
+  }
+
+  .softmoon-hero-copy .button-row {
+    display: grid;
+  }
+
+  .softmoon-hero-copy .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .softmoon-page-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .softmoon-page-gallery figure:nth-child(2) {
+    margin-top: 8px;
+  }
+
+  .softmoon-page-gallery picture,
+  .softmoon-page-gallery picture:first-child {
+    aspect-ratio: 4 / 4.8;
+  }
+
+  .softmoon-manifesto h2 {
+    font-size: clamp(2.6rem, 13vw, 4rem);
+  }
+
+  .softmoon-principles-grid article {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .softmoon-principles-grid article p {
+    grid-column: auto;
+  }
+
+  .softmoon-research-grid article {
+    min-height: 0;
+    padding: 24px;
+  }
+
+  .softmoon-research-grid h3 {
+    margin-top: 34px;
+  }
+
+  .softmoon-status-card,
+  .softmoon-collaboration-card {
+    margin-inline: -4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .softmoon-section-nav a,
+  .softmoon-page-gallery img,
+  .softmoon-research-grid article {
+    transition: none;
+  }
+}
