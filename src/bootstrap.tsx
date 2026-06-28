@@ -7,6 +7,7 @@ import "./performance.css";
 import "./home-upgrades.css";
 import "./final-upgrades.css";
 import "./unfollow-project.css";
+import "./emoseed-project.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
