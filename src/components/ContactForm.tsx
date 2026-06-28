@@ -1,4 +1,4 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { Send } from "lucide-react";
 import type { Locale } from "../content";
 import type { ProjectType } from "../homeCopy";
@@ -8,27 +8,21 @@ import { trackEvent } from "../analytics";
 const endpoint = "https://formspree.io/f/mpwdpqzk";
 type Status = "idle" | "sending" | "success" | "error";
 type FormData = {
-  name: string;
-  email: string;
-  company: string;
-  projectType: ProjectType;
-  timeline: string;
-  budget: string;
-  reference: string;
-  message: string;
-  website: string;
-  consent: boolean;
+  name: string; email: string; company: string; projectType: ProjectType; timeline: string; budget: string;
+  reference: string; message: string; website: string; consent: boolean;
 };
 
-const emptyForm: FormData = {
-  name: "", email: "", company: "", projectType: "", timeline: "", budget: "", reference: "", message: "", website: "", consent: false
-};
+const emptyForm: FormData = { name: "", email: "", company: "", projectType: "", timeline: "", budget: "", reference: "", message: "", website: "", consent: false };
 
 export default function ContactForm({ locale, initialProjectType, onProjectTypeChange }: { locale: Locale; initialProjectType: ProjectType; onProjectTypeChange: (value: ProjectType) => void }) {
   const copy = homeCopy[locale];
   const [form, setForm] = useState<FormData>({ ...emptyForm, projectType: initialProjectType });
   const [status, setStatus] = useState<Status>("idle");
   const started = useRef(false);
+
+  useEffect(() => {
+    setForm((current) => current.projectType === initialProjectType ? current : { ...current, projectType: initialProjectType });
+  }, [initialProjectType]);
 
   const markStarted = () => {
     if (started.current) return;
@@ -46,13 +40,8 @@ export default function ContactForm({ locale, initialProjectType, onProjectTypeC
     if (form.website) return;
     setStatus("sending");
     trackEvent("inquiry_submit", { locale, projectType: form.projectType, timeline: form.timeline, budget: form.budget });
-
     try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...form, locale, source: "lavalabs.co.kr inquiry" })
-      });
+      const response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ ...form, locale, source: "lavalabs.co.kr inquiry" }) });
       if (!response.ok) throw new Error("submit failed");
       setStatus("success");
       setForm(emptyForm);
