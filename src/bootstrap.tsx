@@ -8,6 +8,7 @@ import "./home-upgrades.css";
 import "./final-upgrades.css";
 import "./unfollow-project.css";
 import "./emoseed-project.css";
+import "./mobile-ux.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
