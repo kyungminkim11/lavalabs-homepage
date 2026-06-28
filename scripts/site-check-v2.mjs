@@ -60,8 +60,14 @@ try {
       assert(await page.locator('input[name="website"]').count() === 1, `${path} has no spam trap`);
       assert(await page.locator(".project-follow").count() === 1, `${path} has no Follow Checker card`);
       assert(await page.locator(".project-emoseed").count() === 1, `${path} has no EmoSeed card`);
-      assert(await page.locator(".project-image-preview img").count() >= 4, `${path} has incomplete project previews`);
+      assert(await page.locator(".project-card-v2").count() >= 4, `${path} has incomplete redesigned project cards`);
+      assert(await page.locator(".project-preview-link").count() >= 4, `${path} has incomplete clickable project previews`);
+      assert(await page.locator(".project-preview-frame img").count() >= 4, `${path} has incomplete project preview images`);
+      assert(await page.locator(".case-preview-label").count() === 0, `${path} still duplicates project titles over preview images`);
+      assert((await page.locator("body").innerText()).includes("Static preview") === false, `${path} still displays the old static preview label`);
       assert(await page.locator("iframe[src]").count() === 0, `${path} still loads a live project iframe`);
+      const firstProjectAction = await page.locator(".project-card-actions a").first().boundingBox();
+      assert((firstProjectAction?.height ?? 0) >= 44, `${path} project action is too small for touch`);
       const fixedCta = await page.locator(".mobile-contact-bar").boundingBox();
       assert((fixedCta?.height ?? 0) >= 52, `${path} mobile contact CTA is too small`);
       const firstField = await page.locator(".contact-form input").first().boundingBox();
@@ -97,7 +103,7 @@ try {
   await assertNoOverflow(home, "320px closed navigation");
   await compact.close();
 
-  console.log(`Validated ${routes.length} public routes, project previews, and compact mobile navigation.`);
+  console.log(`Validated ${routes.length} public routes, redesigned project cards, and compact mobile navigation.`);
 } finally {
   await browser?.close();
   server.kill();
