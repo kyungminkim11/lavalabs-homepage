@@ -1,0 +1,54 @@
+/* Desktop layout correction for the SoftMoon hero. */
+@media (min-width: 921px) {
+  .softmoon-page-hero-grid {
+    grid-template-columns: minmax(500px, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(68px, 6vw, 108px);
+    align-items: start;
+  }
+
+  .softmoon-hero-copy {
+    min-width: 0;
+    max-width: 560px;
+    padding-right: 4px;
+  }
+
+  .softmoon-page-hero h1 {
+    max-width: 100%;
+    margin-top: 17px;
+    font-size: clamp(4.2rem, 5.8vw, 5.8rem);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    white-space: nowrap;
+  }
+
+  .softmoon-page-statement {
+    max-width: 550px;
+    font-size: clamp(1.55rem, 2.6vw, 2.35rem);
+  }
+
+  .softmoon-page-body {
+    max-width: 535px;
+  }
+
+  .softmoon-page-gallery {
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    justify-self: end;
+  }
+}
+
+@media (min-width: 921px) and (max-width: 1180px) {
+  .softmoon-page-hero-grid {
+    grid-template-columns: minmax(410px, 0.86fr) minmax(0, 1.14fr);
+    gap: 44px;
+  }
+
+  .softmoon-page-hero h1 {
+    font-size: clamp(4rem, 6.8vw, 4.9rem);
+  }
+
+  .softmoon-page-statement {
+    font-size: clamp(1.45rem, 2.8vw, 2rem);
+  }
+}
