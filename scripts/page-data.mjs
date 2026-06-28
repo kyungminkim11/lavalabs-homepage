@@ -70,16 +70,67 @@ function legalBody(kind) {
 }
 
 const softmoonText = {
-  ko: { home: "/", skip: "본문으로 이동", statement: "우주와 자연의 분위기를 작은 물건과 디지털 경험으로 옮깁니다.", body: "SoftMoon은 Lava Labs가 직접 기획하고 발전시키는 자체 브랜드입니다. 엽서, 스티커, 키트, 패키징과 디지털 콘텐츠를 실험하며 작은 브랜드를 실제로 운영하는 과정을 축적합니다.", research: "현재 연구하고 있는 것", contact: "협업 문의하기", back: "Lava Labs로 돌아가기" },
-  en: { home: "/en/", skip: "Skip to content", statement: "Translating the mood of space and nature into small objects and digital experiences.", body: "SoftMoon is an in-house brand planned and developed by Lava Labs. We explore postcards, stickers, small kits, packaging, and digital content while learning how a small brand operates in practice.", research: "What we are exploring", contact: "Discuss a collaboration", back: "Back to Lava Labs" },
-  jp: { home: "/jp/", skip: "本文へ移動", statement: "宇宙と自然の空気感を、小さなものとデジタル体験へ移します。", body: "SoftMoonはLava Labsが直接企画・運営する自社ブランドです。ポストカード、ステッカー、小さなキット、パッケージ、デジタルコンテンツを試作しています。", research: "現在研究していること", contact: "コラボレーション相談", back: "Lava Labsへ戻る" }
+  ko: {
+    home: "/",
+    skip: "본문으로 이동",
+    eyebrow: "자체 브랜드",
+    statement: "우주와 자연의 분위기를 작은 물건과 디지털 경험으로 옮깁니다.",
+    body: "SoftMoon은 Lava Labs가 직접 기획하고 발전시키는 자체 브랜드입니다. 엽서, 스티커, 키트, 패키징과 디지털 콘텐츠를 실험하며 작은 브랜드를 실제로 운영하는 과정을 축적합니다.",
+    intro: "브랜드 소개서",
+    researchLabel: "연구 분야",
+    research: "현재 연구하고 있는 것",
+    contact: "협업 문의하기",
+    back: "Lava Labs로 돌아가기",
+    cards: [
+      ["페이퍼 굿즈", "엽서, 스티커와 다양한 인쇄물"],
+      ["소형 키트", "기록과 참여를 위한 간결한 키트"],
+      ["패키징", "브랜드 경험을 제품 밖까지 이어주는 패키징"],
+      ["디지털 콘텐츠", "실물 제품과 함께 설계하는 디지털 콘텐츠"]
+    ]
+  },
+  en: {
+    home: "/en/",
+    skip: "Skip to content",
+    eyebrow: "In-house Brand",
+    statement: "Translating the mood of space and nature into small objects and digital experiences.",
+    body: "SoftMoon is an in-house brand planned and developed by Lava Labs. We explore postcards, stickers, small kits, packaging, and digital content while learning how a small brand operates in practice.",
+    intro: "Brand Introduction",
+    researchLabel: "Research Areas",
+    research: "What we are exploring",
+    contact: "Discuss a collaboration",
+    back: "Back to Lava Labs",
+    cards: [
+      ["Paper Goods", "Postcards, stickers and printed pieces"],
+      ["Small Kits", "Compact kits for recording and participation"],
+      ["Packaging", "Packaging that extends the brand experience"],
+      ["Digital Content", "Digital content designed with physical products"]
+    ]
+  },
+  jp: {
+    home: "/jp/",
+    skip: "本文へ移動",
+    eyebrow: "自社ブランド",
+    statement: "宇宙と自然の空気感を、小さなものとデジタル体験へ移します。",
+    body: "SoftMoonはLava Labsが直接企画・運営する自社ブランドです。ポストカード、ステッカー、小さなキット、パッケージ、デジタルコンテンツを試作しています。",
+    intro: "ブランド紹介資料",
+    researchLabel: "研究領域",
+    research: "現在研究していること",
+    contact: "コラボレーション相談",
+    back: "Lava Labsへ戻る",
+    cards: [
+      ["ペーパーグッズ", "ポストカード、ステッカー、印刷物"],
+      ["スモールキット", "記録と参加のためのコンパクトなキット"],
+      ["パッケージ", "ブランド体験を広げるパッケージ"],
+      ["デジタルコンテンツ", "実物の商品と連動して設計するデジタルコンテンツ"]
+    ]
+  }
 };
 
 function softmoonBody(locale) {
   const t = softmoonText[locale];
   const langs = `<div class="language-switcher" aria-label="Language"><a href="/soft_moon/"${locale === "ko" ? " aria-current=\"page\"" : ""}>한국어</a><a href="/en/soft_moon/"${locale === "en" ? " aria-current=\"page\"" : ""}>English</a><a href="/jp/soft_moon/"${locale === "jp" ? " aria-current=\"page\"" : ""}>日本語</a></div>`;
-  const cards = [["Paper Goods", "Postcards, stickers and printed pieces"], ["Small Kits", "Compact kits for recording and participation"], ["Packaging", "Packaging that extends the brand experience"], ["Digital Content", "Digital content designed with physical products"]].map(([title, body]) => `<article><h3>${title}</h3><p>${body}</p></article>`).join("");
-  return `<div class="app-shell softmoon-page-shell"><a class="skip-link" href="#main-content">${t.skip}</a><header class="site-header"><div class="nav-shell softmoon-nav"><a class="brand-link" href="${t.home}">${logo}<span>Lava Labs</span></a>${langs}</div></header><main id="main-content"><section class="section softmoon-page-hero"><div class="section-inner softmoon-page-hero-grid"><div><p class="eyebrow">In-house Brand</p><h1>SoftMoon</h1><p class="softmoon-page-statement">${t.statement}</p><p class="softmoon-page-body">${t.body}</p><div class="button-row"><a class="button primary" href="/assets/files/softmoon-intro.pdf" download>Brand Introduction</a><a class="button secondary" href="${t.home}#contact">${t.contact}</a></div></div><div class="softmoon-page-gallery"><picture><source srcset="/assets/images/lunar-sample-1-720.webp" type="image/webp"><img src="/assets/images/lunar-sample-1.jpg" alt="SoftMoon paper goods" width="720" height="900"></picture><picture><source srcset="/assets/images/lunar-sample-2-720.webp" type="image/webp"><img src="/assets/images/lunar-sample-2.jpg" alt="SoftMoon product sample" width="720" height="900"></picture></div></div></section><section class="section softmoon-research-section"><div class="section-inner"><div class="section-heading compact"><p class="eyebrow">Research Areas</p><h2>${t.research}</h2></div><div class="softmoon-research-grid">${cards}</div><a class="softmoon-back-link" href="${t.home}">${t.back}</a></div></section></main>${footer}</div>`;
+  const cards = t.cards.map(([title, body]) => `<article><h3>${title}</h3><p>${body}</p></article>`).join("");
+  return `<div class="app-shell softmoon-page-shell"><a class="skip-link" href="#main-content">${t.skip}</a><header class="site-header"><div class="nav-shell softmoon-nav"><a class="brand-link" href="${t.home}">${logo}<span>Lava Labs</span></a>${langs}</div></header><main id="main-content"><section class="section softmoon-page-hero"><div class="section-inner softmoon-page-hero-grid"><div><p class="eyebrow">${t.eyebrow}</p><h1>SoftMoon</h1><p class="softmoon-page-statement">${t.statement}</p><p class="softmoon-page-body">${t.body}</p><div class="button-row"><a class="button primary" href="/assets/files/softmoon-intro.pdf" download>${t.intro}</a><a class="button secondary" href="${t.home}#contact">${t.contact}</a></div></div><div class="softmoon-page-gallery"><picture><source srcset="/assets/images/lunar-sample-1-720.webp" type="image/webp"><img src="/assets/images/lunar-sample-1.jpg" alt="SoftMoon paper goods" width="720" height="900"></picture><picture><source srcset="/assets/images/lunar-sample-2-720.webp" type="image/webp"><img src="/assets/images/lunar-sample-2.jpg" alt="SoftMoon product sample" width="720" height="900"></picture></div></div></section><section class="section softmoon-research-section"><div class="section-inner"><div class="section-heading compact"><p class="eyebrow">${t.researchLabel}</p><h2>${t.research}</h2></div><div class="softmoon-research-grid">${cards}</div><a class="softmoon-back-link" href="${t.home}">${t.back}</a></div></section></main>${footer}</div>`;
 }
 
 export function staticBody(meta) {
