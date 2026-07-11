@@ -4,6 +4,7 @@ import type { ProjectCard as Project } from "../projectData";
 import { trackEvent } from "../analytics";
 
 const previewSource = {
+  space: "/assets/project-previews/space.svg",
   snap: "/assets/project-previews/snap.svg",
   follow: "/assets/project-previews/follow.svg",
   emoseed: "/assets/project-previews/emoseed.svg",
