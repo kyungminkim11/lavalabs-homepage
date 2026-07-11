@@ -1,20 +1,20 @@
 .business-disclosure {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   background:
-    radial-gradient(circle at 16% 0%, rgba(47, 143, 152, 0.18), transparent 28rem),
-    #111b23;
-  color: rgba(255, 255, 255, 0.76);
+    radial-gradient(circle at 16% 0%, rgba(47, 143, 152, 0.24), transparent 28rem),
+    #0b171d;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .business-disclosure__inner {
   width: min(100% - 40px, 1120px);
   margin: 0 auto;
-  padding: 28px 0 40px;
+  padding: 30px 0 42px;
 }
 
 .business-disclosure__eyebrow {
   margin: 0 0 6px;
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(255, 255, 255, 0.76);
   font-size: 0.72rem;
   font-weight: 850;
   letter-spacing: 0.12em;
@@ -46,14 +46,14 @@
 
 .business-disclosure dt {
   margin: 0 0 4px;
-  color: rgba(255, 255, 255, 0.48);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.75rem;
   font-weight: 800;
 }
 
 .business-disclosure dd {
   margin: 0;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.94);
   font-size: 0.84rem;
   font-weight: 650;
   line-height: 1.65;
@@ -62,20 +62,20 @@
 }
 
 .business-disclosure a {
-  color: inherit;
-  text-decoration-color: rgba(255, 255, 255, 0.32);
+  color: #ffffff;
+  text-decoration-color: rgba(156, 240, 235, 0.72);
   text-underline-offset: 3px;
 }
 
 .business-disclosure a:hover,
 .business-disclosure a:focus-visible {
-  color: #ffffff;
-  text-decoration-color: rgba(255, 255, 255, 0.8);
+  color: #9cf0eb;
+  text-decoration-color: #9cf0eb;
 }
 
 .business-disclosure__note {
   margin: 18px 0 0;
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.68);
   font-size: 0.74rem;
   line-height: 1.6;
 }
@@ -87,17 +87,42 @@
 }
 
 @media (max-width: 640px) {
+  .business-disclosure {
+    background:
+      radial-gradient(circle at 18% 0%, rgba(68, 190, 186, 0.22), transparent 20rem),
+      #071319;
+  }
+
   .business-disclosure__inner {
     width: min(100% - 28px, 1120px);
-    padding: 24px 0 34px;
+    padding: 28px 0 118px;
   }
 
   .business-disclosure__grid {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 10px;
   }
 
+  .business-disclosure__item,
   .business-disclosure__item--wide {
     grid-column: auto;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.055);
+    padding: 12px 13px;
+  }
+
+  .business-disclosure dt {
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 0.74rem;
+  }
+
+  .business-disclosure dd {
+    color: #ffffff;
+    font-size: 0.86rem;
+  }
+
+  .business-disclosure__note {
+    color: rgba(255, 255, 255, 0.72);
   }
 }
