@@ -4,18 +4,18 @@ const dist = new URL("../dist/", import.meta.url);
 const pages = [
   {
     file: "index.html",
-    title: "Lava Labs | 작은 브랜드의 홈페이지·콘텐츠·웹 도구 제작",
-    description: "Lava Labs는 작은 브랜드와 크리에이터를 위한 반응형 홈페이지, 포트폴리오, 사진, 콘텐츠와 가벼운 웹 도구를 직접 기획하고 제작합니다."
+    title: "Lava Labs | 브랜드 웹·360° 공간 경험·디지털 서비스 제작",
+    description: "Lava Labs는 브랜드 홈페이지, 포트폴리오, 사진과 콘텐츠, 360° 가상투어와 실용적인 웹 서비스를 기획하고 제작하는 디지털 경험 스튜디오입니다."
   },
   {
     file: "en/index.html",
-    title: "Lava Labs | Websites, Content, and Lightweight Web Tools",
-    description: "Lava Labs plans and builds responsive websites, portfolios, photography, content, and lightweight web tools for small brands and independent creators."
+    title: "Lava Labs | Brand Websites, 360° Experiences, and Digital Services",
+    description: "Lava Labs is a digital experience studio creating brand websites, portfolios, photography, content, 360° virtual tours, and practical web services."
   },
   {
     file: "jp/index.html",
-    title: "Lava Labs | 小さなブランドのWeb・コンテンツ・Webツール制作",
-    description: "Lava Labsは、小さなブランドやクリエイター向けにWebサイト、写真、コンテンツ、軽量なWebツールを企画・制作します。"
+    title: "Lava Labs | ブランドWeb・360°空間体験・デジタルサービス制作",
+    description: "Lava Labsは、ブランドサイト、ポートフォリオ、写真、コンテンツ、360°バーチャルツアー、実用的なWebサービスを制作するデジタル体験スタジオです。"
   }
 ];
 
