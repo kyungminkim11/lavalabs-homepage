@@ -29,10 +29,44 @@ async function assertNoOverflow(page, label) {
   assert(overflow <= 2, `${label} overflows horizontally by ${overflow}px`);
 }
 
+async function assertMobileReadability(page, label) {
+  const styles = await page.evaluate(() => {
+    const style = (selector) => {
+      const element = document.querySelector(selector);
+      if (!element) return null;
+      const computed = getComputedStyle(element);
+      return {
+        color: computed.color,
+        backgroundColor: computed.backgroundColor,
+        fontSize: Number.parseFloat(computed.fontSize)
+      };
+    };
+    return {
+      heroTitle: style(".hero h1"),
+      heroCopy: style(".hero-copy"),
+      serviceCard: style(".service-card"),
+      projectCard: style(".project-card-v2"),
+      projectDescription: style(".project-card-description"),
+      splitCopy: style(".split-band .process-list span"),
+      contactMethod: style(".contact-methods a"),
+      businessValue: style(".business-disclosure dd")
+    };
+  });
+
+  assert(styles.heroTitle?.color === "rgb(255, 255, 255)", `${label} hero title is not high contrast`);
+  assert(styles.heroCopy?.fontSize >= 14, `${label} hero copy is too small`);
+  assert(styles.serviceCard?.backgroundColor === "rgb(255, 255, 255)", `${label} service card background is not solid`);
+  assert(styles.projectCard?.backgroundColor === "rgb(255, 255, 255)", `${label} project card background is not solid`);
+  assert((styles.projectDescription?.fontSize ?? 0) >= 14, `${label} project copy is too small`);
+  assert(styles.splitCopy?.color !== "rgba(0, 0, 0, 0)", `${label} dark section copy is invisible`);
+  assert(styles.contactMethod?.backgroundColor === "rgb(255, 255, 255)", `${label} contact method background is not readable`);
+  assert(styles.businessValue?.color === "rgb(255, 255, 255)", `${label} business information is low contrast`);
+}
+
 try {
   const notFound = await readFile(new URL("../dist/404.html", import.meta.url), "utf8");
   assert(notFound.includes('content="noindex, follow"'), "Generated 404 page must be noindex");
-  for (const file of ["snap.svg", "follow.svg", "emoseed.svg", "heart.svg"]) {
+  for (const file of ["space.svg", "snap.svg", "follow.svg", "emoseed.svg", "heart.svg"]) {
     const preview = await readFile(new URL(`../dist/assets/project-previews/${file}`, import.meta.url), "utf8");
     assert(preview.includes("<svg"), `${file} project preview is missing`);
   }
@@ -58,12 +92,13 @@ try {
     if (["/", "/en/", "/jp/"].includes(path)) {
       assert(await page.locator('select[name="projectType"]').count() === 1, `${path} has no project selector`);
       assert(await page.locator('input[name="website"]').count() === 1, `${path} has no spam trap`);
+      assert(await page.locator(".project-space").count() === 1, `${path} has no LavaLabs Space card`);
       assert(await page.locator(".project-follow").count() === 1, `${path} has no Follow Checker card`);
       assert(await page.locator(".project-emoseed").count() === 1, `${path} has no EmoSeed card`);
       assert(await page.locator(".project-heart").count() === 1, `${path} has no Shape of Heart card`);
-      assert(await page.locator(".project-card-v2").count() >= 5, `${path} has incomplete redesigned project cards`);
-      assert(await page.locator(".project-preview-link").count() >= 5, `${path} has incomplete clickable project previews`);
-      assert(await page.locator(".project-preview-frame img").count() >= 5, `${path} has incomplete project preview images`);
+      assert(await page.locator(".project-card-v2").count() >= 6, `${path} has incomplete redesigned project cards`);
+      assert(await page.locator(".project-preview-link").count() >= 6, `${path} has incomplete clickable project previews`);
+      assert(await page.locator(".project-preview-frame img").count() >= 6, `${path} has incomplete project preview images`);
       assert(await page.locator(".case-preview-label").count() === 0, `${path} still duplicates project titles over preview images`);
       assert((await page.locator("body").innerText()).includes("Static preview") === false, `${path} still displays the old static preview label`);
       assert(await page.locator("iframe[src]").count() === 0, `${path} still loads a live project iframe`);
@@ -73,6 +108,7 @@ try {
       assert((fixedCta?.height ?? 0) >= 52, `${path} mobile contact CTA is too small`);
       const firstField = await page.locator(".contact-form input").first().boundingBox();
       assert((firstField?.height ?? 0) >= 48, `${path} form field is too small for touch`);
+      await assertMobileReadability(page, path);
     }
     if (path.includes("/projects/follow-checker/")) {
       assert(await page.locator(".follow-case-boundaries").count() === 1, `${path} has no service boundary section`);
@@ -104,7 +140,7 @@ try {
   await assertNoOverflow(home, "320px closed navigation");
   await compact.close();
 
-  console.log(`Validated ${routes.length} public routes, redesigned project cards, and compact mobile navigation.`);
+  console.log(`Validated ${routes.length} public routes, six project cards, mobile contrast, and compact navigation.`);
 } finally {
   await browser?.close();
   server.kill();
