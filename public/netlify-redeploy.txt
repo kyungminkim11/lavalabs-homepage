@@ -1,1 +1,0 @@
-Netlify production redeploy requested on 2026-07-12 for SoftMoon updates, launch notifications, and inquiry forms.
