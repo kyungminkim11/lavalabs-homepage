@@ -11,20 +11,79 @@ const baseHtml = await readFile(indexPath, "utf8");
 const escapeHtml = (value) => value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 const replace = (html, pattern, value) => pattern.test(html) ? html.replace(pattern, value) : html;
 
+function routeStructuredData(meta) {
+  if (meta.page !== "softmoon") return structuredData(meta);
+  const canonical = `${origin}${meta.path}`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Brand",
+        "@id": `${origin}/soft_moon/#brand`,
+        name: "SoftMoon",
+        alternateName: "Soft Moon",
+        url: canonical,
+        logo: `${origin}/assets/images/softmoon-icon.png`,
+        image: `${origin}/assets/images/softmoon-og.png`,
+        description: meta.description,
+        slogan: "Small objects, long afterglow.",
+        parentOrganization: {
+          "@type": "Organization",
+          "@id": `${origin}/#organization`,
+          name: "Lava Labs",
+          url: `${origin}/`,
+          email: "info@lavalabs.co.kr"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${canonical}#webpage`,
+        url: canonical,
+        name: meta.title,
+        description: meta.description,
+        inLanguage: meta.lang,
+        about: { "@id": `${origin}/soft_moon/#brand` },
+        isPartOf: { "@type": "WebSite", name: "Lava Labs", url: `${origin}/` },
+        primaryImageOfPage: { "@type": "ImageObject", url: `${origin}/assets/images/softmoon-og.png`, width: 1200, height: 630 }
+      }
+    ]
+  };
+}
+
+function applySoftmoonHead(html) {
+  html = replace(html, /<meta\s+name="application-name"[^>]*\/>/i, `<meta name="application-name" content="SoftMoon" />`);
+  html = replace(html, /<meta\s+name="theme-color"[^>]*\/>/i, `<meta name="theme-color" content="#13212c" />`);
+  html = replace(html, /<meta\s+property="og:site_name"[^>]*\/>/i, `<meta property="og:site_name" content="SoftMoon by Lava Labs" />`);
+  html = replace(html, /<link\s+rel="icon"[^>]*\/>/i, `<link rel="icon" type="image/png" href="/assets/images/softmoon-icon.png" />`);
+  html = replace(html, /<link\s+rel="apple-touch-icon"[^>]*\/>/i, `<link rel="apple-touch-icon" href="/assets/images/softmoon-icon.png" />`);
+
+  html = html.replace(/\s*<link\s+rel="stylesheet"\s+crossorigin[^>]*href="\/assets\/[^"]+\.css"[^>]*>/gi, "");
+  if (!html.includes('href="/softmoon.css"')) {
+    html = html.replace(
+      `<link rel="stylesheet" href="/business-info.css" />`,
+      `<link rel="stylesheet" href="/business-info.css" />\n    <link rel="stylesheet" href="/softmoon.css" />`
+    );
+  }
+  return html;
+}
+
 function renderRoute(meta) {
   let html = baseHtml;
   const canonical = `${origin}${meta.path}`;
   const title = escapeHtml(meta.title);
   const description = escapeHtml(meta.description);
-  const socialImage = meta.page === "softmoon" ? `${origin}/assets/images/lunar-sample-1.jpg` : `${origin}/assets/images/og-image.jpg`;
-  const socialImageAlt = meta.page === "softmoon" ? "SoftMoon goods and packaging sample" : "Lava Labs creative studio";
+  const socialImage = meta.page === "softmoon" ? `${origin}/assets/images/softmoon-og.png` : `${origin}/assets/images/og-image.jpg`;
+  const socialImageAlt = meta.page === "softmoon" ? "SoftMoon paper, object and digital brand preview" : "Lava Labs creative studio";
+
   html = replace(html, /<html\s+lang="[^"]*">/i, `<html lang="${meta.lang}">`);
   html = replace(html, /<title>[\s\S]*?<\/title>/i, `<title>${title}</title>`);
   html = replace(html, /<meta\s+name="description"[\s\S]*?\/>/i, `<meta name="description" content="${description}" />`);
   html = replace(html, /<link\s+rel="canonical"[^>]*\/>/i, `<link rel="canonical" href="${canonical}" />`);
   html = html.replace(/\s*<link\s+rel="alternate"[^>]*\/>/gi, "");
+
   const alternates = alternateLinks(meta);
   if (alternates) html = html.replace(`<link rel="canonical" href="${canonical}" />`, `<link rel="canonical" href="${canonical}" />\n${alternates}`);
+
   html = replace(html, /<meta\s+property="og:title"[^>]*\/>/i, `<meta property="og:title" content="${title}" />`);
   html = replace(html, /<meta\s+property="og:description"[^>]*\/>/i, `<meta property="og:description" content="${description}" />`);
   html = replace(html, /<meta\s+property="og:url"[^>]*\/>/i, `<meta property="og:url" content="${canonical}" />`);
@@ -35,8 +94,12 @@ function renderRoute(meta) {
   html = replace(html, /<meta\s+name="twitter:description"[^>]*\/>/i, `<meta name="twitter:description" content="${description}" />`);
   html = replace(html, /<meta\s+name="twitter:image"[^>]*\/>/i, `<meta name="twitter:image" content="${socialImage}" />`);
   html = replace(html, /<meta\s+name="twitter:image:alt"[^>]*\/>/i, `<meta name="twitter:image:alt" content="${socialImageAlt}" />`);
-  const jsonLd = JSON.stringify(structuredData(meta)).replaceAll("<", "\\u003c");
+
+  const jsonLd = JSON.stringify(routeStructuredData(meta)).replaceAll("<", "\\u003c");
   html = replace(html, /<script[^>]*type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/i, `<script id="route-structured-data" type="application/ld+json">${jsonLd}</script>`);
+
+  if (meta.page === "softmoon") html = applySoftmoonHead(html);
+
   const body = meta.page === "softmoon" ? renderSoftmoonBody(meta.localeKey) : staticBody(meta);
   if (body) {
     html = replace(html, /<div\s+id="root"><\/div>/i, `<div id="root">${body}</div>`);
@@ -80,4 +143,5 @@ const notFound = renderRoute({ ...routeMeta.home, title: "Page not found | Lava 
 await writeFile(new URL("404.html", distDir), notFound, "utf8");
 await writeFile(new URL("CNAME", distDir), "lavalabs.co.kr\n", "utf8");
 await writeFile(new URL("deploy-version.json", distDir), JSON.stringify({ sha: process.env.GITHUB_SHA ?? "local", builtAt: new Date().toISOString() }, null, 2), "utf8");
+
 console.log("Prepared routes:", Object.values(routeMeta).map((meta) => meta.path).concat(projectRoutes.map((meta) => meta.path)).join(", "));
