@@ -111,21 +111,21 @@ for (const route of routes) {
   if (!html.includes('href="/softmoon-professional.css')) {
     html = html.replace(
       /<link rel="stylesheet" href="\/softmoon\.css(?:\?[^\"]*)?" \/>/,
-      '<link rel="stylesheet" href="/softmoon.css?v=20260712-4" />\n    <link rel="stylesheet" href="/softmoon-professional.css?v=20260712-4" />'
+      '<link rel="stylesheet" href="/softmoon.css?v=20260712-5" />\n    <link rel="stylesheet" href="/softmoon-professional.css?v=20260712-5" />'
     );
   }
 
   if (!html.includes("softmoon-hero-layout-v2.css")) {
     html = html.replace(
       /<link rel="stylesheet" href="\/softmoon-professional\.css(?:\?[^\"]*)?" \/>/,
-      '$&\n    <link rel="stylesheet" href="/softmoon-hero-layout-v2.css?v=20260712-4" />'
+      '$&\n    <link rel="stylesheet" href="/softmoon-hero-layout-v2.css?v=20260712-5" />'
     );
   }
 
   if (!html.includes("softmoon-digital-preview-v2.css")) {
     html = html.replace(
       /<link rel="stylesheet" href="\/softmoon-hero-layout-v2\.css(?:\?[^\"]*)?" \/>/,
-      '$&\n    <link rel="stylesheet" href="/softmoon-digital-preview-v2.css?v=20260712-4" />'
+      '$&\n    <link rel="stylesheet" href="/softmoon-digital-preview-v2.css?v=20260712-5" />'
     );
   }
 
@@ -149,4 +149,4 @@ for (const route of routes) {
   await writeFile(file, html, "utf8");
 }
 
-console.log("Applied professional SoftMoon content, overlap-safe hero layout, and redesigned Connected Archive preview.");
+console.log("Applied professional SoftMoon content, overlap-safe hero layout, and unclipped Connected Archive preview.");
