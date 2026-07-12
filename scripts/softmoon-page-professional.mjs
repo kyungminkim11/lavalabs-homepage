@@ -9,6 +9,30 @@ const localeData = {
   jp: { data: jpData, replacements: jpReplacements }
 };
 
+const archiveCopy = {
+  ko: {
+    aria: "SoftMoon Connected Archive 모바일 인터페이스 콘셉트",
+    eyebrow: "PHYSICAL × DIGITAL",
+    summary: "오브젝트에 연결된 기록과 콘텐츠를 한 화면에서 이어서 확인합니다.",
+    state: "오브젝트 연결됨",
+    action: "기록 보기"
+  },
+  en: {
+    aria: "SoftMoon Connected Archive mobile interface concept",
+    eyebrow: "PHYSICAL × DIGITAL",
+    summary: "Continue the records and content connected to a physical object in one place.",
+    state: "Object linked",
+    action: "View record"
+  },
+  jp: {
+    aria: "SoftMoon Connected Archiveモバイルインターフェースコンセプト",
+    eyebrow: "PHYSICAL × DIGITAL",
+    summary: "オブジェクトにつながる記録とコンテンツを一つの画面で確認できます。",
+    state: "オブジェクト連携済み",
+    action: "記録を見る"
+  }
+};
+
 function capabilitySection(locale) {
   const t = localeData[locale].data;
   return `<section class="softmoon-section softmoon-capability-section" id="capabilities">
@@ -45,6 +69,32 @@ function phaseCard(locale) {
   </aside>`;
 }
 
+function digitalArchiveVisual(locale) {
+  const t = archiveCopy[locale] ?? archiveCopy.ko;
+  return `<div class="softmoon-digital-visual" role="img" aria-label="${t.aria}">
+    <div class="softmoon-archive-preview">
+      <div class="softmoon-archive-header">
+        <span class="softmoon-archive-wordmark">SoftMoon</span>
+        <span class="softmoon-archive-index">ARCHIVE 03</span>
+      </div>
+      <div class="softmoon-archive-art" aria-hidden="true">
+        <span class="softmoon-archive-moon"></span>
+        <span class="softmoon-archive-orbit"></span>
+        <span class="softmoon-archive-marker"></span>
+      </div>
+      <div class="softmoon-archive-copy">
+        <span>${t.eyebrow}</span>
+        <strong>Connected Archive</strong>
+        <p>${t.summary}</p>
+      </div>
+      <div class="softmoon-archive-footer">
+        <span class="softmoon-archive-state"><i aria-hidden="true"></i>${t.state}</span>
+        <span class="softmoon-archive-action">${t.action}<b aria-hidden="true">→</b></span>
+      </div>
+    </div>
+  </div>`;
+}
+
 function collaborationScope(locale) {
   const t = localeData[locale].data;
   return `<div class="softmoon-collaboration-scope-wrap">
@@ -68,6 +118,10 @@ function applyProfessionalCopy(html, locale) {
   html = html.replaceAll(navAnchor, capabilityAnchor);
 
   html = html.replace(/<aside class="softmoon-phase-card">[\s\S]*?<\/aside>/, phaseCard(locale));
+  html = html.replace(
+    /<div class="softmoon-digital-visual" aria-label="[^"]+">\s*<div class="softmoon-phone">[\s\S]*?<div class="softmoon-qr" aria-hidden="true"><\/div>\s*<\/div>\s*<\/div>/,
+    digitalArchiveVisual(locale)
+  );
   html = html.replace('<section class="softmoon-section softmoon-preview-section" id="preview">', `${capabilitySection(locale)}<section class="softmoon-section softmoon-preview-section" id="preview">`);
   html = html.replace('<section class="softmoon-section softmoon-roadmap-section" id="roadmap">', `${standardsSection(locale)}<section class="softmoon-section softmoon-roadmap-section" id="roadmap">`);
 
