@@ -92,6 +92,9 @@ try {
     if (["/", "/en/", "/jp/"].includes(path)) {
       assert(await page.locator('select[name="projectType"]').count() === 1, `${path} has no project selector`);
       assert(await page.locator('input[name="website"]').count() === 1, `${path} has no spam trap`);
+      assert(await page.locator(".interactive-hero-orb").count() === 1, `${path} has no interactive hero orb`);
+      await page.locator(".hero").dispatchEvent("pointerdown", { clientX: 180, clientY: 260, pointerType: "touch", isPrimary: true });
+      assert(await page.locator(".interactive-hero-orb.is-reacting").count() === 1, `${path} hero orb does not react to touch`);
       assert(await page.locator(".project-space").count() === 1, `${path} has no LavaLabs Space card`);
       assert(await page.locator(".project-follow").count() === 1, `${path} has no Follow Checker card`);
       assert(await page.locator(".project-emoseed").count() === 1, `${path} has no EmoSeed card`);
@@ -140,7 +143,7 @@ try {
   await assertNoOverflow(home, "320px closed navigation");
   await compact.close();
 
-  console.log(`Validated ${routes.length} public routes, six project cards, mobile contrast, and compact navigation.`);
+  console.log(`Validated ${routes.length} public routes, interactive hero orb, six project cards, mobile contrast, and compact navigation.`);
 } finally {
   await browser?.close();
   server.kill();
