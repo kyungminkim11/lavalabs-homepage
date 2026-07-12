@@ -10,6 +10,7 @@ import SiteHeader from "../components/SiteHeader";
 import ProjectCard from "../components/ProjectCard";
 import ContactForm from "../components/ContactForm";
 import BrandMark from "../components/BrandMark";
+import InteractiveHeroOrb from "../components/InteractiveHeroOrb";
 
 const localeFromPath = (): Locale => location.pathname.startsWith("/en") ? "en" : location.pathname.startsWith("/jp") ? "jp" : "ko";
 
@@ -42,12 +43,13 @@ export default function HomePage() {
   };
 
   return (
-    <div className="app-shell home-upgraded">
+    <div className="app-shell home-upgraded professional-home">
       <a className="skip-link" href="#main-content">{labels.skip}</a>
       <SiteHeader locale={locale} navItems={text.nav} navLabel={labels.nav} openLabel={labels.menu} closeLabel={labels.close} />
 
       <main id="main-content">
         <section className="hero" id="top">
+          <InteractiveHeroOrb />
           <div className="section-inner hero-inner">
             <p className="eyebrow">{text.hero.eyebrow}</p>
             <h1>{text.hero.title}</h1>
