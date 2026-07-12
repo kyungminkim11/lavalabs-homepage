@@ -38,7 +38,7 @@ function standardsSection(locale) {
 
 function phaseCard(locale) {
   const t = localeData[locale].data.phase;
-  return `<aside class="softmoon-phase-card softmoon-phase-card-pro">
+  return `<aside class="softmoon-phase-card softmoon-phase-card-pro" data-softmoon-phase-panel style="position:static;inset:auto;right:auto;bottom:auto;width:100%;max-width:none;margin:24px 0 0;transform:none;">
     <p>${t.label}</p>
     <dl>${t.rows.map(([term, value]) => `<div><dt>${term}</dt><dd>${value}</dd></div>`).join("")}</dl>
     <span>${t.note}</span>
