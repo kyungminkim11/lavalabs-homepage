@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5173",
     "build": "tsc -b && vite build",
-    "prepare:pages": "node scripts/generate-softmoon-assets.mjs && node scripts/prepare-pages.mjs && node scripts/prepare-project-routes.mjs && node scripts/refresh-home-meta.mjs",
+    "prepare:pages": "node scripts/generate-softmoon-assets.mjs && node scripts/prepare-pages.mjs && node scripts/postprocess-softmoon-professional.mjs && node scripts/prepare-project-routes.mjs && node scripts/refresh-home-meta.mjs",
     "capture:previews": "node scripts/capture-project-previews.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "test:site": "node scripts/site-check-v2.mjs",
