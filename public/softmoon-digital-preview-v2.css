@@ -1,6 +1,5 @@
-/* Connected Archive visual v2.
-   Replaces the oversized tilted phone and decorative QR block with a
-   clean, product-led interface preview that always fits its card. */
+/* Connected Archive visual v3.
+   Keeps the full interface visible inside the collection card at every size. */
 
 .softmoon-digital-visual {
   position: relative;
@@ -8,9 +7,10 @@
   display: grid;
   width: 100%;
   height: 100%;
+  min-height: 0;
   overflow: hidden;
   place-items: center;
-  padding: clamp(28px, 4.4vw, 52px);
+  padding: clamp(22px, 3.8vw, 42px);
   background:
     radial-gradient(circle at 78% 16%, rgba(213, 166, 92, 0.24), transparent 12rem),
     radial-gradient(circle at 18% 84%, rgba(217, 111, 97, 0.22), transparent 15rem),
@@ -44,18 +44,18 @@
 .softmoon-archive-preview {
   position: relative;
   z-index: 1;
-  display: flex;
-  width: min(90%, 350px);
-  height: min(84%, 430px);
-  min-height: 318px;
-  flex-direction: column;
+  display: grid;
+  width: min(88%, 360px);
+  height: auto;
+  max-height: calc(100% - 4px);
+  min-height: 0;
+  grid-template-rows: auto 128px auto auto;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 28px;
-  background:
-    linear-gradient(180deg, rgba(18, 46, 57, 0.96), rgba(8, 28, 37, 0.98));
+  background: linear-gradient(180deg, rgba(18, 46, 57, 0.96), rgba(8, 28, 37, 0.98));
   color: #fff;
-  padding: clamp(20px, 3vw, 28px);
+  padding: clamp(19px, 2.7vw, 25px);
   box-shadow:
     0 30px 70px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
@@ -66,7 +66,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  gap: 12px;
+  min-width: 0;
 }
 
 .softmoon-archive-wordmark {
@@ -80,16 +81,18 @@
   font-size: 0.57rem;
   font-weight: 850;
   letter-spacing: 0.13em;
+  white-space: nowrap;
 }
 
 .softmoon-archive-art {
   position: relative;
   display: grid;
-  min-height: 128px;
-  flex: 1 1 auto;
+  width: 100%;
+  height: 128px;
+  min-height: 0;
   place-items: center;
   overflow: hidden;
-  margin: 18px 0;
+  margin: 15px 0;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 21px;
   background:
@@ -100,15 +103,15 @@
 .softmoon-archive-moon {
   position: relative;
   z-index: 2;
-  width: 72px;
-  height: 72px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   background:
     radial-gradient(circle at 34% 30%, #fff8d8 0 10%, transparent 11%),
     radial-gradient(circle at 36% 34%, #ead6a9 0 25%, #d3ae69 58%, #9f7441 100%);
   box-shadow:
-    0 0 0 12px rgba(213, 166, 92, 0.06),
-    0 0 46px rgba(213, 166, 92, 0.3);
+    0 0 0 11px rgba(213, 166, 92, 0.06),
+    0 0 42px rgba(213, 166, 92, 0.28);
 }
 
 .softmoon-archive-moon::after {
@@ -121,8 +124,8 @@
 
 .softmoon-archive-orbit {
   position: absolute;
-  width: 166px;
-  height: 92px;
+  width: 158px;
+  height: 86px;
   border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 50%;
   transform: rotate(-14deg);
@@ -133,54 +136,68 @@
   width: 10px;
   height: 10px;
   top: 25%;
-  right: calc(50% - 73px);
+  right: calc(50% - 70px);
   border-radius: 50%;
   background: var(--sm-gold);
   box-shadow: 0 0 18px rgba(213, 166, 92, 0.8);
 }
 
+.softmoon-archive-copy {
+  min-width: 0;
+  overflow: visible;
+}
+
 .softmoon-archive-copy > span {
   display: block;
   color: #83cdd2;
-  font-size: 0.57rem;
+  font-size: 0.56rem;
   font-weight: 900;
   letter-spacing: 0.13em;
 }
 
 .softmoon-archive-copy strong {
   display: block;
-  margin-top: 8px;
-  font-size: clamp(1.12rem, 2.4vw, 1.42rem);
-  line-height: 1.08;
+  margin-top: 7px;
+  font-size: clamp(1.08rem, 2.1vw, 1.3rem);
+  line-height: 1.04;
   letter-spacing: -0.04em;
-}
-
-.softmoon-archive-copy p {
-  margin: 9px 0 0;
-  color: rgba(255, 255, 255, 0.64);
-  font-size: 0.7rem;
-  line-height: 1.55;
+  overflow-wrap: normal;
   word-break: keep-all;
 }
 
+.softmoon-archive-copy p {
+  display: block;
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.66rem;
+  line-height: 1.48;
+  word-break: keep-all;
+  overflow: visible;
+}
+
 .softmoon-archive-footer {
-  margin-top: 17px;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  margin-top: 13px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 14px;
+  padding-top: 12px;
   color: rgba(255, 255, 255, 0.68);
-  font-size: 0.62rem;
+  font-size: 0.59rem;
   font-weight: 760;
+  line-height: 1.3;
 }
 
 .softmoon-archive-state {
   display: inline-flex;
   align-items: center;
   gap: 7px;
+  white-space: nowrap;
 }
 
 .softmoon-archive-state i {
   width: 7px;
   height: 7px;
+  flex: 0 0 auto;
   border-radius: 50%;
   background: #76cbd0;
   box-shadow: 0 0 0 4px rgba(118, 203, 208, 0.11);
@@ -191,11 +208,12 @@
   align-items: center;
   gap: 7px;
   color: #fff;
+  white-space: nowrap;
 }
 
 .softmoon-archive-action b {
   color: var(--sm-gold);
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-weight: 700;
 }
 
@@ -203,8 +221,8 @@
 .softmoon-digital-visual .softmoon-phone {
   width: min(88%, 330px);
   max-width: none;
-  height: min(82%, 410px);
-  min-height: 310px;
+  height: auto;
+  min-height: 0;
   aspect-ratio: auto;
   border-width: 1px;
   border-radius: 28px;
@@ -219,24 +237,58 @@
 
 @media (max-width: 640px) {
   .softmoon-digital-visual {
-    padding: 24px;
+    padding: 20px;
   }
 
   .softmoon-archive-preview {
-    width: min(94%, 360px);
-    height: 84%;
-    min-height: 306px;
+    width: min(94%, 350px);
+    grid-template-rows: auto 112px auto auto;
     border-radius: 24px;
-    padding: 21px;
+    padding: 19px;
   }
 
   .softmoon-archive-art {
-    min-height: 118px;
-    margin-block: 15px;
+    height: 112px;
+    margin-block: 13px;
+  }
+
+  .softmoon-archive-moon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .softmoon-archive-orbit {
+    width: 142px;
+    height: 78px;
+  }
+
+  .softmoon-archive-copy strong {
+    font-size: 1.08rem;
   }
 
   .softmoon-archive-copy p {
-    font-size: 0.68rem;
+    font-size: 0.64rem;
+  }
+
+  .softmoon-archive-footer {
+    gap: 8px 14px;
+    font-size: 0.57rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .softmoon-archive-preview {
+    width: 100%;
+    grid-template-rows: auto 98px auto auto;
+    padding: 17px;
+  }
+
+  .softmoon-archive-art {
+    height: 98px;
+  }
+
+  .softmoon-archive-copy p {
+    font-size: 0.61rem;
   }
 }
 
