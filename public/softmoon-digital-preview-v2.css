@@ -1,0 +1,247 @@
+/* Connected Archive visual v2.
+   Replaces the oversized tilted phone and decorative QR block with a
+   clean, product-led interface preview that always fits its card. */
+
+.softmoon-digital-visual {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  place-items: center;
+  padding: clamp(28px, 4.4vw, 52px);
+  background:
+    radial-gradient(circle at 78% 16%, rgba(213, 166, 92, 0.24), transparent 12rem),
+    radial-gradient(circle at 18% 84%, rgba(217, 111, 97, 0.22), transparent 15rem),
+    linear-gradient(145deg, #102631 0%, #1d4652 58%, #263c45 100%);
+}
+
+.softmoon-digital-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.3;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(145deg, transparent 4%, #000 44%, transparent 96%);
+}
+
+.softmoon-digital-visual::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: -104px;
+  bottom: -116px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 50%;
+}
+
+.softmoon-archive-preview {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: min(90%, 350px);
+  height: min(84%, 430px);
+  min-height: 318px;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(18, 46, 57, 0.96), rgba(8, 28, 37, 0.98));
+  color: #fff;
+  padding: clamp(20px, 3vw, 28px);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.softmoon-archive-header,
+.softmoon-archive-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.softmoon-archive-wordmark {
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+}
+
+.softmoon-archive-index {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.57rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+}
+
+.softmoon-archive-art {
+  position: relative;
+  display: grid;
+  min-height: 128px;
+  flex: 1 1 auto;
+  place-items: center;
+  overflow: hidden;
+  margin: 18px 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 21px;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(71, 142, 151, 0.2), transparent 8rem),
+    rgba(255, 255, 255, 0.025);
+}
+
+.softmoon-archive-moon {
+  position: relative;
+  z-index: 2;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 30%, #fff8d8 0 10%, transparent 11%),
+    radial-gradient(circle at 36% 34%, #ead6a9 0 25%, #d3ae69 58%, #9f7441 100%);
+  box-shadow:
+    0 0 0 12px rgba(213, 166, 92, 0.06),
+    0 0 46px rgba(213, 166, 92, 0.3);
+}
+
+.softmoon-archive-moon::after {
+  content: "";
+  position: absolute;
+  inset: 4px -10px 4px 16px;
+  border-radius: 50%;
+  background: #102b35;
+}
+
+.softmoon-archive-orbit {
+  position: absolute;
+  width: 166px;
+  height: 92px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 50%;
+  transform: rotate(-14deg);
+}
+
+.softmoon-archive-marker {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 25%;
+  right: calc(50% - 73px);
+  border-radius: 50%;
+  background: var(--sm-gold);
+  box-shadow: 0 0 18px rgba(213, 166, 92, 0.8);
+}
+
+.softmoon-archive-copy > span {
+  display: block;
+  color: #83cdd2;
+  font-size: 0.57rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+}
+
+.softmoon-archive-copy strong {
+  display: block;
+  margin-top: 8px;
+  font-size: clamp(1.12rem, 2.4vw, 1.42rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.softmoon-archive-copy p {
+  margin: 9px 0 0;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 0.7rem;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+.softmoon-archive-footer {
+  margin-top: 17px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 14px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.62rem;
+  font-weight: 760;
+}
+
+.softmoon-archive-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.softmoon-archive-state i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #76cbd0;
+  box-shadow: 0 0 0 4px rgba(118, 203, 208, 0.11);
+}
+
+.softmoon-archive-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #fff;
+}
+
+.softmoon-archive-action b {
+  color: var(--sm-gold);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+/* Retire the legacy CSS-drawn phone and QR if stale markup is cached. */
+.softmoon-digital-visual .softmoon-phone {
+  width: min(88%, 330px);
+  max-width: none;
+  height: min(82%, 410px);
+  min-height: 310px;
+  aspect-ratio: auto;
+  border-width: 1px;
+  border-radius: 28px;
+  padding: 28px;
+  transform: none;
+}
+
+.softmoon-digital-visual .softmoon-phone::before,
+.softmoon-digital-visual .softmoon-qr {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .softmoon-digital-visual {
+    padding: 24px;
+  }
+
+  .softmoon-archive-preview {
+    width: min(94%, 360px);
+    height: 84%;
+    min-height: 306px;
+    border-radius: 24px;
+    padding: 21px;
+  }
+
+  .softmoon-archive-art {
+    min-height: 118px;
+    margin-block: 15px;
+  }
+
+  .softmoon-archive-copy p {
+    font-size: 0.68rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .softmoon-archive-marker {
+    box-shadow: none;
+  }
+}
