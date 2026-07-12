@@ -42,13 +42,16 @@ export default function InteractiveHeroOrb() {
         pointerX += (pointerTargetX - pointerX) * easing;
         pointerY += (pointerTargetY - pointerY) * easing;
 
-        orb.style.setProperty("--orb-auto-x", `${driftX.toFixed(2)}px`);
-        orb.style.setProperty("--orb-auto-y", `${driftY.toFixed(2)}px`);
-        orb.style.setProperty("--orb-pointer-x", `${pointerX.toFixed(2)}px`);
-        orb.style.setProperty("--orb-pointer-y", `${pointerY.toFixed(2)}px`);
+        const finalX = driftX + pointerX;
+        const finalY = driftY + pointerY;
+        orb.style.setProperty("--orb-x", `${finalX.toFixed(2)}px`);
+        orb.style.setProperty("--orb-y", `${finalY.toFixed(2)}px`);
         orb.style.setProperty("--orb-rotate", `${driftRotate.toFixed(2)}deg`);
         orb.dataset.motion = "active";
       } else {
+        orb.style.setProperty("--orb-x", "0px");
+        orb.style.setProperty("--orb-y", "0px");
+        orb.style.setProperty("--orb-rotate", "0deg");
         orb.dataset.motion = "reduced";
       }
 
