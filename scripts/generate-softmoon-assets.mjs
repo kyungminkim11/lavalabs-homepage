@@ -1,17 +1,19 @@
 import { mkdir, readFile } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
-const distImages = new URL("../dist/assets/images/", import.meta.url);
-const publicImages = new URL("../public/assets/images/", import.meta.url);
+const rootDir = path.dirname(fileURLToPath(import.meta.url));
+const distImages = path.resolve(rootDir, "../dist/assets/images");
+const publicImages = path.resolve(rootDir, "../public/assets/images");
 
 await mkdir(distImages, { recursive: true });
 
-const symbolSvg = await readFile(new URL("softmoon-symbol.svg", publicImages));
+const symbolSvg = await readFile(path.join(publicImages, "softmoon-symbol.svg"));
 const iconBuffer = await sharp(symbolSvg).resize(512, 512).png().toBuffer();
-await sharp(iconBuffer).toFile(new URL("softmoon-icon.png", distImages));
+await sharp(iconBuffer).toFile(path.join(distImages, "softmoon-icon.png"));
 
-const sampleUrl = new URL("lunar-sample-1.jpg", distImages);
-const sample = await sharp(sampleUrl)
+const sample = await sharp(path.join(distImages, "lunar-sample-1.jpg"))
   .resize(470, 630, { fit: "cover", position: "centre" })
   .modulate({ saturation: 0.92, brightness: 0.94 })
   .toBuffer();
@@ -56,6 +58,6 @@ await sharp({
     { input: iconSmall, left: 78, top: 62 }
   ])
   .png({ compressionLevel: 9 })
-  .toFile(new URL("softmoon-og.png", distImages));
+  .toFile(path.join(distImages, "softmoon-og.png"));
 
 console.log("Generated SoftMoon icon and social card.");
