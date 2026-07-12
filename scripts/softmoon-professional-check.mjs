@@ -15,6 +15,7 @@ for (const [output, titleText, heroText] of routes) {
   assert(html.includes(titleText), `${output}: professional title is missing`);
   assert(html.includes(heroText), `${output}: professional hero statement is missing`);
   assert(html.includes('href="/softmoon-professional.css"'), `${output}: professional stylesheet is missing`);
+  assert(html.includes('href="/softmoon-hero-layout-v2.css"'), `${output}: overlap-safe hero stylesheet is missing`);
   assert(html.includes('id="capabilities"'), `${output}: experience architecture section is missing`);
   assert(html.includes("softmoon-capability-grid"), `${output}: capability grid is missing`);
   assert(html.includes("softmoon-standards-section"), `${output}: development standards are missing`);
@@ -31,4 +32,9 @@ assert(css.includes(".softmoon-standards-section"), "professional standards styl
 assert(css.includes("@media (max-width: 640px)"), "professional mobile styles are missing");
 assert(css.length > 6000, "professional stylesheet appears incomplete");
 
-console.log("Validated professional SoftMoon positioning, multilingual copy, sections, forms, metadata, and responsive stylesheet.");
+const heroLayoutCss = await readFile(new URL("../dist/softmoon-hero-layout-v2.css", import.meta.url), "utf8");
+assert(heroLayoutCss.includes("position: static"), "hero status panel is not returned to document flow");
+assert(heroLayoutCss.includes("grid-template-columns: repeat(3"), "desktop status summary layout is missing");
+assert(heroLayoutCss.includes("@media (max-width: 640px)"), "mobile status panel layout is missing");
+
+console.log("Validated professional SoftMoon positioning, multilingual copy, overlap-safe hero media, forms, metadata, and responsive stylesheets.");
