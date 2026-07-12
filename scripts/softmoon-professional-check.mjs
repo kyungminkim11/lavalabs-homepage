@@ -14,13 +14,18 @@ for (const [output, titleText, heroText] of routes) {
   const html = await readFile(new URL(`../dist/${output}`, import.meta.url), "utf8");
   assert(html.includes(titleText), `${output}: professional title is missing`);
   assert(html.includes(heroText), `${output}: professional hero statement is missing`);
-  assert(html.includes('href="/softmoon-professional.css"'), `${output}: professional stylesheet is missing`);
-  assert(html.includes('href="/softmoon-hero-layout-v2.css"'), `${output}: overlap-safe hero stylesheet is missing`);
+  assert(html.includes("/softmoon-professional.css"), `${output}: professional stylesheet is missing`);
+  assert(html.includes("/softmoon-hero-layout-v2.css"), `${output}: overlap-safe hero stylesheet is missing`);
+  assert(html.includes("/softmoon-digital-preview-v2.css"), `${output}: archive preview stylesheet is missing`);
   assert(html.includes('id="capabilities"'), `${output}: experience architecture section is missing`);
   assert(html.includes("softmoon-capability-grid"), `${output}: capability grid is missing`);
   assert(html.includes("softmoon-standards-section"), `${output}: development standards are missing`);
   assert(html.includes("softmoon-phase-card-pro"), `${output}: professional status panel is missing`);
   assert(html.includes("softmoon-collaboration-scope"), `${output}: collaboration scope is missing`);
+  assert(html.includes("softmoon-archive-preview"), `${output}: redesigned Connected Archive preview is missing`);
+  assert(html.includes("Connected Archive"), `${output}: archive product name is missing`);
+  assert(!html.includes("softmoon-qr"), `${output}: legacy decorative QR remains`);
+  assert(!html.includes("softmoon-phone"), `${output}: legacy tilted phone remains`);
   assert((html.match(/class="softmoon-capability-grid"/g) ?? []).length === 1, `${output}: capability section is duplicated`);
   assert((html.match(/<form[^>]+data-softmoon-form/g) ?? []).length === 2, `${output}: existing forms were not preserved`);
   assert(!html.includes("광고 폭탄"), `${output}: informal launch copy remains`);
@@ -37,4 +42,10 @@ assert(heroLayoutCss.includes("position: static"), "hero status panel is not ret
 assert(heroLayoutCss.includes("grid-template-columns: repeat(3"), "desktop status summary layout is missing");
 assert(heroLayoutCss.includes("@media (max-width: 640px)"), "mobile status panel layout is missing");
 
-console.log("Validated professional SoftMoon positioning, multilingual copy, overlap-safe hero media, forms, metadata, and responsive stylesheets.");
+const archiveCss = await readFile(new URL("../dist/softmoon-digital-preview-v2.css", import.meta.url), "utf8");
+assert(archiveCss.includes(".softmoon-archive-preview"), "Connected Archive interface styles are missing");
+assert(archiveCss.includes(".softmoon-archive-art"), "archive artwork styles are missing");
+assert(archiveCss.includes("transform: none"), "legacy phone rotation fallback was not disabled");
+assert(archiveCss.length > 5000, "archive preview stylesheet appears incomplete");
+
+console.log("Validated professional SoftMoon positioning, multilingual copy, overlap-safe hero media, redesigned Connected Archive preview, forms, metadata, and responsive stylesheets.");
