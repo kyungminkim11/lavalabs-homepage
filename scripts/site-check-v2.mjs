@@ -71,6 +71,11 @@ try {
     assert(preview.includes("<svg"), `${file} project preview is missing`);
   }
 
+  for (const generatedImage of ["softmoon-icon.png", "softmoon-og.png"]) {
+    const asset = await readFile(new URL(`../dist/assets/images/${generatedImage}`, import.meta.url));
+    assert(asset.length > 1000, `${generatedImage} was not generated correctly`);
+  }
+
   for (let attempt = 0; attempt < 40; attempt += 1) {
     try { if ((await fetch(base)).ok) break; } catch {}
     await new Promise((resolve) => setTimeout(resolve, 250));
@@ -113,6 +118,21 @@ try {
       assert((firstField?.height ?? 0) >= 48, `${path} form field is too small for touch`);
       await assertMobileReadability(page, path);
     }
+
+    if (path.includes("/soft_moon/")) {
+      assert(await page.locator('link[href="/softmoon.css"]').count() === 1, `${path} does not load the standalone SoftMoon stylesheet`);
+      assert(await page.locator(".softmoon-preview-card").count() === 3, `${path} has incomplete collection previews`);
+      assert(await page.locator(".softmoon-roadmap-item").count() === 4, `${path} has an incomplete roadmap`);
+      assert(await page.locator("form[data-softmoon-form]").count() === 2, `${path} must include launch and collaboration forms`);
+      assert(await page.locator(".softmoon-mobile-nav").isVisible(), `${path} mobile section navigation is hidden`);
+      assert(await page.locator('img[src="/assets/images/softmoon-logo.svg"]').count() >= 2, `${path} does not use the SoftMoon identity`);
+      assert(await page.locator('meta[property="og:image"][content$="/softmoon-og.png"]').count() === 1, `${path} has no dedicated social card`);
+      const firstSoftmoonField = await page.locator(".softmoon-form input").first().boundingBox();
+      assert((firstSoftmoonField?.height ?? 0) >= 48, `${path} SoftMoon form field is too small for touch`);
+      const firstMobileTab = await page.locator(".softmoon-mobile-nav a").first().boundingBox();
+      assert((firstMobileTab?.height ?? 0) >= 36, `${path} SoftMoon mobile tab is too small`);
+    }
+
     if (path.includes("/projects/follow-checker/")) {
       assert(await page.locator(".follow-case-boundaries").count() === 1, `${path} has no service boundary section`);
       assert(await page.locator(".follow-case-grid-cards article").count() === 3, `${path} has incomplete process steps`);
@@ -143,7 +163,7 @@ try {
   await assertNoOverflow(home, "320px closed navigation");
   await compact.close();
 
-  console.log(`Validated ${routes.length} public routes, interactive hero orb, six project cards, mobile contrast, and compact navigation.`);
+  console.log(`Validated ${routes.length} public routes, SoftMoon previews and forms, interactive hero orb, six project cards, mobile contrast, and compact navigation.`);
 } finally {
   await browser?.close();
   server.kill();
