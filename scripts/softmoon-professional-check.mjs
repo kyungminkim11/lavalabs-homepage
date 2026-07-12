@@ -21,7 +21,7 @@ for (const [output, titleText, heroText] of routes) {
   assert(html.includes("softmoon-phase-card-pro"), `${output}: professional status panel is missing`);
   assert(html.includes("softmoon-collaboration-scope"), `${output}: collaboration scope is missing`);
   assert((html.match(/class="softmoon-capability-grid"/g) ?? []).length === 1, `${output}: capability section is duplicated`);
-  assert((html.match(/data-softmoon-form/g) ?? []).length === 2, `${output}: existing forms were not preserved`);
+  assert((html.match(/<form[^>]+data-softmoon-form/g) ?? []).length === 2, `${output}: existing forms were not preserved`);
   assert(!html.includes("광고 폭탄"), `${output}: informal launch copy remains`);
 }
 
