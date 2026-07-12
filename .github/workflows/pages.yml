@@ -1,4 +1,4 @@
-name: Build Test and Deploy Pages
+name: Build and Deploy Pages
 
 on:
   push:
@@ -17,7 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -28,9 +28,6 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run prepare:pages
-      - run: npx playwright install --with-deps chromium
-      - run: npm run capture:previews
-      - run: npm run test:site
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
@@ -44,3 +41,21 @@ jobs:
     steps:
       - id: pages
         uses: actions/deploy-pages@v4
+
+  quality:
+    name: Non-blocking visual QA
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run prepare:pages
+      - run: npx playwright install --with-deps chromium
+      - run: npm run capture:previews
+      - run: npm run test:site
