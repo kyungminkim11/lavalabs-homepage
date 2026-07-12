@@ -42,6 +42,15 @@ const escapeHtml = (value) => value
 
 const replace = (html, pattern, value) => pattern.test(html) ? html.replace(pattern, value) : html;
 
+const heroCriticalCss = `<style id="softmoon-hero-critical">
+.softmoon-hero-media{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:24px!important;align-content:start!important;padding-bottom:0!important}
+.softmoon-gallery{position:relative!important;z-index:1!important;min-width:0!important}
+.softmoon-gallery figure{min-width:0!important}
+.softmoon-gallery figcaption{position:relative!important;z-index:1!important;min-height:2.9em!important;padding-inline:2px!important}
+.softmoon-phase-card,.softmoon-phase-card-pro,[data-softmoon-phase-panel]{position:static!important;inset:auto!important;right:auto!important;bottom:auto!important;left:auto!important;top:auto!important;float:none!important;transform:none!important;width:100%!important;max-width:none!important;margin:24px 0 0!important;z-index:1!important}
+@media(max-width:640px){.softmoon-hero-media{gap:18px!important}.softmoon-gallery figcaption{min-height:0!important}.softmoon-phase-card,.softmoon-phase-card-pro,[data-softmoon-phase-panel]{margin-top:18px!important}}
+</style>`;
+
 function structuredData(route) {
   const canonical = `${origin}${route.path}`;
   return {
@@ -102,16 +111,19 @@ for (const route of routes) {
   if (!html.includes('href="/softmoon-professional.css"')) {
     html = html.replace(
       '<link rel="stylesheet" href="/softmoon.css" />',
-      '<link rel="stylesheet" href="/softmoon.css" />\n    <link rel="stylesheet" href="/softmoon-professional.css" />'
+      '<link rel="stylesheet" href="/softmoon.css?v=20260712-3" />\n    <link rel="stylesheet" href="/softmoon-professional.css?v=20260712-3" />'
     );
   }
 
-  if (!html.includes('href="/softmoon-hero-layout-v2.css"')) {
+  if (!html.includes('softmoon-hero-layout-v2.css')) {
     html = html.replace(
-      '<link rel="stylesheet" href="/softmoon-professional.css" />',
-      '<link rel="stylesheet" href="/softmoon-professional.css" />\n    <link rel="stylesheet" href="/softmoon-hero-layout-v2.css" />'
+      /<link rel="stylesheet" href="\/softmoon-professional\.css(?:\?[^\"]*)?" \/>/,
+      '$&\n    <link rel="stylesheet" href="/softmoon-hero-layout-v2.css?v=20260712-3" />'
     );
   }
+
+  html = html.replace(/<style id="softmoon-hero-critical">[\s\S]*?<\/style>/, "");
+  html = html.replace("</head>", `    ${heroCriticalCss}\n  </head>`);
 
   const title = escapeHtml(route.title);
   const description = escapeHtml(route.description);
@@ -130,4 +142,4 @@ for (const route of routes) {
   await writeFile(file, html, "utf8");
 }
 
-console.log("Applied professional SoftMoon positioning, copy, sections, metadata, and overlap-safe hero layout.");
+console.log("Applied professional SoftMoon content with an embedded overlap-safe hero layout.");
