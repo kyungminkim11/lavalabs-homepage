@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="140" viewBox="0 0 620 140" role="img" aria-labelledby="title desc">
+  <title id="title">SoftMoon</title>
+  <desc id="desc">SoftMoon crescent and orbit wordmark</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#203b49"/>
+      <stop offset="1" stop-color="#13212c"/>
+    </linearGradient>
+    <linearGradient id="moon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f0e7"/>
+      <stop offset="1" stop-color="#d5a65c"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(6 6)">
+    <circle cx="64" cy="64" r="54" fill="url(#bg)"/>
+    <path d="M82 29c-21 5-35 24-35 45 0 23 17 42 40 46-7 4-15 6-24 6-32 0-58-26-58-58S31 10 63 10c7 0 13 1 19 3z" fill="url(#moon)"/>
+    <ellipse cx="65" cy="65" rx="47" ry="20" fill="none" stroke="#79cbd1" stroke-width="2.5" transform="rotate(-18 65 65)" opacity=".92"/>
+    <circle cx="109" cy="50" r="6" fill="#d96f61"/>
+  </g>
+  <g transform="translate(150 26)">
+    <text x="0" y="58" fill="#13212c" font-family="Inter, Arial, sans-serif" font-size="62" font-weight="800" letter-spacing="-3.4">SoftMoon</text>
+    <text x="4" y="92" fill="#52616a" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="4.4">SMALL OBJECTS · LONG AFTERGLOW</text>
+  </g>
+</svg>
