@@ -1,0 +1,159 @@
+/* SoftMoon hero media layout v2.
+   Keeps the development-status panel in normal document flow so it never
+   covers product imagery or captions at any viewport size. */
+
+.softmoon-hero-media {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  align-content: start;
+  padding-bottom: 0;
+}
+
+.softmoon-gallery {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.softmoon-gallery figure {
+  min-width: 0;
+}
+
+.softmoon-gallery figcaption {
+  min-height: 2.9em;
+  padding-inline: 2px;
+}
+
+.softmoon-phase-card,
+.softmoon-phase-card-pro {
+  position: static;
+  inset: auto;
+  z-index: 2;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 0 0 auto;
+  border-color: rgba(19, 33, 44, 0.12);
+  background: rgba(255, 253, 250, 0.96);
+  box-shadow: 0 18px 46px rgba(19, 33, 44, 0.13);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.softmoon-phase-card-pro {
+  padding: 22px 24px;
+}
+
+.softmoon-phase-card-pro dl {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid rgba(19, 33, 44, 0.1);
+  border-bottom: 1px solid rgba(19, 33, 44, 0.1);
+}
+
+.softmoon-phase-card-pro dl > div {
+  display: block;
+  min-width: 0;
+  border-top: 0;
+  border-right: 1px solid rgba(19, 33, 44, 0.1);
+  padding: 13px 14px;
+}
+
+.softmoon-phase-card-pro dl > div:first-child {
+  padding-left: 0;
+}
+
+.softmoon-phase-card-pro dl > div:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.softmoon-phase-card-pro dt {
+  line-height: 1.45;
+}
+
+.softmoon-phase-card-pro dd {
+  margin-top: 6px;
+  line-height: 1.4;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.softmoon-phase-card-pro > span {
+  border-top: 0;
+  margin-top: 12px;
+  padding-top: 0;
+}
+
+@media (max-width: 1160px) {
+  .softmoon-hero-media {
+    gap: 20px;
+  }
+
+  .softmoon-phase-card,
+  .softmoon-phase-card-pro {
+    max-width: none;
+  }
+}
+
+@media (max-width: 920px) {
+  .softmoon-hero-media {
+    width: 100%;
+    max-width: 760px;
+    margin-inline: 0;
+    justify-self: start;
+  }
+
+  .softmoon-phase-card,
+  .softmoon-phase-card-pro {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .softmoon-hero-media {
+    gap: 18px;
+  }
+
+  .softmoon-gallery figcaption {
+    min-height: 0;
+  }
+
+  .softmoon-phase-card-pro {
+    padding: 20px;
+  }
+
+  .softmoon-phase-card-pro dl {
+    grid-template-columns: 1fr;
+  }
+
+  .softmoon-phase-card-pro dl > div,
+  .softmoon-phase-card-pro dl > div:first-child,
+  .softmoon-phase-card-pro dl > div:last-child {
+    display: grid;
+    grid-template-columns: minmax(92px, 0.72fr) minmax(0, 1.28fr);
+    gap: 14px;
+    align-items: baseline;
+    border-right: 0;
+    border-bottom: 1px solid rgba(19, 33, 44, 0.1);
+    padding: 11px 0;
+  }
+
+  .softmoon-phase-card-pro dl > div:last-child {
+    border-bottom: 0;
+  }
+
+  .softmoon-phase-card-pro dd {
+    margin-top: 0;
+    text-align: right;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .softmoon-phase-card,
+  .softmoon-phase-card-pro {
+    background: #fffdfa;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
