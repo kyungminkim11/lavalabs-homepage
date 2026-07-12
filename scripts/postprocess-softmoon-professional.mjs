@@ -106,6 +106,13 @@ for (const route of routes) {
     );
   }
 
+  if (!html.includes('href="/softmoon-hero-layout-v2.css"')) {
+    html = html.replace(
+      '<link rel="stylesheet" href="/softmoon-professional.css" />',
+      '<link rel="stylesheet" href="/softmoon-professional.css" />\n    <link rel="stylesheet" href="/softmoon-hero-layout-v2.css" />'
+    );
+  }
+
   const title = escapeHtml(route.title);
   const description = escapeHtml(route.description);
   html = replace(html, /<title>[\s\S]*?<\/title>/i, `<title>${title}</title>`);
@@ -123,4 +130,4 @@ for (const route of routes) {
   await writeFile(file, html, "utf8");
 }
 
-console.log("Applied professional SoftMoon positioning, copy, sections, and metadata.");
+console.log("Applied professional SoftMoon positioning, copy, sections, metadata, and overlap-safe hero layout.");
