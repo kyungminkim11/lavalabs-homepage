@@ -1,0 +1,435 @@
+/* Professional positioning and editorial refinements for SoftMoon. */
+.softmoon-shell {
+  --sm-accent-soft: rgba(47, 143, 152, 0.12);
+  --sm-surface-cool: #edf3f2;
+  --sm-copy-width: 68ch;
+}
+
+.softmoon-hero {
+  min-height: min(920px, 100vh);
+  padding-bottom: 92px;
+}
+
+.softmoon-hero-copy {
+  max-width: 600px;
+}
+
+.softmoon-statement {
+  max-width: 590px;
+  font-size: clamp(1.7rem, 2.7vw, 2.48rem);
+  line-height: 1.14;
+}
+
+.softmoon-body-copy {
+  max-width: var(--sm-copy-width);
+  color: #394d58;
+}
+
+.softmoon-status-badge {
+  border-color: rgba(19, 33, 44, 0.14);
+  background: rgba(255, 255, 255, 0.68);
+  letter-spacing: -0.01em;
+}
+
+.softmoon-actions {
+  row-gap: 8px;
+}
+
+.softmoon-text-link {
+  color: var(--sm-night-soft);
+}
+
+.softmoon-phase-card-pro {
+  width: min(340px, 78%);
+  padding: 20px 22px;
+}
+
+.softmoon-phase-card-pro > p {
+  color: var(--sm-teal);
+}
+
+.softmoon-phase-card-pro dl {
+  display: grid;
+  gap: 0;
+  margin: 14px 0 0;
+}
+
+.softmoon-phase-card-pro dl > div {
+  display: grid;
+  grid-template-columns: minmax(82px, 0.7fr) minmax(0, 1.3fr);
+  gap: 16px;
+  align-items: baseline;
+  border-top: 1px solid rgba(19, 33, 44, 0.1);
+  padding: 10px 0;
+}
+
+.softmoon-phase-card-pro dt,
+.softmoon-phase-card-pro dd {
+  margin: 0;
+}
+
+.softmoon-phase-card-pro dt {
+  color: #65747c;
+  font-size: 0.68rem;
+  font-weight: 780;
+}
+
+.softmoon-phase-card-pro dd {
+  color: var(--sm-night);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-align: right;
+}
+
+.softmoon-phase-card-pro > span {
+  border-top: 1px solid rgba(19, 33, 44, 0.1);
+  margin-top: 2px;
+  padding-top: 12px;
+}
+
+.softmoon-section {
+  padding-block: clamp(78px, 9vw, 116px);
+}
+
+.softmoon-section-heading > p,
+.softmoon-roadmap-intro > p:not(.softmoon-eyebrow),
+.softmoon-updates-card > div > p:not(.softmoon-eyebrow),
+.softmoon-collaboration-copy > p:not(.softmoon-eyebrow) {
+  max-width: var(--sm-copy-width);
+  color: #455963;
+}
+
+.softmoon-capability-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 92% 10%, rgba(47, 143, 152, 0.2), transparent 28rem),
+    radial-gradient(circle at 5% 90%, rgba(217, 111, 97, 0.12), transparent 24rem),
+    var(--sm-night);
+  color: #fff;
+}
+
+.softmoon-capability-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(110deg, transparent 0 68%, rgba(255, 255, 255, 0.035) 68% 68.2%, transparent 68.2%);
+}
+
+.softmoon-capability-section .softmoon-container {
+  position: relative;
+}
+
+.softmoon-capability-section .softmoon-eyebrow {
+  color: #82d1d6;
+}
+
+.softmoon-capability-section .softmoon-section-heading h2 {
+  color: #fff;
+  max-width: 900px;
+}
+
+.softmoon-capability-section .softmoon-section-heading > p {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.softmoon-capability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.softmoon-capability-grid article {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 10px 22px;
+  min-height: 250px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 30px 34px 34px 0;
+}
+
+.softmoon-capability-grid article:nth-child(odd) {
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.softmoon-capability-grid article:nth-child(even) {
+  padding-left: 34px;
+}
+
+.softmoon-capability-grid article > span {
+  grid-row: 1 / span 3;
+  color: var(--sm-coral);
+  font-size: 0.7rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+}
+
+.softmoon-capability-grid h3 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  letter-spacing: -0.04em;
+}
+
+.softmoon-capability-grid p {
+  max-width: 44ch;
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.softmoon-capability-grid small {
+  align-self: end;
+  margin-top: 28px;
+  color: #85cdd2;
+  font-size: 0.68rem;
+  font-weight: 820;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.softmoon-preview-section {
+  background: linear-gradient(180deg, #fffdfa, #f9f5ee);
+}
+
+.softmoon-preview-card {
+  box-shadow: 0 18px 54px rgba(19, 33, 44, 0.08);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.softmoon-preview-card:hover {
+  border-color: rgba(47, 143, 152, 0.28);
+  box-shadow: 0 26px 70px rgba(19, 33, 44, 0.13);
+  transform: translateY(-4px);
+}
+
+.softmoon-preview-copy h3 {
+  min-height: 2.4em;
+}
+
+.softmoon-principles-grid h3 {
+  font-size: clamp(1.48rem, 2.4vw, 2rem);
+}
+
+.softmoon-lab-section {
+  background: #f4eee5;
+}
+
+.softmoon-process-grid article h3 {
+  color: var(--sm-night);
+}
+
+.softmoon-standards-section {
+  padding: clamp(74px, 8vw, 104px) 0;
+  background:
+    radial-gradient(circle at 92% 16%, rgba(47, 143, 152, 0.15), transparent 24rem),
+    var(--sm-surface-cool);
+}
+
+.softmoon-standards-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(48px, 8vw, 112px);
+  align-items: start;
+}
+
+.softmoon-standards-layout h2 {
+  max-width: 560px;
+  margin: 17px 0 0;
+  color: var(--sm-night);
+  font-size: clamp(2.2rem, 4.4vw, 4rem);
+  line-height: 1.06;
+  letter-spacing: -0.055em;
+  word-break: keep-all;
+}
+
+.softmoon-standards-grid {
+  border-top: 1px solid rgba(19, 33, 44, 0.18);
+}
+
+.softmoon-standards-grid article {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 18px;
+  border-bottom: 1px solid rgba(19, 33, 44, 0.14);
+  padding: 23px 0;
+}
+
+.softmoon-standards-grid article > span {
+  color: var(--sm-coral);
+  font-size: 0.7rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+}
+
+.softmoon-standards-grid h3 {
+  margin: 0;
+  color: var(--sm-night);
+  font-size: 1.04rem;
+  letter-spacing: -0.02em;
+}
+
+.softmoon-standards-grid p {
+  margin: 7px 0 0;
+  color: #53656e;
+  line-height: 1.65;
+}
+
+.softmoon-collaboration-card {
+  align-items: start;
+}
+
+.softmoon-collaboration-scope-wrap {
+  margin-top: 34px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding-top: 24px;
+}
+
+.softmoon-scope-label {
+  margin: 0;
+  color: #7fd0d5;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.softmoon-collaboration-scope {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.softmoon-collaboration-scope li {
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.88);
+  padding: 13px 0 13px 18px;
+  font-size: 0.86rem;
+  font-weight: 760;
+}
+
+.softmoon-collaboration-scope li::before {
+  content: "";
+  position: absolute;
+  top: 19px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sm-coral);
+}
+
+.softmoon-collaboration-fit {
+  margin: 18px 0 0 !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  font-size: 0.78rem;
+  line-height: 1.65 !important;
+}
+
+.softmoon-form label > span:first-child {
+  font-size: 0.77rem;
+  font-weight: 820;
+}
+
+.softmoon-form input,
+.softmoon-form select,
+.softmoon-form textarea {
+  border-color: rgba(19, 33, 44, 0.16);
+}
+
+.softmoon-form input:focus,
+.softmoon-form select:focus,
+.softmoon-form textarea:focus {
+  border-color: var(--sm-teal);
+  box-shadow: 0 0 0 4px rgba(47, 143, 152, 0.12);
+  outline: none;
+}
+
+@media (max-width: 1160px) {
+  .softmoon-header-inner {
+    gap: 12px;
+  }
+
+  .softmoon-section-nav a {
+    padding-inline: 7px;
+    font-size: 0.73rem;
+  }
+}
+
+@media (max-width: 920px) {
+  .softmoon-hero {
+    min-height: 0;
+  }
+
+  .softmoon-capability-grid,
+  .softmoon-standards-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .softmoon-capability-grid article:nth-child(odd) {
+    border-right: 0;
+  }
+
+  .softmoon-capability-grid article:nth-child(even) {
+    padding-left: 0;
+  }
+
+  .softmoon-capability-grid article {
+    min-height: 0;
+  }
+
+  .softmoon-standards-layout {
+    gap: 42px;
+  }
+}
+
+@media (max-width: 640px) {
+  .softmoon-section {
+    padding-block: 72px;
+  }
+
+  .softmoon-statement {
+    font-size: clamp(1.6rem, 8.4vw, 2.2rem);
+  }
+
+  .softmoon-phase-card-pro {
+    width: 100%;
+  }
+
+  .softmoon-capability-grid article {
+    grid-template-columns: 38px minmax(0, 1fr);
+    padding: 25px 0;
+  }
+
+  .softmoon-capability-grid p {
+    margin-top: 9px;
+  }
+
+  .softmoon-capability-grid small {
+    margin-top: 18px;
+  }
+
+  .softmoon-preview-copy h3 {
+    min-height: 0;
+  }
+
+  .softmoon-collaboration-scope {
+    grid-template-columns: 1fr;
+  }
+
+  .softmoon-standards-grid article {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .softmoon-preview-card {
+    transition: none;
+  }
+}
