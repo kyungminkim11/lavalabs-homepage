@@ -18,12 +18,6 @@ const previewLabel = {
   jp: "サービス画面を開く"
 } as const;
 
-const liveLabel = {
-  ko: "실시간 화면",
-  en: "Live preview",
-  jp: "ライブ画面"
-} as const;
-
 const followCardCopy = {
   ko: { primary: "맞팔체커 웹 페이지 보기", secondary: "웹에서 분석 시작하기" },
   en: { primary: "View Follow Checker page", secondary: "Analyze on the web" },
@@ -42,11 +36,11 @@ export default function ProjectCard({ project, locale, priority = false }: { pro
   const secondaryExternal = secondaryHref?.startsWith("http") ?? false;
   const hasSecondary = Boolean(secondaryHref && secondaryCta);
   const track = (action: string) => trackEvent("project_click", { locale, project: project.title, action });
-  const previewAlt = locale === "ko" ? `${project.title} 실제 서비스 화면 미리보기` : locale === "en" ? `${project.title} live service preview` : `${project.title} 実際のサービス画面`;
-  const livePreviewHref = project.href.startsWith("http") ? project.href : null;
-  const domain = livePreviewHref
-    ? livePreviewHref.replace(/^https?:\/\//, "").replace(/\/$/, "")
-    : `lavalabs.co.kr${primaryHref}`;
+  const previewAlt = locale === "ko" ? `${project.title} 실제 서비스 화면을 반영한 미리보기` : locale === "en" ? `${project.title} service preview` : `${project.title} サービス画面プレビュー`;
+  const domainSource = project.href.startsWith("http") ? project.href : primaryHref;
+  const domain = domainSource.startsWith("http")
+    ? domainSource.replace(/^https?:\/\//, "").replace(/\/$/, "")
+    : `lavalabs.co.kr${domainSource}`;
   const visibleTags = project.tags.slice(0, 3);
   const hiddenTagCount = Math.max(0, project.tags.length - visibleTags.length);
 
@@ -60,21 +54,9 @@ export default function ProjectCard({ project, locale, priority = false }: { pro
         aria-label={`${project.title} ${previewLabel[locale]}`}
         onClick={() => track(isFollowChecker ? "open_project_page" : "open_preview")}
       >
-        <div className={`project-preview-frame project-${project.preview}-preview ${livePreviewHref ? "has-live-preview" : ""}`}>
+        <div className={`project-preview-frame project-${project.preview}-preview`}>
           <img src={previewSource[project.preview]} alt={previewAlt} loading={priority ? "eager" : "lazy"} width="1280" height="800" />
-          {livePreviewHref && (
-            <div className="project-live-preview" aria-hidden="true">
-              <iframe
-                src={livePreviewHref}
-                title=""
-                loading={priority ? "eager" : "lazy"}
-                tabIndex={-1}
-                referrerPolicy="strict-origin-when-cross-origin"
-              />
-            </div>
-          )}
           <span className="project-domain-chip">{domain}</span>
-          {livePreviewHref && <span className="project-live-chip"><i />{liveLabel[locale]}</span>}
           <span className="project-preview-icon" aria-hidden="true">{primaryExternal ? <ExternalLink /> : <ChevronRight />}</span>
         </div>
       </a>
