@@ -1,1 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#202537"/><stop offset=".55" stop-color="#49446c"/><stop offset="1" stop-color="#9c668e"/></linearGradient></defs><rect width="1280" height="800" fill="url(#g)"/><rect x="72" y="58" width="1136" height="684" rx="42" fill="#ffffff" fill-opacity=".08" stroke="#fff" stroke-opacity=".16"/><text x="118" y="170" fill="#fff" font-family="Arial,sans-serif" font-size="60" font-weight="900">맞팔체커</text><text x="118" y="220" fill="#e5ddea" font-family="Arial,sans-serif" font-size="25">Instagram 데이터 ZIP · 브라우저 로컬 분석</text><g transform="translate(118 302)"><rect width="300" height="250" rx="26" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".15"/><rect x="326" width="300" height="250" rx="26" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".15"/><rect x="652" width="300" height="250" rx="26" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".15"/><text x="28" y="72" fill="#f2d9ea" font-family="Arial,sans-serif" font-size="24" font-weight="700">Mutual</text><text x="28" y="145" fill="#fff" font-family="Arial,sans-serif" font-size="54" font-weight="900">248</text><text x="354" y="72" fill="#f2d9ea" font-family="Arial,sans-serif" font-size="24" font-weight="700">Following only</text><text x="354" y="145" fill="#fff" font-family="Arial,sans-serif" font-size="54" font-weight="900">96</text><text x="680" y="72" fill="#f2d9ea" font-family="Arial,sans-serif" font-size="24" font-weight="700">Followers only</text><text x="680" y="145" fill="#fff" font-family="Arial,sans-serif" font-size="54" font-weight="900">41</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1d2335"/><stop offset=".58" stop-color="#4c4772"/><stop offset="1" stop-color="#9f6a92"/></linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffffff" stop-opacity=".13"/><stop offset="1" stop-color="#ffffff" stop-opacity=".07"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#0c1020" flood-opacity=".34"/></filter>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <circle cx="1120" cy="104" r="220" fill="#d9b6e7" opacity=".09"/>
+  <circle cx="160" cy="760" r="260" fill="#9ea8ff" opacity=".08"/>
+  <rect x="62" y="50" width="1156" height="700" rx="42" fill="#ffffff" fill-opacity=".065" stroke="#fff" stroke-opacity=".16" filter="url(#shadow)"/>
+  <rect x="62" y="50" width="1156" height="68" rx="42" fill="#171c2b" fill-opacity=".72"/>
+  <circle cx="108" cy="84" r="8" fill="#f18c86"/><circle cx="134" cy="84" r="8" fill="#f2c76d"/><circle cx="160" cy="84" r="8" fill="#72ce9b"/>
+  <rect x="440" y="69" width="400" height="31" rx="15.5" fill="#fff" fill-opacity=".12"/>
+  <text x="514" y="90" fill="#e7e3f0" font-family="Arial,sans-serif" font-size="15" font-weight="700">unfollow.lavalabs.co.kr</text>
+  <g transform="translate(112 150)">
+    <text x="0" y="38" fill="#fff" font-family="Arial,sans-serif" font-size="58" font-weight="900">맞팔체커</text>
+    <text x="0" y="82" fill="#e7ddec" font-family="Arial,sans-serif" font-size="23">Instagram 데이터 ZIP · 브라우저 로컬 분석</text>
+    <rect x="0" y="120" width="956" height="84" rx="22" fill="url(#panel)" stroke="#fff" stroke-opacity=".12"/>
+    <rect x="22" y="141" width="650" height="42" rx="16" fill="#fff" fill-opacity=".1"/>
+    <circle cx="50" cy="162" r="9" fill="none" stroke="#eae4f0" stroke-width="3"/><path d="M57 169l9 9" stroke="#eae4f0" stroke-width="3" stroke-linecap="round"/>
+    <text x="82" y="168" fill="#d8d1df" font-family="Arial,sans-serif" font-size="16">계정 검색 또는 결과 필터</text>
+    <rect x="694" y="141" width="240" height="42" rx="16" fill="#fff" fill-opacity=".16"/>
+    <text x="751" y="168" fill="#fff" font-family="Arial,sans-serif" font-size="15" font-weight="700">ZIP 분석 시작</text>
+    <g transform="translate(0 228)">
+      <g><rect width="300" height="154" rx="24" fill="url(#panel)" stroke="#fff" stroke-opacity=".13"/><text x="24" y="52" fill="#f0d9ea" font-family="Arial,sans-serif" font-size="20" font-weight="700">Mutual</text><text x="24" y="113" fill="#fff" font-family="Arial,sans-serif" font-size="48" font-weight="900">248</text><circle cx="252" cy="50" r="18" fill="#86d6b1" opacity=".2"/><path d="M244 50l6 6 11-14" fill="none" stroke="#a8e6c9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <g transform="translate(326 0)"><rect width="300" height="154" rx="24" fill="url(#panel)" stroke="#fff" stroke-opacity=".13"/><text x="24" y="52" fill="#f0d9ea" font-family="Arial,sans-serif" font-size="20" font-weight="700">Following only</text><text x="24" y="113" fill="#fff" font-family="Arial,sans-serif" font-size="48" font-weight="900">96</text><rect x="230" y="34" width="44" height="30" rx="15" fill="#f0b3d3" opacity=".18"/><path d="M242 49h20" stroke="#f0c1dc" stroke-width="4" stroke-linecap="round"/></g>
+      <g transform="translate(652 0)"><rect width="304" height="154" rx="24" fill="url(#panel)" stroke="#fff" stroke-opacity=".13"/><text x="24" y="52" fill="#f0d9ea" font-family="Arial,sans-serif" font-size="20" font-weight="700">Followers only</text><text x="24" y="113" fill="#fff" font-family="Arial,sans-serif" font-size="48" font-weight="900">41</text><circle cx="254" cy="49" r="16" fill="none" stroke="#f0c1dc" stroke-width="3"/><path d="M254 40v18M245 49h18" stroke="#f0c1dc" stroke-width="3" stroke-linecap="round"/></g>
+    </g>
+    <g transform="translate(0 410)">
+      <rect width="956" height="186" rx="24" fill="#151b2a" fill-opacity=".34" stroke="#fff" stroke-opacity=".12"/>
+      <text x="24" y="38" fill="#fff" font-family="Arial,sans-serif" font-size="18" font-weight="800">최근 분석 결과</text>
+      <text x="788" y="38" fill="#d8cfdf" font-family="Arial,sans-serif" font-size="14">총 385개 계정</text>
+      <g transform="translate(24 58)"><circle cx="20" cy="20" r="20" fill="#8b82b7"/><text x="52" y="18" fill="#fff" font-family="Arial,sans-serif" font-size="15" font-weight="700">daily.memory</text><text x="52" y="38" fill="#c9c2d0" font-family="Arial,sans-serif" font-size="13">맞팔</text><rect x="826" y="4" width="82" height="32" rx="16" fill="#78cda6" fill-opacity=".16"/><text x="849" y="25" fill="#a8e6c9" font-family="Arial,sans-serif" font-size="13" font-weight="700">Mutual</text></g>
+      <line x1="24" y1="110" x2="932" y2="110" stroke="#fff" stroke-opacity=".09"/>
+      <g transform="translate(24 124)"><circle cx="20" cy="20" r="20" fill="#b17a9d"/><text x="52" y="18" fill="#fff" font-family="Arial,sans-serif" font-size="15" font-weight="700">seoul.frame</text><text x="52" y="38" fill="#c9c2d0" font-family="Arial,sans-serif" font-size="13">나만 팔로우 중</text><rect x="792" y="4" width="116" height="32" rx="16" fill="#e9a9cf" fill-opacity=".15"/><text x="812" y="25" fill="#f0c1dc" font-family="Arial,sans-serif" font-size="13" font-weight="700">Following only</text></g>
+    </g>
+  </g>
+</svg>
