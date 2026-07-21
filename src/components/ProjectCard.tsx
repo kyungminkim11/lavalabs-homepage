@@ -19,18 +19,19 @@ const previewLabel = {
 } as const;
 
 const followCardCopy = {
-  ko: { primary: "맞팔체커 웹 페이지 보기", secondary: "분석 도구 열기" },
-  en: { primary: "View Follow Checker page", secondary: "Open analyzer" },
-  jp: { primary: "フォローチェッカー紹介を見る", secondary: "分析ツールを開く" }
+  ko: { primary: "맞팔체커 웹 페이지 보기", secondary: "웹에서 분석 시작하기" },
+  en: { primary: "View Follow Checker page", secondary: "Analyze on the web" },
+  jp: { primary: "フォローチェッカー紹介を見る", secondary: "Webで分析を始める" }
 } as const;
 
 export default function ProjectCard({ project, locale, priority = false }: { project: Project; locale: Locale; priority?: boolean }) {
   const isFollowChecker = project.preview === "follow";
   const followDetailHref = locale === "ko" ? "/projects/follow-checker/" : `/${locale}/projects/follow-checker/`;
+  const followAnalyzerHref = locale === "ko" ? "/projects/follow-checker/analyzer/" : `/${locale}/projects/follow-checker/analyzer/`;
   const primaryHref = isFollowChecker ? followDetailHref : project.href;
   const primaryExternal = primaryHref.startsWith("http");
   const primaryCta = isFollowChecker ? followCardCopy[locale].primary : project.cta;
-  const secondaryHref = isFollowChecker ? project.href : project.detailHref;
+  const secondaryHref = isFollowChecker ? followAnalyzerHref : project.detailHref;
   const secondaryCta = isFollowChecker ? followCardCopy[locale].secondary : project.detailCta;
   const secondaryExternal = secondaryHref?.startsWith("http") ?? false;
   const hasSecondary = Boolean(secondaryHref && secondaryCta);
@@ -100,7 +101,7 @@ export default function ProjectCard({ project, locale, priority = false }: { pro
               href={secondaryHref}
               target={secondaryExternal ? "_blank" : undefined}
               rel={secondaryExternal ? "noreferrer" : undefined}
-              onClick={() => track(isFollowChecker ? "open_analyzer" : "open_case_study")}
+              onClick={() => track(isFollowChecker ? "open_web_analyzer" : "open_case_study")}
             >
               <span>{secondaryCta}</span>{secondaryExternal ? <ExternalLink aria-hidden="true" /> : <ChevronRight aria-hidden="true" />}
             </a>
