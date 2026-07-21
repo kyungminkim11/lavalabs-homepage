@@ -1,3 +1,7 @@
+#root:empty ~ .business-disclosure {
+  display: none;
+}
+
 .business-disclosure {
   border-top: 1px solid rgba(255, 255, 255, 0.14);
   background:
