@@ -87,7 +87,7 @@ const copy = {
     footer: "SoftMoon은 Lava Labs가 기획하고 운영하는 자체 브랜드입니다.",
     sending: "전송 중입니다…",
     success: "접수되었습니다. 확인 후 안내드리겠습니다.",
-    error: "전송하지 못했습니다. 잠시 후 다시 시도하거나 info@lavalabs.co.kr로 보내주세요."
+    error: "전송하지 못했습니다. 잠시 후 다시 시도하거나 softmoon@lavalabs.co.kr로 보내주세요."
   },
   en: {
     home: "/en/",
@@ -172,7 +172,7 @@ const copy = {
     footer: "SoftMoon is an in-house brand planned and operated by Lava Labs.",
     sending: "Sending…",
     success: "Received. We will follow up after review.",
-    error: "We could not send the form. Please try again or email info@lavalabs.co.kr."
+    error: "We could not send the form. Please try again or email softmoon@lavalabs.co.kr."
   },
   jp: {
     home: "/jp/",
@@ -257,7 +257,7 @@ const copy = {
     footer: "SoftMoonはLava Labsが企画・運営する自社ブランドです。",
     sending: "送信中です…",
     success: "受け付けました。確認後ご案内します。",
-    error: "送信できませんでした。再度お試しいただくか、info@lavalabs.co.krへご連絡ください。"
+    error: "送信できませんでした。再度お試しいただくか、softmoon@lavalabs.co.krへご連絡ください。"
   }
 };
 
@@ -377,7 +377,7 @@ function footer(t) {
   return `<footer class="softmoon-footer">
     <div class="softmoon-container softmoon-footer-grid">
       <div>${brandLogo}<p>${t.footer}</p></div>
-      <div class="softmoon-footer-links"><a href="mailto:info@lavalabs.co.kr">Email</a><a href="https://www.instagram.com/lavalabs_official/" target="_blank" rel="noreferrer">Instagram</a><a href="${t.home}">${lavaLogo}<span>${t.back}</span></a></div>
+      <div class="softmoon-footer-links"><a href="mailto:softmoon@lavalabs.co.kr">Email</a><a href="https://www.instagram.com/lavalabs_official/" target="_blank" rel="noreferrer">Instagram</a><a href="${t.home}">${lavaLogo}<span>${t.back}</span></a></div>
       <small>© 2026 Lava Labs. All rights reserved.</small>
     </div>
   </footer>`;

@@ -71,7 +71,7 @@ function structuredData(route) {
           "@id": `${origin}/#organization`,
           name: "Lava Labs",
           url: `${origin}/`,
-          email: "info@lavalabs.co.kr"
+          email: "softmoon@lavalabs.co.kr"
         }
       },
       {
