@@ -18,11 +18,27 @@ const previewLabel = {
   jp: "サービス画面を開く"
 } as const;
 
+const followCardCopy = {
+  ko: { primary: "맞팔체커 웹 페이지 보기", secondary: "분석 도구 열기" },
+  en: { primary: "View Follow Checker page", secondary: "Open analyzer" },
+  jp: { primary: "フォローチェッカー紹介を見る", secondary: "分析ツールを開く" }
+} as const;
+
 export default function ProjectCard({ project, locale, priority = false }: { project: Project; locale: Locale; priority?: boolean }) {
-  const external = project.href.startsWith("http");
+  const isFollowChecker = project.preview === "follow";
+  const followDetailHref = locale === "ko" ? "/projects/follow-checker/" : `/${locale}/projects/follow-checker/`;
+  const primaryHref = isFollowChecker ? followDetailHref : project.href;
+  const primaryExternal = primaryHref.startsWith("http");
+  const primaryCta = isFollowChecker ? followCardCopy[locale].primary : project.cta;
+  const secondaryHref = isFollowChecker ? project.href : project.detailHref;
+  const secondaryCta = isFollowChecker ? followCardCopy[locale].secondary : project.detailCta;
+  const secondaryExternal = secondaryHref?.startsWith("http") ?? false;
+  const hasSecondary = Boolean(secondaryHref && secondaryCta);
   const track = (action: string) => trackEvent("project_click", { locale, project: project.title, action });
   const previewAlt = locale === "ko" ? `${project.title} 실제 서비스 화면 미리보기` : locale === "en" ? `${project.title} live service preview` : `${project.title} 実際のサービス画面`;
-  const domain = project.href.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  const domain = primaryExternal
+    ? primaryHref.replace(/^https?:\/\//, "").replace(/\/$/, "")
+    : `lavalabs.co.kr${primaryHref}`;
   const visibleTags = project.tags.slice(0, 3);
   const hiddenTagCount = Math.max(0, project.tags.length - visibleTags.length);
 
@@ -30,16 +46,16 @@ export default function ProjectCard({ project, locale, priority = false }: { pro
     <article className={`case-card project-card-v2 project-${project.preview}`}>
       <a
         className="project-preview-link"
-        href={project.href}
-        target={external ? "_blank" : undefined}
-        rel={external ? "noreferrer" : undefined}
+        href={primaryHref}
+        target={primaryExternal ? "_blank" : undefined}
+        rel={primaryExternal ? "noreferrer" : undefined}
         aria-label={`${project.title} ${previewLabel[locale]}`}
-        onClick={() => track("open_preview")}
+        onClick={() => track(isFollowChecker ? "open_project_page" : "open_preview")}
       >
         <div className={`project-preview-frame project-${project.preview}-preview`}>
           <img src={previewSource[project.preview]} alt={previewAlt} loading={priority ? "eager" : "lazy"} width="1280" height="800" />
           <span className="project-domain-chip">{domain}</span>
-          <span className="project-preview-icon" aria-hidden="true"><ExternalLink /></span>
+          <span className="project-preview-icon" aria-hidden="true">{primaryExternal ? <ExternalLink /> : <ChevronRight />}</span>
         </div>
       </a>
 
@@ -68,13 +84,25 @@ export default function ProjectCard({ project, locale, priority = false }: { pro
           {hiddenTagCount > 0 && <span className="tag-more">+{hiddenTagCount}</span>}
         </div>
 
-        <div className={`case-actions project-card-actions ${project.detailHref ? "has-secondary" : "single-action"}`}>
-          <a className="project-primary-action" href={project.href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} onClick={() => track("open_service")}>
-            <span>{project.cta}</span><ExternalLink aria-hidden="true" />
+        <div className={`case-actions project-card-actions ${hasSecondary ? "has-secondary" : "single-action"}`}>
+          <a
+            className="project-primary-action"
+            href={primaryHref}
+            target={primaryExternal ? "_blank" : undefined}
+            rel={primaryExternal ? "noreferrer" : undefined}
+            onClick={() => track(isFollowChecker ? "open_project_page" : "open_service")}
+          >
+            <span>{primaryCta}</span>{primaryExternal ? <ExternalLink aria-hidden="true" /> : <ChevronRight aria-hidden="true" />}
           </a>
-          {project.detailHref && (
-            <a className="project-secondary-action" href={project.detailHref} onClick={() => track("open_case_study")}>
-              <span>{project.detailCta}</span><ChevronRight aria-hidden="true" />
+          {hasSecondary && secondaryHref && secondaryCta && (
+            <a
+              className="project-secondary-action"
+              href={secondaryHref}
+              target={secondaryExternal ? "_blank" : undefined}
+              rel={secondaryExternal ? "noreferrer" : undefined}
+              onClick={() => track(isFollowChecker ? "open_analyzer" : "open_case_study")}
+            >
+              <span>{secondaryCta}</span>{secondaryExternal ? <ExternalLink aria-hidden="true" /> : <ChevronRight aria-hidden="true" />}
             </a>
           )}
         </div>
