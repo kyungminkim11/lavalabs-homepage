@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { CheckCircle2, ExternalLink, FileArchive, ShieldCheck } from "lucide-react";
+import { CheckCircle2, ChevronRight, FileArchive, ShieldCheck } from "lucide-react";
 import type { Locale } from "../content";
 import BrandMark from "../components/BrandMark";
 import { trackEvent } from "../analytics";
@@ -9,8 +9,8 @@ const copy = {
     home: "/",
     title: "맞팔체커",
     lead: "내보낸 데이터 파일을 현재 브라우저에서 분석해 팔로우 관계를 구분하는 Lava Labs의 자체 웹 도구입니다.",
-    start: "웹 분석 도구 열기",
-    toolNote: "분석 도구는 새 탭에서 열리며, 선택한 파일은 현재 브라우저 안에서만 처리됩니다.",
+    start: "웹에서 분석 시작하기",
+    toolNote: "별도 앱이나 새 창으로 전환하지 않고 Lava Labs 웹페이지 안에서 분석 화면을 엽니다.",
     flow: "작동 방식",
     trust: "데이터 처리 원칙",
     previewAlt: "맞팔체커 웹 분석 화면 미리보기",
@@ -23,8 +23,8 @@ const copy = {
     home: "/en/",
     title: "Follow Checker",
     lead: "A Lava Labs web tool that reviews follow relationships by processing an exported data file in the current browser.",
-    start: "Open web analyzer",
-    toolNote: "The analyzer opens in a new tab and processes the selected file only inside your current browser.",
+    start: "Analyze on the web",
+    toolNote: "The analyzer opens inside the Lava Labs website without switching to a separate app or window.",
     flow: "How it works",
     trust: "Data handling principles",
     previewAlt: "Follow Checker web analyzer preview",
@@ -37,8 +37,8 @@ const copy = {
     home: "/jp/",
     title: "フォローチェッカー",
     lead: "エクスポートしたデータファイルを現在のブラウザ内で処理し、フォロー関係を分類するLava LabsのWebツールです。",
-    start: "Web分析ツールを開く",
-    toolNote: "分析ツールは新しいタブで開き、選択したファイルは現在のブラウザ内だけで処理されます。",
+    start: "Webで分析を始める",
+    toolNote: "別のアプリやウィンドウへ切り替えず、Lava LabsのWebページ内で分析画面を開きます。",
     flow: "仕組み",
     trust: "データ処理方針",
     previewAlt: "フォローチェッカーWeb分析画面のプレビュー",
@@ -54,6 +54,7 @@ const localeFromPath = (): Locale => location.pathname.startsWith("/en") ? "en" 
 export default function FollowCheckerPage() {
   const locale = localeFromPath();
   const text = copy[locale];
+  const analyzerHref = locale === "ko" ? "/projects/follow-checker/analyzer/" : `/${locale}/projects/follow-checker/analyzer/`;
 
   useEffect(() => {
     document.title = locale === "ko" ? "맞팔체커 작동 방식과 개인정보 보호 | Lava Labs" : locale === "en" ? "How Follow Checker Works | Lava Labs" : "フォローチェッカーの仕組み | Lava Labs";
@@ -79,7 +80,7 @@ export default function FollowCheckerPage() {
               <h1>{text.title}</h1>
               <p className="follow-case-lead">{text.lead}</p>
               <div className="button-row">
-                <a className="button primary" href="https://unfollow.lavalabs.co.kr/" target="_blank" rel="noreferrer" onClick={() => trackEvent("case_study_cta", { locale, project: "Follow Checker" })}>{text.start}<ExternalLink aria-hidden="true" /></a>
+                <a className="button primary" href={analyzerHref} onClick={() => trackEvent("case_study_cta", { locale, project: "Follow Checker", mode: "embedded_web" })}>{text.start}<ChevronRight aria-hidden="true" /></a>
                 <a className="button secondary" href={text.home}>Lava Labs</a>
               </div>
               <p className="follow-case-tool-note"><ShieldCheck aria-hidden="true" />{text.toolNote}</p>
