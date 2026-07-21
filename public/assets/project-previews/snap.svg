@@ -1,1 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eee6dc"/><stop offset="1" stop-color="#c8b6a4"/></linearGradient></defs><rect width="1280" height="800" fill="url(#g)"/><rect x="70" y="60" width="1140" height="680" rx="40" fill="#fbf8f3"/><text x="120" y="220" fill="#29231f" font-family="Arial,sans-serif" font-size="30" font-weight="700">Portrait · Seoul</text><text x="120" y="320" fill="#29231f" font-family="Arial,sans-serif" font-size="72" font-weight="900">365 Daily Snap</text><text x="120" y="380" fill="#6f6258" font-family="Arial,sans-serif" font-size="28">평범한 하루도 오래 기억될 장면으로</text><rect x="120" y="450" width="300" height="210" rx="24" fill="#6f625b"/><rect x="450" y="450" width="300" height="210" rx="24" fill="#a88770"/><rect x="780" y="450" width="300" height="210" rx="24" fill="#4d5557"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#efe7dd"/><stop offset="1" stop-color="#c8b4a0"/></linearGradient>
+    <linearGradient id="photo1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5f5049"/><stop offset="1" stop-color="#a48372"/></linearGradient>
+    <linearGradient id="photo2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c29a7f"/><stop offset="1" stop-color="#77635a"/></linearGradient>
+    <linearGradient id="photo3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#37484b"/><stop offset="1" stop-color="#879190"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#372d26" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <circle cx="1120" cy="80" r="180" fill="#fff" opacity=".18"/>
+  <rect x="64" y="54" width="1152" height="692" rx="42" fill="#fbf8f3" filter="url(#shadow)"/>
+  <rect x="64" y="54" width="1152" height="68" rx="42" fill="#f0ebe5"/>
+  <circle cx="108" cy="88" r="8" fill="#bca899"/><circle cx="134" cy="88" r="8" fill="#cbb9ac"/><circle cx="160" cy="88" r="8" fill="#d8c9bf"/>
+  <rect x="474" y="73" width="334" height="31" rx="15.5" fill="#fff" opacity=".78"/>
+  <text x="535" y="94" fill="#79695e" font-family="Arial,sans-serif" font-size="15" font-weight="700">snap.lavalabs.co.kr</text>
+  <g transform="translate(112 160)">
+    <text x="0" y="28" fill="#8c7564" font-family="Arial,sans-serif" font-size="19" font-weight="700" letter-spacing="2">PORTRAIT · SEOUL</text>
+    <text x="0" y="112" fill="#29231f" font-family="Arial,sans-serif" font-size="68" font-weight="900">365 Daily Snap</text>
+    <text x="0" y="158" fill="#77685d" font-family="Arial,sans-serif" font-size="24">평범한 하루도 오래 기억될 장면으로</text>
+    <g transform="translate(0 212)">
+      <rect width="304" height="242" rx="26" fill="url(#photo1)"/>
+      <circle cx="166" cy="86" r="34" fill="#ead8cb" opacity=".95"/>
+      <path d="M103 206c10-63 42-94 63-94s55 31 67 94" fill="#2f2724" opacity=".88"/>
+      <rect x="22" y="188" width="122" height="30" rx="15" fill="#fff" opacity=".88"/>
+      <text x="39" y="209" fill="#4f4038" font-family="Arial,sans-serif" font-size="14" font-weight="700">CITY PORTRAIT</text>
+    </g>
+    <g transform="translate(326 212)">
+      <rect width="304" height="242" rx="26" fill="url(#photo2)"/>
+      <rect x="0" y="156" width="304" height="86" rx="0" fill="#4f3f38" opacity=".55"/>
+      <circle cx="120" cy="91" r="29" fill="#f0d7c6"/>
+      <path d="M76 174c9-49 27-70 45-70 20 0 44 24 54 70" fill="#7f6658"/>
+      <circle cx="230" cy="68" r="54" fill="#ffd9bd" opacity=".28"/>
+      <rect x="22" y="188" width="112" height="30" rx="15" fill="#fff" opacity=".88"/>
+      <text x="40" y="209" fill="#5e4639" font-family="Arial,sans-serif" font-size="14" font-weight="700">COUPLE SNAP</text>
+    </g>
+    <g transform="translate(652 212)">
+      <rect width="304" height="242" rx="26" fill="url(#photo3)"/>
+      <path d="M0 168L78 112l48 36 54-54 124 74v74H0z" fill="#223033" opacity=".78"/>
+      <circle cx="208" cy="76" r="30" fill="#f3d7c7"/>
+      <path d="M166 184c7-53 25-79 43-79 21 0 47 28 58 79" fill="#182224"/>
+      <rect x="22" y="188" width="112" height="30" rx="15" fill="#fff" opacity=".88"/>
+      <text x="40" y="209" fill="#314345" font-family="Arial,sans-serif" font-size="14" font-weight="700">NIGHT MOOD</text>
+    </g>
+    <g transform="translate(0 480)">
+      <rect width="956" height="52" rx="18" fill="#f2ede7"/>
+      <text x="22" y="32" fill="#6c5d53" font-family="Arial,sans-serif" font-size="15" font-weight="700">포트폴리오</text>
+      <text x="141" y="32" fill="#6c5d53" font-family="Arial,sans-serif" font-size="15" font-weight="700">촬영 안내</text>
+      <text x="244" y="32" fill="#6c5d53" font-family="Arial,sans-serif" font-size="15" font-weight="700">예약 문의</text>
+      <rect x="792" y="10" width="144" height="32" rx="16" fill="#29231f"/>
+      <text x="827" y="31" fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="700">VIEW WORK</text>
+    </g>
+  </g>
+</svg>
