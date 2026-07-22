@@ -1,0 +1,193 @@
+/* Preview-only polish for SoftMoon improvements. */
+.softmoon-page-shell {
+  --moon-glow: 0 24px 80px rgba(19, 33, 44, 0.14);
+}
+
+.softmoon-site-header {
+  box-shadow: 0 18px 42px rgba(19, 33, 44, 0.055);
+}
+
+.softmoon-page-hero {
+  padding-bottom: 132px;
+}
+
+.softmoon-page-hero::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 140px;
+  background: linear-gradient(180deg, transparent, rgba(255, 253, 250, 0.78));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.softmoon-hero-copy .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(217, 111, 97, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.54);
+  padding: 8px 13px 8px 10px;
+  box-shadow: 0 12px 28px rgba(217, 111, 97, 0.08);
+}
+
+.softmoon-hero-copy .eyebrow::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--moon-coral);
+  box-shadow: 0 0 0 6px rgba(217, 111, 97, 0.11);
+}
+
+.softmoon-page-hero h1 {
+  text-shadow: 0 18px 54px rgba(19, 33, 44, 0.08);
+}
+
+.softmoon-hero-meta li {
+  position: relative;
+  overflow: hidden;
+}
+
+.softmoon-hero-meta li::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 0 30%, rgba(255, 255, 255, 0.42) 44%, transparent 58% 100%);
+  transform: translateX(-120%);
+  animation: softmoon-shine 7.2s ease-in-out infinite;
+}
+
+.softmoon-hero-meta li:nth-child(2)::after { animation-delay: 0.8s; }
+.softmoon-hero-meta li:nth-child(3)::after { animation-delay: 1.6s; }
+
+.softmoon-page-gallery figure {
+  filter: drop-shadow(0 22px 42px rgba(19, 33, 44, 0.12));
+}
+
+.softmoon-page-gallery picture {
+  isolation: isolate;
+}
+
+.softmoon-page-gallery picture::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 42%, rgba(19, 33, 44, 0.18));
+  pointer-events: none;
+}
+
+.softmoon-page-gallery figcaption {
+  border: 1px solid rgba(19, 33, 44, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 253, 250, 0.76);
+  padding: 9px 13px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.softmoon-manifesto-section {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.softmoon-principles-grid article,
+.softmoon-process-grid article,
+.softmoon-status-card,
+.softmoon-collaboration-card {
+  position: relative;
+}
+
+.softmoon-principles-grid article::before,
+.softmoon-process-grid article::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 22px;
+  opacity: 0;
+  background: radial-gradient(circle at 20% 0%, rgba(47, 143, 152, 0.13), transparent 45%);
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.softmoon-principles-grid article:hover::before,
+.softmoon-process-grid article:hover::before {
+  opacity: 1;
+}
+
+.softmoon-research-grid article {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 253, 250, 0.98)),
+    radial-gradient(circle at 85% 12%, rgba(213, 166, 92, 0.18), transparent 28%);
+}
+
+.softmoon-research-grid article:nth-child(2)::after { background: radial-gradient(circle, rgba(217, 111, 97, 0.14), transparent 70%); }
+.softmoon-research-grid article:nth-child(3)::after { background: radial-gradient(circle, rgba(213, 166, 92, 0.16), transparent 70%); }
+.softmoon-research-grid article:nth-child(4)::after { background: radial-gradient(circle, rgba(47, 143, 152, 0.18), transparent 70%); }
+
+.softmoon-card-head > span:first-child,
+.softmoon-process-grid article > span {
+  font-variant-numeric: tabular-nums;
+}
+
+.softmoon-status-card {
+  box-shadow: var(--moon-glow);
+}
+
+.softmoon-status-card > ul li {
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.softmoon-collaboration-card {
+  overflow: hidden;
+}
+
+.softmoon-collaboration-card::after {
+  content: "";
+  position: absolute;
+  width: 310px;
+  height: 310px;
+  right: -130px;
+  top: -130px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  box-shadow: 0 0 0 48px rgba(255, 255, 255, 0.025), 0 0 0 104px rgba(255, 255, 255, 0.018);
+  pointer-events: none;
+}
+
+.softmoon-collaboration-actions {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes softmoon-shine {
+  0%, 54%, 100% { transform: translateX(-120%); }
+  68% { transform: translateX(120%); }
+}
+
+@media (min-width: 1320px) {
+  .softmoon-page-hero-grid {
+    grid-template-columns: minmax(520px, 0.78fr) minmax(0, 1.22fr);
+  }
+
+  .softmoon-page-gallery {
+    max-width: 760px;
+  }
+}
+
+@media (max-width: 760px) {
+  .softmoon-page-hero {
+    padding-bottom: 90px;
+  }
+
+  .softmoon-page-gallery figcaption {
+    border-radius: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .softmoon-hero-meta li::after {
+    animation: none;
+  }
+}
